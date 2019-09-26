@@ -1,1 +1,0 @@
-node potato.js
