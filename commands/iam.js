@@ -14,16 +14,16 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 				message.author.send(`You now have the role Testers.`);
 			}
 		}
-		else if(args.length && args[0] == 'canteencrasher') {
+		else if(args.length && args[0] == 'madness') {
 			if(message.member.roles.has(`${canteencrasherrole}`)){
-				console.log('iam canteen remove!');
+				console.log('iam madness remove!');
 				message.member.removeRole(`${canteencrasherrole}`);
-				message.author.send(`You have been removed from CanteenCrasher.`);
+				message.author.send(`You have been removed from Madness.`);
 			}
 			else {
-				console.log('iam canteen add!');
+				console.log('iam madness add!');
 				message.member.addRole(`${canteencrasherrole}`);
-				message.author.send(`You now have the role CanteenCrasher.`);
+				message.author.send(`You now have the role Madness.`);
 			}
 		}
 		else if(args.length && args[0] == 'beta') {
