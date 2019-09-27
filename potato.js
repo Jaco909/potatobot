@@ -165,6 +165,7 @@ client.on('message', message => {
 					run(logaction, client, message, args, usertier, getRandomInt, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, testersrole, canteencrasherrole, betarole, shitRecently, furtrim, owoedRecently, potatocount, potatoyellnum, streamchannel, talk, messageChannel);
 				} */
 				if (command === 'potato') {
+					potatocount = (potatocount + 1);
 					potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel);
 				}
 				else if (command === 'servers') {

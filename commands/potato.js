@@ -7,7 +7,6 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 		const potatoyell = activities[potatorngyell]
 		logaction(potatorng)
 		console.log('Potato run!');
-		potatocount = (potatocount + 1);
 		console.log(`RNG: ${potatorng}`);
 		console.log(`Message: ${potatorngmessage}`);
 		console.log(`Total: ${potatocount}`);
