@@ -21,7 +21,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				console.log(`Message: ${potatorngyell}`);
 				message.channel.startTyping(true);
 				setTimeout(() => {
-					message.channel.send('**C\'mon guys, are just going to sit there and spam !potato all day?**');
+					message.channel.send('**C\'mon guys, are you just going to sit there and spam !potato all day?**');
 				}, 4000);
 				setTimeout(() => {
 					message.channel.send('**Aren\'t there more productive things you could be doing?**');

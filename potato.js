@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 const commandFolder = './commands/';
 
 //load base config
-const { prefix, token } = require('./config.json');
+const { prefix, token, timeouthour } = require('./config.json');
 
 //load roles
 const { manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole } = require('./serverconfig/roles.json');
@@ -157,6 +157,7 @@ client.on('message', message => {
 		{
 			roletier(manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole);
 			console.log(`User tier: ${usertier}!`);
+			//check channel/usertier
 			if ((message.channel.id === `${botchannel}`) || (usertier <=4))
 			{
 				//load commands without if statement
@@ -165,8 +166,16 @@ client.on('message', message => {
 					run(logaction, client, message, args, usertier, getRandomInt, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, testersrole, canteencrasherrole, betarole, shitRecently, furtrim, owoedRecently, potatocount, potatoyellnum, streamchannel, talk, messageChannel);
 				} */
 				if (command === 'potato') {
-					potatocount = (potatocount + 1);
-					potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel);
+					if (potatocount >= potatoyellnum)
+					{
+						potatocount = 1;
+						potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel);
+					}
+					else
+					{
+						potatocount = (potatocount + 1)
+						potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel);
+					}
 				}
 				else if (command === 'servers') {
 					servers(logaction, message, args);
