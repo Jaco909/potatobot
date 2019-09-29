@@ -38,6 +38,10 @@ const { stream } = require('./commands/stream.js');
 //clean up later
 const client = new Discord.Client();
 const potatoRecently = new Set(); //potato
+const superpotatoRecently = new Set(); //potato
+const ultrapotatoRecently = new Set(); //potato
+const finalpotatoRecently = new Set(); //potato
+const potatobanned = new Set(); //potato
 const owoedRecently = new Set(); //owo
 const shitRecently = new Set(); //shitpost
 const channelist = new Set(); //debug
@@ -169,12 +173,12 @@ client.on('message', message => {
 					if (potatocount >= potatoyellnum)
 					{
 						potatocount = 1;
-						potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel);
+						potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, timeouthour, superpotatoRecently, ultrapotatoRecently, finalpotatoRecently, potatobanned);
 					}
 					else
 					{
 						potatocount = (potatocount + 1)
-						potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel);
+						potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, timeouthour, superpotatoRecently, ultrapotatoRecently, finalpotatoRecently, potatobanned);
 					}
 				}
 				else if (command === 'servers') {

@@ -1,4 +1,4 @@
-exports.potato = function (logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel) {
+exports.potato = function (logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, timeouthour, superpotatoRecently, ultrapotatoRecently, finalpotatoRecently, potatobanned) {
 	if (message.channel.id === `${botchannel}`) { 
 		var activities = ["reading a book?", "going outside?", "making a mvm mission?", "playing some mvm?", "bothering that garbage dynobot?", "masturbating?", "shitposting in memes?", "being a productive member of society?", "eating some potatoes?", "talking to your firends? Oh right, you don't have any.", "running away from your problems?", "being a worse person?", "listening to some music?", "worshiping the comming AI apocalypse?", "waiting for your dad to come home?", "teaching me how to code?", "waiting for Half-Life 3?", "taking a shower? You really need one."];
 		const potatorng = getRandomInt(1, 100);
@@ -13,8 +13,34 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 		
 		if (potatoRecently.has(message.author.id))
 		{
-			console.log('Potato banned!');
-			message.channel.send('You just asked for a potato. Come back later.');
+			console.log('Potato blocked!');
+			if (finalpotatoRecently.has(message.author.id))
+			{
+				console.log('Potato banned 1 day!');
+				potatobanned.add(message.author.id);
+				message.channel.send('You have been blocked from \`!potato\` for 1 day.');
+				setTimeout(() => {
+					potatobanned.delete(message.author.id);
+				}, 86400000 ); //86400000 1day
+			}
+			if ((ultrapotatoRecently.has(message.author.id)) && (!finalpotatoRecently.has(message.author.id)))
+			{
+				console.log('Potato ban warn 3rd!');
+				finalpotatoRecently.add(message.author.id);
+				message.channel.send(`I said wait another hour <@${message.author.id}>. Ask again and no more potatoes for you.`);
+			}
+			if ((superpotatoRecently.has(message.author.id)) && (!ultrapotatoRecently.has(message.author.id)) && (!finalpotatoRecently.has(message.author.id)))
+			{
+				console.log('Potato ban warn 2nd!');
+				ultrapotatoRecently.add(message.author.id);
+				message.channel.send('I said wait another hour. Please stop asking for a potato.');
+			}
+			if ((!superpotatoRecently.has(message.author.id)) && (!ultrapotatoRecently.has(message.author.id)) && (!finalpotatoRecently.has(message.author.id)))
+			{
+				console.log('Potato ban warn 1st!');
+				superpotatoRecently.add(message.author.id);
+				message.channel.send('You just asked for a potato. Come back in an hour.');
+			}
 			if (potatocount >= potatoyellnum)
 			{
 				console.log('Potato yell!');
@@ -32,7 +58,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				}, 6000);
 			}
 		}
-		else if (!potatoRecently.has(message.author.id))
+		else if ((!potatoRecently.has(message.author.id)) && (!potatobanned.has(message.author.id)))
 		{
 			if(message.member.roles.has(`${potatorole}`)){
 				console.log('potato owned!');
@@ -53,6 +79,9 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			else {
 				console.log('potato none!');
 				potatoRecently.add(message.author.id);
+				superpotatoRecently.delete(message.author.id);
+				ultrapotatoRecently.delete(message.author.id);
+				finalpotatoRecently.delete(message.author.id);
 				if (potatorngmessage == 1){
 				message.channel.send(`I\'m sorry. We\'re currently out of potatoes. Try again later.`)};
 				if (potatorngmessage == 2){
@@ -75,7 +104,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				message.channel.send(`We\'re fresh out of potatoes. Ask again in a bit.`)};
 				setTimeout(() => {
 					potatoRecently.delete(message.author.id);
-				}, 3600000 ); //3600000
+				}, timeouthour ); //3600000
 				if (potatocount >= potatoyellnum)
 				{
 					console.log('potato yell!');
@@ -92,6 +121,11 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 					}, 4000);
 				}
 			}
+		}
+		else if (potatobanned.has(message.author.id))
+		{
+			message.delete(10);
+			message.author.send(`You have been banned from using \`!potato\` for 24 hours ${message.author}.`);
 		}
 		message.channel.stopTyping(true);
 	}
