@@ -26,7 +26,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	else if(args[0] == `iam`) {
 		message.delete(10);
 		console.log('iam help!');
-		message.author.send(`**Usage:** \`!iam [role]\`\n\**Channels:** *#botato_cellar*.\n\**Description:** Gives you the requested role. Current available options: \n\`!iam madness\` to assign the role @Madness.\n\`!iam Testers\` to assign the role @Testers.\n\`!iam beta\` to assign the role @Beta Tester.`);
+		message.author.send(`**Usage:** \`!iam [role]\`\n\**Channels:** *#botato_cellar*.\n\**Description:** Gives you the requested role. Current available options: \n\`!iam madness\` to assign the role @Madness.\n\`!iam Testers\` to assign the role @Testers.`);
 	}
 	else if (args[0] == `shitpost`) {
 		console.log('Shitpost help!');

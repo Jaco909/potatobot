@@ -26,18 +26,6 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 				message.author.send(`You now have the role Madness.`);
 			}
 		}
-		else if(args.length && args[0] == 'beta') {
-			if(message.member.roles.has(`${betarole}`)){
-				console.log('iam beta remove!');
-				message.member.removeRole(`${betarole}`);
-				message.author.send(`You have been removed from Beta Tester.`);
-			}
-			else {
-				console.log('iam beta add!');
-				message.member.addRole(`${betarole}`);
-				message.author.send(`You now have the role Beta Tester.`);
-			}
-		}
 		else {
 			message.delete(10);
 			console.log('iam invalid!');
