@@ -18,6 +18,26 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		message.delete(10);
 		message.author.send(`**Usage:** \`!owo [text]\`\n\**Channels:** *#botato_cellar*\n\**Description:** Care fow somie huggy wuggies?`);
 	}
+	else if (args[0] == `warnmute`) {
+		console.log('Warnmute help!');
+		message.delete(10);
+		message.author.send(`**Usage:** \`!warnmute\`\n\**Channels:** *#all*\n\**Description:** Will toggle warning messages being sent to the warned user.`);
+	}
+	else if (args[0] == `warn`) {
+		console.log('Warn help!');
+		message.delete(10);
+		message.author.send(`**Usage:** \`!warn [user] [reason]\`\n\**Channels:** *#all*\n\**Description:** Add a warning to the lister user with a reason.`);
+	}
+	else if (args[0] == `addwarninfo`) {
+		console.log('Warn help!');
+		message.delete(10);
+		message.author.send(`**Usage:** \`!addwarninfo [warnlog] [info]\`\n\**Channels:** *#all*\n\**Description:** Will add additional info about a particular warning.`);
+	}
+	else if (args[0] == `getwarn`) {
+		console.log('Getwarn help!');
+		message.delete(10);
+		message.author.send(`**Usage:** \`!getwarn [warnlog]\`\n\**Channels:** *#all*\n\**Description:** Will retrieve the warning log given. Leave blank to see all warning logs.`);
+	}
 	else if (args[0] == `servers`) {
 		console.log('Servers help!');
 		message.delete(10);

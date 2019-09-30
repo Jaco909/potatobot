@@ -5,10 +5,17 @@ exports.purge = function (logaction, message, usertier, args) {
 		{
 			if (!args.some(isNaN))
 			{
-				console.log('Purge run!');
-				logaction()
-				console.log(`Purging ${args[0]} messages!`);
-				return message.channel.bulkDelete(args[0]);
+				if (args[0] <= 100)
+				{
+					console.log('Purge run!');
+					logaction()
+					console.log(`Purging ${args[0]} messages!`);
+					return message.channel.bulkDelete(args[0]);
+				}
+				else
+				{
+					message.author.send(`Discord is unable to purge more than 100 messages at a time.`);
+				}
 			}
 			else
 			{

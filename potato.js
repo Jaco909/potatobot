@@ -2,6 +2,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const commandFolder = './commands/';
+const warnFolder = './warnings/';
 
 //load base config
 const { prefix, token, timeouthour } = require('./config.json');
@@ -10,14 +11,16 @@ const { prefix, token, timeouthour } = require('./config.json');
 const { manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole } = require('./serverconfig/roles.json');
 
 //load channels
-const { botchannel, streamchannel, logchannel } = require('./serverconfig/channels.json');
+const { botchannel, streamchannel, logchannel, warnchannel } = require('./serverconfig/channels.json');
 
 //load commands
 //will cleanup when I learn how
 const { addpotato } = require('./commands/addpotato.js');
+const { addwarninfo } = require('./commands/addwarninfo.js');
 const { changelog } = require('./commands/changelog.js');
 const { debug } = require('./commands/debug.js');
 const { fuckgoback } = require('./commands/fuckgoback.js');
+const { getwarn } = require('./commands/getwarn.js');
 const { help } = require('./commands/help.js');
 const { iam } = require('./commands/iam.js');
 const { kill } = require('./commands/kill.js');
@@ -33,6 +36,7 @@ const { shitpost } = require('./commands/shitpost.js');
 const { shutup } = require('./commands/shutup.js');
 const { status } = require('./commands/status.js');
 const { stream } = require('./commands/stream.js');
+const { warn } = require('./commands/warn.js');
 
 //declare constants w/ temp values
 //clean up later
@@ -46,10 +50,12 @@ const owoedRecently = new Set(); //owo
 const shitRecently = new Set(); //shitpost
 const channelist = new Set(); //debug
 const commandlist = [];
+const warnlist = [];
 var potatoyellnum = 15;
 var potatocount = 0;
 var roletier = 0;
 var usertier = 99;
+var warnmute = 0;
 
 //???
 client.commands = new Discord.Collection();
@@ -58,6 +64,11 @@ client.commands = new Discord.Collection();
 fs.readdirSync(commandFolder).forEach(file => {
   file = file.slice(0, -3);
   commandlist.push(file)
+});
+
+//collect warnings, store them
+fs.readdirSync(warnFolder).forEach(file => {
+  warnlist.push(file)
 });
 
 //discord login token
@@ -157,6 +168,21 @@ client.on('message', message => {
 			}
 		}
 		
+		//pulls userdata from mention
+		function getUserFromMention(mention) {
+			if (!mention) return;
+
+			if (mention.startsWith('<@') && mention.endsWith('>')) {
+				mention = mention.slice(2, -1);
+
+				if (mention.startsWith('!')) {
+					mention = mention.slice(1);
+				}
+
+				return client.users.get(mention);
+			}
+		}
+		
 		if ((message.channel.type !== `dm`))
 		{
 			roletier(manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole);
@@ -231,6 +257,31 @@ client.on('message', message => {
 				}
 				else if (command === 'say'){
 					say(logaction, message, usertier, args, messageChannel);
+				}
+				else if (command === 'warn'){
+					
+					warn(logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute);
+				}
+				else if (command === 'getwarn'){
+					
+					getwarn(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
+				}
+				else if (command === 'addwarninfo'){
+					
+					addwarninfo(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
+				}
+				else if (command === 'warnmute'){
+					
+					if (warnmute == 0)
+					{
+						warnmute = 1;
+						message.author.send(`Warnings will not send messages to the warned user.`);
+					}
+					else
+					{
+						warnmute = 0;
+						message.author.send(`Warnings will send messages to the warned user.`);
+					}
 				}
 				else if (command === 'kill') {
 					kill(logaction, message, usertier);
