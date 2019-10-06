@@ -93,11 +93,11 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		message.delete(10);
 		message.author.send(`**Usage:** \`!status status\`\n\**Channels:** All.\n\**Description:** Sets the status of the bot. Options are: \`online\`, \`idle\`, \`dnd\`. This will set the message back to it's default setting.`);
 	}
-	else if (args[0] == `launchdate`) {
+	/* else if (args[0] == `launchdate`) {
 		console.log('Launchdate help!');
 		message.delete(10);
 		message.author.send(`**Usage:** \`!status status\`\n\**Channels:** *#botato_cellar*.\n\**Description:** Sets the status of the bot. Options are: \`online\`, \`idle\`, \`dnd\`. This will set the message back to it's default setting.`);
-	}
+	} */
 	else if (args[0] == `message`) {
 		console.log('Message help!');
 		message.delete(10);
@@ -115,7 +115,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	else if (args[0] == undefined)
 	{
 		console.log('help run!');
-		message.author.send('**Help**\n\`\`\`User Commands\`\`\`\**Fun Commands**\n\`!potato\` : RNG potato fun!\n\`!shitpost\` : A stale shitpost, just for you.\n\`!launchdate\` : Gives the current launch date of MM.\n\ \n\**Discord Commands**\n\`!iam\` : Assign a role. Use \`!help iam\` for more info.\n\ \n\**Information Commands**\n\`!servers\` : Gives a list of CC servers. See `!servers help\` for more info.\n\`!changelog\` : What crap got added now?');
+		message.author.send('**Help**\n\`\`\`User Commands\`\`\`\**Fun Commands**\n\`!potato\` : RNG potato fun!\n\`!shitpost\` : A stale shitpost, just for you.\n\ \n\**Discord Commands**\n\`!iam\` : Assign a role. Use \`!help iam\` for more info.\n\ \n\**Information Commands**\n\`!servers\` : Gives a list of CC servers. See `!servers help\` for more info.\n\`!changelog\` : What crap got added now?');
 		if (usertier <= 5) {
 			console.log('Help GIANT run!');
 			message.author.send('\`\`\`Giant Commands\`\`\`\`!stream\` : Sets the potato bot to display a stream. Use \`!stream help\` for more info.');
@@ -126,7 +126,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		}
 		if (usertier <= 4) {
 			console.log('Help discordmoderator run!');
-			message.author.send('\`\`\`Discord Moderator Commands\`\`\`\**Bot Controls**\n\`!addpotato\` : Triggers the internal potato counter.\n\`!message\` : Sets the bot\'s current game message *(currently wip)*.\n\`!say\` : Have the bot say something you write.\n\`!shutup\` : Forces the bot to stop typing.\n\`!status\` : Sets the status of the bot.\n\`!stream\` : Set the bot to display a Twitch stream.\n\`!potatoyell\` : Sets the threshold of when the bot yells about \`!potato\` usage.\n\ \n\**Moderation Commands**\n\`!purge\` : Deletes # messages from the channel.\n\ \n\**Unlisted Commands**\n\`!fuckgoback\` : We need to go back!.');
+			message.author.send('\`\`\`Discord Moderator Commands\`\`\`\**Bot Controls**\n\`!addpotato\` : Triggers the internal potato counter.\n\`!message\` : Sets the bot\'s current game message *(currently wip)*.\n\`!say\` : Have the bot say something you write.\n\`!shutup\` : Forces the bot to stop typing.\n\`!status\` : Sets the status of the bot.\n\`!stream\` : Set the bot to display a Twitch stream.\n\`!potatoyell\` : Sets the threshold of when the bot yells about \`!potato\` usage.\n\ \n\**Moderation Commands**\n\`!purge\` : Deletes # messages from the channel.\n\ \n\**Unlisted Commands**\n\`!fuckgoback\` : We need to go back!\n\`!bitch\` : no u.');
 		}
 		/* if (usertier <= 3) {
 			console.log('help MODERATOR run!');

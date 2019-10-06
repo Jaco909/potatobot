@@ -249,14 +249,19 @@ client.on('message', message => {
 				else if (command === 'status'){
 					status(logaction, message, usertier, args, client);
 				}
-				else if (command === 'launchdate'){
+				/* else if (command === 'launchdate'){
 					launchdate(logaction, message, getRandomInt);
-				}
+				} */
 				else if (command === 'message'){
 					messagefunc(logaction, message, usertier, args, talk, client);
 				}
 				else if (command === 'say'){
 					say(logaction, message, usertier, args, messageChannel);
+				}
+				else if (command === 'bitch'){
+					logaction()
+					message.delete(10);
+					message.author.send(`no u`);
 				}
 				else if (command === 'warn'){
 					

@@ -1,0 +1,159 @@
+0.9
+•Bot restored from old backup.
+
+1.0 "We live yo"
+•Config updated for current server.
+•Removed !meme.
+•Updated !potato.
+	-Cooldown lowered from 2 hours to 1 hour.
+	-Potato chance lowered from 25% to 1%.
+•Updated !servers.
+	-Removed Singapore and Australia from possible options.
+	-Merged Illinois and Philadelphia into USA.
+
+1.0.1
+•Removed auto-restart loop.
+
+1.0.2
+•Added !addpotato.
+•Added !shutup.
+•Updated !potato.
+	-Added potatoyell that triggers after 10 command uses.
+
+1.1 "Don't @ me bro"
+•All Commands.
+	-Now displays information when help is added to the command.
+•DM Channel.
+	-Commands can no longer be sent through DM.
+•Role Autherization.
+	-Specified roles are immune to #botato_cellar restriction.
+	-Specified roles are allowed to access administrative commands.
+•Updated !addpotato.
+	-Moderator locked command.
+•Updated !shutup.
+	-Moderator locked command.
+•Updated !help.
+	-Now displays commands based on user's roles.
+•Added !purge.
+•Added !kill.
+
+1.1.1
+•Updated !potato.
+	-Locked to #botato_cellar for all users, regardless of role.
+•Updated !iam.
+	-Locked to #botato_cellar for all users, regardless of role.
+
+1.2 "It's our puppet now"
+•Added !status.
+•Added !message.
+•Added !stream.
+
+1.2.1
+•Updated !message.
+-Fixed array.join not being applied to the sent message.
+
+1.2.2
+•Updated !status.
+	-Fixed status not being changed if the bot's status had not been previously changed by a different command.
+
+1.3 "I have the best words"
+•Added !potatoyell.
+•Added !launchdate.
+•Added !changelog.
+•Updated !potato.
+	-Raised potatoyell threshold, and added a command to manualy set the yell threshold.
+	-Added 8 new possible rejection phrases.
+	-Added 7 new possible yell phrases.
+
+1.4 "Poggers in chat"
+•Added !fuckgoback.
+•Added !say.
+•Updated !stream.
+	-Now announces stream to the #streams channel.
+	-Username is now the second value collected.
+	-Bot will automatically collect username if not provided.
+	-!stream stop will now also purge the announcement from the #streams channel.
+
+1.4.1
+•Updated all commands.
+	-Help for all commands now goes through !help [command name].
+	-Bot will now give rejection messages if the user does not have permission to use the given command.
+•Updated !message.
+	-Capital letters are now displayed.
+•Updated !say.
+	-Capital letters are now displayed.
+
+1.4.2
+•Updated !say.
+	-Now accepts channel names instead of id.
+
+1.4.3
+•Added !owo.
+•Updated !help.
+	-!iam help now lists the correct help text.
+•Updated !message.
+	-Fixed the command not being removed from the string.
+
+1.5 "I see you and I see your bullshit"
+•Updated bot code.
+	-All events that call the bot (!) are logged in #bot_action_logs.
+•Updated !owo.
+	-Now has a 1 hour cooldown between uses.
+
+1.6 "Spring cleaning came early"
+•Updated Bot Code.
+	-All commands are fully modular.
+	-All roles are fully modular.
+	-All channel ids are fully modular.
+	-All  administrative role permission checks are now run on a tier system rather than individual checks.
+	-Added full support for Manager role.
+•Updated !purge.
+	-Fixed faulty conversion that allowed non-numeric inputs.
+•Updated !owo.
+	-Fixed the owo timeout list refernecing the same list as the potato timeout list.
+•Updated !potatoyell.
+	-Fixed command accepting no input.
+	-Fixed command accepting non-numeric inputs.
+
+1.7.1
+•Updated !iam.
+	-Changed Canteencrasher to Madness.
+•Updated !help iam.
+	-Changed Canteencrasher to Madness.
+
+1.7.2
+•Updated !potato.
+	-Fixed potatocount being reset every time the command was run.
+
+1.7.3
+•Updated !potato.
+	-Fixed potatocount being reset not being reset after reaching the threshold.
+
+1.7.4
+•Updated !potato.
+	-Will now ban users after too many failed potato attempts within 1 hour.
+
+1.8 "Time for a crusade"
+•Added !warn.
+•Added !addwarninfo.
+•Added !getwarn.
+•Added !warnmute.
+•Updated !iam.
+	-Removed beta role.
+•Updated !purge.
+	-Command limited to 100 messages.
+
+1.8.1
+•Updated !potato.
+	-Spookafied.
+•Updated !iam.
+	-Added "!iam gay".
+
+1.8.2
+•Updated bot.
+	-Bot now runs through its github location.
+•Added !bitch.
+•Updated !changelog.
+	-Moved changelog to the github, command now give a link to said file.
+•Updated !launchdate.
+	-Removed command.
