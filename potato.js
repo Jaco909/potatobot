@@ -17,6 +17,7 @@ const { botchannel, streamchannel, logchannel, warnchannel } = require('./server
 //will cleanup when I learn how
 const { addpotato } = require('./commands/addpotato.js');
 const { addwarninfo } = require('./commands/addwarninfo.js');
+const { avatar } = require('./commands/avatar.js');
 const { changelog } = require('./commands/changelog.js');
 const { debug } = require('./commands/debug.js');
 const { fuckgoback } = require('./commands/fuckgoback.js');
@@ -262,6 +263,9 @@ client.on('message', message => {
 					logaction()
 					message.delete(10);
 					message.author.send(`no u`);
+				}
+				else if (command === 'avatar'){
+					avatar(logaction, message, args, getUserFromMention, talk, client);
 				}
 				else if (command === 'warn'){
 					

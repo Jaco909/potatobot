@@ -157,3 +157,6 @@
 	-Moved changelog to the github, command now give a link to said file.
 •Updated !launchdate.
 	-Removed command.
+
+1.8.3
+•Added !avatar.
