@@ -8,10 +8,10 @@ const warnFolder = './warnings/';
 const { prefix, token, timeouthour } = require('./config.json');
 
 //load roles
-const { manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole } = require('./serverconfig/roles.json');
+const { manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole, robotrole } = require('./serverconfig/roles.json');
 
 //load channels
-const { botchannel, streamchannel, logchannel, warnchannel } = require('./serverconfig/channels.json');
+const { botchannel, streamchannel, logchannel, warnchannel, entrancechannel } = require('./serverconfig/channels.json');
 
 //load commands
 //will cleanup when I learn how
@@ -31,6 +31,7 @@ const { owo } = require('./commands/owo.js');
 const { potato } = require('./commands/potato.js');
 const { potatoyell } = require('./commands/potatoyell.js');
 const { purge } = require('./commands/purge.js');
+const { robot } = require('./commands/robot.js');
 const { say } = require('./commands/say.js');
 const { servers } = require('./commands/servers.js');
 const { shitpost } = require('./commands/shitpost.js');
@@ -246,6 +247,9 @@ client.on('message', message => {
 				}
 				else if (command === 'stream') {
 					stream(logaction, message, usertier, args, streamchannel, client);
+				}
+				else if (command === 'robot') {
+					robot(logaction, message, args, entrancechannel, robotrole);
 				}
 				else if (command === 'status'){
 					status(logaction, message, usertier, args, client);
