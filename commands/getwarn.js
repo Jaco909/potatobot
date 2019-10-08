@@ -5,12 +5,14 @@ exports.getwarn = function (logaction, message, usertier, args, messageChannel, 
 		{
 			var warnget = args[0]
 			logaction()
+			console.log('Getwarn give!');
 			if (fs.existsSync(`./warnings/${warnget}`)) {
 				fs.readFile(`./warnings/${args[0]}`, (err, data) => {
 				message.author.send(`${data}`);
 				});
 			}
 			else {
+				console.log('Getwarn invalid name!');
 				message.author.send(`That is not a valid file. Please use \`!getwarn\` with no text for a list of files.`);
 			}
 		}

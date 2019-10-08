@@ -1,6 +1,5 @@
 exports.iam = function (logaction, message, args, botchannel, testersrole, canteencrasherrole, betarole) {
 	logaction()
-	console.log('iam run!');
 	if (message.channel.id === `${botchannel}`) {
 		if (args.length && args[0] == 'testers') {
 			if(message.member.roles.has(`${testersrole}`)){

@@ -1,8 +1,7 @@
 exports.shitpost = function (logaction, getRandomInt, message, shitRecently) {
 	
-	const shitrng = getRandomInt(1, 150);
+	const shitrng = getRandomInt(1, 160);
 	logaction(shitrng)
-	console.log('Shitpost run!');
 	if (shitRecently.has(message.author.id)) {
 		console.log('Shitpost banned!');
 		message.delete(10);
@@ -10,8 +9,7 @@ exports.shitpost = function (logaction, getRandomInt, message, shitRecently) {
 		return;
 	}
 	else if (!shitRecently.has(message.author.id)){
-		console.log('shitpost give!');
-		console.log(shitrng);
+		console.log('Shitpost give!');
 		shitRecently.add(message.author.id);
 		setTimeout(() => {
 			shitRecently.delete(message.author.id);
@@ -318,5 +316,25 @@ exports.shitpost = function (logaction, getRandomInt, message, shitRecently) {
 			message.author.send(`Please Mr. Howard, not again. https://youtu.be/bxg085yEUzo`)};
 		if(shitrng == 150){
 			message.author.send(`Neahhayana. Harng! Neh! https://youtu.be/gEJKQI_ht1I`)};
+		if(shitrng == 151){
+			message.author.send(`God damn he did it! https://youtu.be/isFViygaIYQ`)};
+		if(shitrng == 152){
+			message.author.send(`It's never enough! https://youtu.be/jgEEkd-MF8k`)};
+		if(shitrng == 153){
+			message.author.send(`Poor guy. He just wanted to fix the universe. https://youtu.be/_axmm3oqSYE`)};
+		if(shitrng == 154){
+			message.author.send(`He just went to the market for some milk. He\'ll be back. https://youtu.be/PWxRDOTctD4`)};
+		if(shitrng == 155){
+			message.author.send(`Here, have something draged up from meme hell. https://youtu.be/e0grOu_z9-U`)};
+		if(shitrng == 156){
+			message.author.send(`WHAT! https://youtu.be/CuZRl8DEbh8`)};
+		if(shitrng == 157){
+			message.author.send(`Half-Life 3 leaked footage. https://youtu.be/G1wJfrzzZ1g`)};
+		if(shitrng == 158){
+			message.author.send(`Ozzie mate! https://youtu.be/AttvYYAmHJk`)};
+		if(shitrng == 159){
+			message.author.send(`Let\'s see a spoonfull of sugar solve this. https://youtu.be/mHOchoMgZ3c`)};
+		if(shitrng == 160){
+			message.author.send(`This bot is partially powered by badonkers. https://youtu.be/y-0rq582Ww8`)};
 	}
 };

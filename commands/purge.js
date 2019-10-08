@@ -14,19 +14,20 @@ exports.purge = function (logaction, message, usertier, args) {
 				}
 				else
 				{
+					console.log('Purge error +100!');
 					message.author.send(`Discord is unable to purge more than 100 messages at a time.`);
 				}
 			}
 			else
 			{
-				console.log('Purge error!');
+				console.log('Purge error NaN!');
 				message.delete(10);
 				message.author.send(`Invalid purge #.`);
 			}
 		}
 		else
 		{
-			console.log('Purge error!');
+			console.log('Purge error blank!');
 			message.delete(10);
 			message.author.send(`Invalid purge ammount.`);
 		}

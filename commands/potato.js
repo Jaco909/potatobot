@@ -6,14 +6,14 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 		const potatorngyell = getRandomInt(1, 18);
 		const potatoyell = activities[potatorngyell]
 		logaction(potatorng)
-		console.log('Potato run!');
-		console.log(`RNG: ${potatorng}`);
-		console.log(`Message: ${potatorngmessage}`);
-		console.log(`Total: ${potatocount}`);
+		//console.log('Potato run!');
+		//console.log(`RNG: ${potatorng}`);
+		//console.log(`Message: ${potatorngmessage}`);
+		//console.log(`Total: ${potatocount}`);
 		
 		if (potatoRecently.has(message.author.id))
 		{
-			console.log('Potato blocked!');
+			console.log('Potato too soon!');
 			if (finalpotatoRecently.has(message.author.id))
 			{
 				console.log('Potato banned 1 day!');
@@ -44,7 +44,6 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			if (potatocount >= potatoyellnum)
 			{
 				console.log('Potato yell!');
-				console.log(`Message: ${potatorngyell}`);
 				message.channel.startTyping(true);
 				setTimeout(() => {
 					message.channel.send('**C\'mon guys, are you just going to sit there and spam !potato all day?**');
@@ -61,14 +60,14 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 		else if ((!potatoRecently.has(message.author.id)) && (!potatobanned.has(message.author.id)))
 		{
 			if(message.member.roles.has(`${potatorole}`)){
-				console.log('potato owned!');
+				console.log('Potato owned!');
 				if(potatorngmessage >= 6){
 				message.channel.send(`I\'m not giving you another brain, ${message.member.displayName}. Cut it out.`);}
 				if(potatorngmessage <= 5){
 				message.channel.send(`You already have a brain, ${message.member.displayName} (even if you may not act like it). Don\'t be greedy.`);}
 			}
 			else if(potatorng == 69){
-				console.log('potato give!');
+				console.log('Potato give!');
 				const guildMember = message.member;
 				guildMember.addRole(`${potatorole}`);
 				if(potatorngmessage >= 6){
@@ -77,7 +76,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				message.channel.send(`I found a brain for you ${message.member.displayName}. I recomend eating it on toast with a dash of hot sauce.`);}
 			}
 			else {
-				console.log('potato none!');
+				console.log('Potato none!');
 				potatoRecently.add(message.author.id);
 				superpotatoRecently.delete(message.author.id);
 				ultrapotatoRecently.delete(message.author.id);
@@ -107,7 +106,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				}, timeouthour ); //3600000
 				if (potatocount >= potatoyellnum)
 				{
-					console.log('potato yell!');
+					console.log('Potato yell!');
 					message.channel.startTyping(true);
 					setTimeout(() => {
 						message.channel.send('**C\'mon guys, are just going to sit there and spam !potato all day?**');
@@ -124,13 +123,14 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 		}
 		else if (potatobanned.has(message.author.id))
 		{
+			console.log('Potato banned!');
 			message.delete(10);
 			message.author.send(`You have been banned from using \`!potato\` for 24 hours ${message.author}.`);
 		}
 		message.channel.stopTyping(true);
 	}
 	else  {
-		console.log('invalid channel!');
+		console.log('Potato invalid channel!');
 		message.delete(10);
 		message.author.send(`Invalid channel. Please use \`!help\` in **#botato_cellar** for commands.`);
 	}

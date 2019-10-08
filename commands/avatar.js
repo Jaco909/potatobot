@@ -3,6 +3,7 @@ exports.avatar = function (logaction, message, args, getUserFromMention, talk, c
 	{
 		const user = getUserFromMention(args[0]);
 		if (!user) {
+			console.log('Avatar fail!');
 			return message.author.send('Please use a proper mention.');
 		}
 		else
@@ -16,7 +17,6 @@ exports.avatar = function (logaction, message, args, getUserFromMention, talk, c
 					userid = userid.slice(1);
 				}
 			}
-			console.log(`${user}`);
 			return message.channel.send(`${user.username}'s avatar: ${user.displayAvatarURL}`);
 		}
 	}

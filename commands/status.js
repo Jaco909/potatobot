@@ -8,6 +8,7 @@ exports.status = function (logaction, message, usertier, args, client) {
 		client.user.setActivity('!help for info');
 	}
 	else {
+		console.log('Status block!');
 		message.delete(10);
 		message.author.send(`You do not have access to this command.`);
 	}

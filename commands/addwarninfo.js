@@ -11,24 +11,25 @@ exports.addwarninfo = function (logaction, message, usertier, args, messageChann
 				fs.writeFileSync(`./warnings/${warnget}_info.txt`, `\n*ADDITIONAL INFO*\n ${talk.join(" ")}`, (err) => {
 					if (err) throw err;
 				});
-				console.log('Append complete!');
+				console.log('Addwarninfo success!');
 				message.author.send(`Info has been added to warn file \`${warnget}_info.txt\`.`);
 				client.channels.get(`${warnchannel}`).send(`\`\`\`Info for ${warnget}.txt has been saved to ${warnget}_info.txt\`\`\``);
 			}
 			else {
+				console.log('Addwarninfo wrong file!');
 				message.author.send(`That is not a valid file. Please use \`!getwarn\` with no text for a list of files.`);
 			}
 		}
 		else
 		{
 			logaction()
-			console.log('Getwarn list give!');
+			console.log('Addwarninfo list!');
 			message.author.send(`${warnlist}`);
 		}
 	}
 	else
 	{
-		console.log('Getwarn block!');
+		console.log('Addwarninfo block!');
 		message.delete(10);
 		message.author.send(`You do not have access to this command.`);
 	}

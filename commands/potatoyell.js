@@ -7,21 +7,20 @@ exports.potatoyell = function (logaction, message, usertier, args, potatoyellnum
 			if (!args.some(isNaN))
 			{
 				message.delete(10);
-				console.log('Setpotatoyell run!');
+				console.log('Potatoyell run!');
 				potatoyellnum = args[0];
-				console.log(`Threshold: ${potatoyellnum}`);
 				message.author.send(`**Curent threshold:** ${potatoyellnum}`);
 			}
 			else
 			{
-				console.log('Purge error!');
+				console.log('Potatoyell error NaN!');
 				message.delete(10);
 				message.author.send(`Invalid threshold #.`);
 			}
 		}
 		else
 		{
-			console.log('Potatoyell error!');
+			console.log('Potatoyell error blank!');
 			message.delete(10);
 			message.author.send(`Invalid threshold #.`);
 		}

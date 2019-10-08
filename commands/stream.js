@@ -6,8 +6,6 @@ exports.stream = function (logaction, message, usertier, args, streamchannel, cl
 		if (args[0] !== `stop`)
 		{
 			console.log('Self Stream run!');
-			console.log(`${message.member.displayName}`);
-			console.log(`${args[0]}`);
 			client.user.setPresence({
 				game: {
 					name: `${message.member.displayName} is streaming!`,
@@ -21,9 +19,6 @@ exports.stream = function (logaction, message, usertier, args, streamchannel, cl
 		if ((args[0] !== `stop`) && (args.length == 2))
 		{
 			console.log('Secondary Stream run!');
-			console.log(`${message.member.displayName}`);
-			console.log(`${args[0]}`);
-			console.log(`${args[1]}`);
 			client.user.setPresence({
 				game: {
 					name: `${args[1]} is streaming!`,
@@ -42,6 +37,7 @@ exports.stream = function (logaction, message, usertier, args, streamchannel, cl
 		}
 	}
 	else {
+		console.log('Stream block!');
 		message.delete(10);
 		message.author.send(`You do not have access to this command.`);
 	}

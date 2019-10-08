@@ -9,6 +9,7 @@ exports.shutup = function (logaction, message, usertier) {
 		message.channel.stopTyping(true);
 	}
 	else {
+		console.log('Shutup block!');
 		message.delete(10);
 		message.author.send(`You do not have access to this command.`);
 	}

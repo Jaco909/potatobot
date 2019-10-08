@@ -5,11 +5,12 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 		{
 			const user = getUserFromMention(args[0]);
 			if (!user) {
+				console.log('Warn error mention!');
 				return message.reply('Please use a proper mention.');
 			}
 			else
 			{
-				console.log('Incomming warning!');
+				console.log('Warn run!');
 				logaction();
 				if (args[0].startsWith('<@') && args[0].endsWith('>')) {
 					var userid = args[0].slice(2, -1);
@@ -21,12 +22,8 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				talk.shift();
 				talk.shift().toString();
 				time = (message.createdAt);
-				console.log(`${userid}`);
-				console.log(`${user.username}`);
-				console.log(`Warning: ${talk}`);
 				//warning for user exists maximum
 				if (fs.existsSync(`./warnings/9_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.appendFileSync(`./warnings/9_${userid}.txt`, `\n**WARNING #10+**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk}`, (err) => {
 						if (err) throw err;
 						console.log('Append complete!');
@@ -40,7 +37,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				}
 				//warning for user exists 8-9
 				if (fs.existsSync(`./warnings/8_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.renameSync(`./warnings/8_${userid}.txt`, `./warnings/9_${userid}.txt`, (err) => {
 						if (err) throw err;
 						console.log('Rename complete!');
@@ -58,7 +54,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				}
 				//warning for user exists 7-8
 				if (fs.existsSync(`./warnings/7_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.renameSync(`./warnings/7_${userid}.txt`, `./warnings/8_${userid}.txt`, (err) => {
 						if (err) throw err;
 						console.log('Rename complete!');
@@ -76,7 +71,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				}
 				//warning for user exists 6-7
 				if (fs.existsSync(`./warnings/6_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.renameSync(`./warnings/6_${userid}.txt`, `./warnings/7_${userid}.txt`, (err) => {
 						if (err) throw err;
 						console.log('Rename complete!');
@@ -94,7 +88,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				}
 				//warning for user exists 5-6
 				if (fs.existsSync(`./warnings/5_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.renameSync(`./warnings/5_${userid}.txt`, `./warnings/6_${userid}.txt`, (err) => {
 						if (err) throw err;
 						console.log('Rename complete!');
@@ -112,7 +105,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				}
 				//warning for user exists 4-5
 				if (fs.existsSync(`./warnings/4_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.renameSync(`./warnings/4_${userid}.txt`, `./warnings/5_${userid}.txt`, (err) => {
 						if (err) throw err;
 						console.log('Rename complete!');
@@ -130,7 +122,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				}
 				//warning for user exists 3-4
 				if (fs.existsSync(`./warnings/3_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.renameSync(`./warnings/3_${userid}.txt`, `./warnings/4_${userid}.txt`, (err) => {
 						if (err) throw err;
 						console.log('Rename complete!');
@@ -148,7 +139,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				}
 				//warning for user exists 2-3
 				if (fs.existsSync(`./warnings/2_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.renameSync(`./warnings/2_${userid}.txt`, `./warnings/3_${userid}.txt`, (err) => {
 						if (err) throw err;
 						console.log('Rename complete!');
@@ -166,7 +156,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				}
 				//warning for user exists 1-2
 				if (fs.existsSync(`./warnings/1_${userid}.txt`)) {
-					console.log('Warning already present!');
 					fs.renameSync(`./warnings/1_${userid}.txt`, `./warnings/2_${userid}.txt`, (err) => {
 						if (err) throw err;
 						console.log('Rename complete!');
@@ -186,7 +175,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				//new warning user
 				else if ((!fs.existsSync(`./warnings/1_${userid}.txt`)) && (!fs.existsSync(`./warnings/2_${userid}.txt`)) && (!fs.existsSync(`./warnings/3_${userid}.txt`)) && (!fs.existsSync(`./warnings/4_${userid}.txt`)) && (!fs.existsSync(`./warnings/5_${userid}.txt`)) && (!fs.existsSync(`./warnings/6_${userid}.txt`)) && (!fs.existsSync(`./warnings/7_${userid}.txt`)) && (!fs.existsSync(`./warnings/8_${userid}.txt`)) && (!fs.existsSync(`./warnings/9_${userid}.txt`)))
 				{
-					console.log('New warning!');
 					fs.writeFileSync(`./warnings/1_${userid}.txt`, `\n**WARNING #1**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk}`, (err) => {
 						if (err) throw err;
 					});
@@ -203,7 +191,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 		}
 		else
 		{
-			console.log('Warn error!');
+			console.log('Warn error args!');
 			message.delete(10);
 			message.author.send(`Invalid warn variables. Please enter a username and reason at minimum.`);
 		}

@@ -5,7 +5,6 @@ exports.messagefunc = function (logaction, message, usertier, args, talk, client
 		if (args[0] !== undefined)
 		{
 			console.log('Message run!');
-			console.log(talk.join(" "));
 			talk == (talk.shift().toString());
 			client.user.setActivity(`${talk.join(" ")}`);
 		}
@@ -16,6 +15,7 @@ exports.messagefunc = function (logaction, message, usertier, args, talk, client
 		}
 	}
 	else {
+		console.log('Message block!');
 		message.delete(10);
 		message.author.send(`You do not have access to this command.`);
 	}

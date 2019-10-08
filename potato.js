@@ -157,12 +157,9 @@ client.on('message', message => {
 			
 			if (mention.startsWith('<#') && mention.endsWith('>')) {
 				mention = mention.slice(2, -1);
-				console.log(`${mention}`);
 				var channelid = mention
 				talk.shift();
 				talk.shift().toString();
-				console.log(`Channel: ${channelid}`);
-				console.log(`Message: ${talk}`);
 				return client.channels.get(`${channelid}`).send(talk.join(" "));
 				//return client.users.get(mention);
 			}
@@ -171,7 +168,6 @@ client.on('message', message => {
 		//\!owo function
 		function furtrim() {
 			const oworng = getRandomInt(1, 6);
-			console.log(`OwO: ${oworng}`);
 			let talk = (message.content.toLocaleString().slice(prefix.length).split(' ').join(" "));
 			if (oworng <= 4){
 				let furtalk = (talk.slice(4).toString().replace(/l/gi, "w").replace(/r/gi, "w").replace(/i/gi, "ei").replace(/ww/gi, "w"));
@@ -193,7 +189,6 @@ client.on('message', message => {
 				if (mention.startsWith('!')) {
 					mention = mention.slice(1);
 				}
-
 				return client.users.get(mention);
 			}
 		}
@@ -201,7 +196,7 @@ client.on('message', message => {
 		if ((message.channel.type !== `dm`))
 		{
 			roletier(manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole);
-			console.log(`User tier: ${usertier}!`);
+			//console.log(`User tier: ${usertier}!`);
 			//check channel/usertier
 			if ((message.channel.id === `${botchannel}`) || (message.channel.id === `${entrancechannel}`) || (usertier <=4))
 			{
@@ -327,7 +322,7 @@ client.on('message', message => {
 			}
 		}
 		else  {
-			console.log('invalid channel!');
+			console.log('invalid channel DM!');
 			message.delete(10);
 			message.author.send(`Invalid channel. Please use \`!help\` in **#botato_cellar** for commands. \n\ \n\Going forward, Potato Bot will no longer accept commands sent through DMs. This is being done to improve bot functionality and allow for more administrative functions. Please use \`!help\` in **#botato_cellar** for a full list of commands your account has access to.`);
 		}
