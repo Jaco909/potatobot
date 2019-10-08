@@ -190,7 +190,7 @@ client.on('message', message => {
 			roletier(manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole);
 			console.log(`User tier: ${usertier}!`);
 			//check channel/usertier
-			if ((message.channel.id === `${botchannel}`) || (usertier <=4))
+			if ((message.channel.id === `${botchannel}`) || (message.channel.id === `${entrancechannel}`) || (usertier <=4))
 			{
 				//load commands without if statement
 				/* if (commandlist.some(command)) {

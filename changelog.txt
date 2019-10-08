@@ -163,3 +163,8 @@
 
 1.8.4
 •Added !robot.
+
+1.8.5
+•Updated !robot.
+	-New users must wait 10 minutes untill the command becomes available.
+	-Robot role will be auto-assigned after 10 mintues from joining the server.
