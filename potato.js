@@ -43,6 +43,7 @@ const { warn } = require('./commands/warn.js');
 //declare constants w/ temp values
 //clean up later
 const client = new Discord.Client();
+const joinedRecently = new Set(); //auto-robot
 const potatoRecently = new Set(); //potato
 const superpotatoRecently = new Set(); //potato
 const ultrapotatoRecently = new Set(); //potato
@@ -53,6 +54,7 @@ const shitRecently = new Set(); //shitpost
 const channelist = new Set(); //debug
 const commandlist = [];
 const warnlist = [];
+const member = [];
 var potatoyellnum = 15;
 var potatocount = 0;
 var roletier = 0;
@@ -88,6 +90,17 @@ client.on('ready', () => {
     console.log('Bot online!');
 	client.user.setStatus('online');
 	client.user.setActivity('!help for info');
+});
+
+//auto robot role assign (dyno emergency catch)
+client.on('guildMemberAdd', member => {
+	console.log(member.user.tag + ' has joined the server!');
+	joinedRecently.add(member.user.tag);
+	setTimeout(() => {
+		joinedRecently.delete(member.user.tag);
+		member.addRole(`${robotrole}`);
+		console.log(member.user.tag + ' is now a robot!');
+		}, 600000 ); //600000
 });
 
 //message recieved
@@ -249,7 +262,7 @@ client.on('message', message => {
 					stream(logaction, message, usertier, args, streamchannel, client);
 				}
 				else if (command === 'robot') {
-					robot(logaction, message, args, entrancechannel, robotrole);
+					robot(logaction, message, args, entrancechannel, robotrole, joinedRecently, member);
 				}
 				else if (command === 'status'){
 					status(logaction, message, usertier, args, client);

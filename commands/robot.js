@@ -1,7 +1,7 @@
 exports.robot = function (logaction, message, args, entrancechannel, robotrole, joinedRecently, member) {
 	logaction()
 	console.log('robot run!');
-	message.delete(10);
+	//message.delete(10);
 	if (message.channel.id === `${entrancechannel}`) {
 		console.log(`${message.member.user.tag}`)
 		if (!joinedRecently.has(message.member.user.tag)) {
