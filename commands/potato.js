@@ -2,7 +2,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 	if (message.channel.id === `${botchannel}`) { 
 		var activities = ["reading a book?", "going outside?", "making a mvm mission?", "playing some mvm?", "bothering that garbage dynobot?", "masturbating?", "shitposting in memes?", "being a productive member of society?", "eating some potatoes?", "talking to your firends? Oh right, you don't have any.", "running away from your problems?", "being a worse person?", "listening to some music?", "worshiping the comming AI apocalypse?", "waiting for your dad to come home?", "teaching me how to code?", "waiting for Half-Life 3?", "taking a shower? You really need one."];
 		const potatorng = getRandomInt(1, 100);
-		const potatorngmessage = getRandomInt(1, 11);
+		const potatorngmessage = getRandomInt(1, 12);
 		const potatorngyell = getRandomInt(1, 18);
 		const potatoyell = activities[potatorngyell]
 		logaction(potatorng)
@@ -101,6 +101,8 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				message.channel.send(`Sans ate all of our brains. Guy's fricken insane.`)};
 				if (potatorngmessage == 10){
 				message.channel.send(`We\'re fresh out of brains. Ask again in a bit.`)};
+				if (potatorngmessage == 11){
+				message.channel.send(`I had a brain for you, but Blizzard took it back.`)};
 				setTimeout(() => {
 					potatoRecently.delete(message.author.id);
 				}, timeouthour ); //3600000
