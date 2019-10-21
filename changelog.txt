@@ -173,6 +173,12 @@
 •Updated !robot.
 	-Merged code from the beta branch and remembered to save this time.
 
+1.8.6
+•Updated all commands.
+	-Removed excess console.log()s.
+
 1.8.6.1
 •Updated !potato
 	-Added extra phrase.
+•Updated !help
+	-Removed reference to CC.

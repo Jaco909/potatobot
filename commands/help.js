@@ -120,7 +120,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	else if (args[0] == undefined)
 	{
 		console.log('help run!');
-		message.author.send('**Help**\n\`\`\`User Commands\`\`\`\**Fun Commands**\n\`!potato\` : RNG potato fun!\n\`!shitpost\` : A stale shitpost, just for you.\n\ \n\**Discord Commands**\n\`!iam\` : Assign a role. Use \`!help iam\` for more info.\n\ \n\**Information Commands**\n\`!servers\` : Gives a list of CC servers. See `!servers help\` for more info.\n\`!avatar\` : Returns the user\'s avatar.\n\`!changelog\` : What crap got added now?');
+		message.author.send('**Help**\n\`\`\`User Commands\`\`\`\**Fun Commands**\n\`!potato\` : RNG potato fun!\n\`!shitpost\` : A stale shitpost, just for you.\n\ \n\**Discord Commands**\n\`!iam\` : Assign a role. Use \`!help iam\` for more info.\n\ \n\**Information Commands**\n\`!servers\` : Gives a list of potato servers. See `!servers help\` for more info.\n\`!avatar\` : Returns the user\'s avatar.\n\`!changelog\` : What crap got added now?');
 		if (usertier <= 5) {
 			console.log('Help GIANT run!');
 			message.author.send('\`\`\`Giant Commands\`\`\`\`!stream\` : Sets the potato bot to display a stream. Use \`!stream help\` for more info.');
