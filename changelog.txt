@@ -173,12 +173,6 @@
 •Updated !robot.
 	-Merged code from the beta branch and remembered to save this time.
 
-1.8.6
-•Updated console logging.
-	-Removed garbage logging.
-	-All commands now log final result.
-•Updated !servers.
-	-Added TEX, MIA, AU, SGP, and JP.
-	-USA renamed to PHL.
-•Updated !shitpost.
-	-Added 10 new videos.
+1.8.6.1
+•Updated !potato
+	-Added extra phrase.
