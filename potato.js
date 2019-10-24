@@ -5,7 +5,7 @@ const commandFolder = './commands/';
 const warnFolder = './warnings/';
 
 //load base config
-const { prefix, token, timeouthour } = require('./config.json');
+const { prefix, token, timeouthour, timeout5min } = require('./config.json');
 
 //load roles
 const { manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole, robotrole } = require('./serverconfig/roles.json');
@@ -23,6 +23,7 @@ const { debug } = require('./commands/debug.js');
 const { fuckgoback } = require('./commands/fuckgoback.js');
 const { getwarn } = require('./commands/getwarn.js');
 const { help } = require('./commands/help.js');
+const { howis } = require('./commands/howis.js');
 const { iam } = require('./commands/iam.js');
 const { kill } = require('./commands/kill.js');
 const { launchdate } = require('./commands/launchdate.js');
@@ -51,6 +52,7 @@ const finalpotatoRecently = new Set(); //potato
 const potatobanned = new Set(); //potato
 const owoedRecently = new Set(); //owo
 const shitRecently = new Set(); //shitpost
+const howisRecently = new Set(); //howis
 const channelist = new Set(); //debug
 const commandlist = [];
 const warnlist = [];
@@ -60,6 +62,7 @@ var potatocount = 0;
 var roletier = 0;
 var usertier = 99;
 var warnmute = 0;
+var howisrng = 0;
 
 //???
 client.commands = new Discord.Collection();
@@ -228,6 +231,9 @@ client.on('message', message => {
 				}
 				else if (command === 'help') {
 					help(logaction, message, args, usertier, getRandomInt, potatorole);
+				}
+				else if (command === 'howis') {
+					howis(logaction, message, args, getRandomInt, howisrng, howisRecently, botchannel, timeout5min);
 				}
 				else if (command === 'changelog') {
 					changelog(logaction, message);

@@ -178,7 +178,10 @@
 	-Removed excess console.log()s.
 
 1.8.6.1
-•Updated !potato
+•Updated !potato.
 	-Added extra phrase.
-•Updated !help
+•Updated !help.
 	-Removed reference to CC.
+
+1.8.7
+•Added !howis.
