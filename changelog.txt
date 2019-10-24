@@ -185,3 +185,9 @@
 
 1.8.7
 •Added !howis.
+
+1.8.7.1
+•Updated !help.
+	-Added !howis
+•Updated !howis.
+	-Corrected logaction not loging RNG value.

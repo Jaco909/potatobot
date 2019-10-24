@@ -118,7 +118,7 @@ client.on('message', message => {
 		
 		//command logging
 		function logaction(rng, rng2, rng3) {
-			if ((command === 'potato') ||  (command === 'shitpost') || (command === 'launchdate')) {
+			if ((command === 'potato') || (command === 'shitpost') || (command === 'howis') || (command === 'launchdate')) {
 				return client.channels.get(`${logchannel}`).send(`**Message From:** ${message.member.displayName}\n**Location:** ${message.channel}\n**Command:** ${talk.join(" ")}\n**RNG Values:** ${rng}\`\`\` \`\`\``);
 			}
 			else {
