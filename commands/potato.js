@@ -27,19 +27,19 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			{
 				console.log('Potato ban warn 3rd!');
 				finalpotatoRecently.add(message.author.id);
-				message.channel.send(`I said wait another hour <@${message.author.id}>. Ask again and no more brains for you.`);
+				message.channel.send(`I said wait another hour <@${message.author.id}>. Ask again and no more potatoes for you.`);
 			}
 			if ((superpotatoRecently.has(message.author.id)) && (!ultrapotatoRecently.has(message.author.id)) && (!finalpotatoRecently.has(message.author.id)))
 			{
 				console.log('Potato ban warn 2nd!');
 				ultrapotatoRecently.add(message.author.id);
-				message.channel.send('I said wait another hour. Please stop asking for a brain.');
+				message.channel.send('I said wait another hour. Please stop asking for a potato.');
 			}
 			if ((!superpotatoRecently.has(message.author.id)) && (!ultrapotatoRecently.has(message.author.id)) && (!finalpotatoRecently.has(message.author.id)))
 			{
 				console.log('Potato ban warn 1st!');
 				superpotatoRecently.add(message.author.id);
-				message.channel.send('You just asked for a brain. Come back in an hour.');
+				message.channel.send('You just asked for a potato. Come back in an hour.');
 			}
 			if (potatocount >= potatoyellnum)
 			{
@@ -62,18 +62,18 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			if(message.member.roles.has(`${potatorole}`)){
 				console.log('Potato owned!');
 				if(potatorngmessage >= 6){
-				message.channel.send(`I\'m not giving you another brain, ${message.member.displayName}. Cut it out.`);}
+				message.channel.send(`I\'m not giving you another potato, ${message.member.displayName}. Cut it out.`);}
 				if(potatorngmessage <= 5){
-				message.channel.send(`You already have a brain, ${message.member.displayName} (even if you may not act like it). Don\'t be greedy.`);}
+				message.channel.send(`You already have a potato, ${message.member.displayName}. Don\'t be greedy.`);}
 			}
 			else if(potatorng == 69){
 				console.log('Potato give!');
 				const guildMember = message.member;
 				guildMember.addRole(`${potatorole}`);
 				if(potatorngmessage >= 6){
-				message.channel.send('Here, have a brain. You can feel smart now.');}
+				message.channel.send('Here, have a potato. It\'s worthless.');}
 				if(potatorngmessage <= 5){
-				message.channel.send(`I found a brain for you ${message.member.displayName}. I recomend eating it on toast with a dash of hot sauce.`);}
+				message.channel.send(`I found a potato for you ${message.member.displayName}. I don\'t know why you wanted one in the first place...`);}
 			}
 			else {
 				console.log('Potato none!');
@@ -82,27 +82,27 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				ultrapotatoRecently.delete(message.author.id);
 				finalpotatoRecently.delete(message.author.id);
 				if (potatorngmessage == 1){
-				message.channel.send(`I\'m sorry. We\'re currently out of brains. Try again later.`)};
+				message.channel.send(`I\'m sorry. We\'re currently out of potatoes. Try again later.`)};
 				if (potatorngmessage == 2){
-				message.channel.send(`These things happen only under a full moon. Come back later.`)};
+				message.channel.send(`These things, they take time. Come back later.`)};
 				if (potatorngmessage == 3){
-				message.channel.send(`Look, we were struck by a zombie plague, and I\'ve got kids to protect. I can't give you this brain.`)};
+				message.channel.send(`Look, we were struck by a potato famine, and I\'ve got kids to feed. I can't give you this potato.`)};
 				if (potatorngmessage == 4){
-				message.channel.send(`We used up all of our brains making meme badges. I need to harvest some more.`)};
+				message.channel.send(`We used up all of our potatoes making meme badges. I need to harvest some more.`)};
 				if (potatorngmessage == 5){
-				message.channel.send(`I have a brain. But honestly, I just don\'t like you. Ask again later.`)};
+				message.channel.send(`I have a potato. But honestly, I just don\'t like you. Ask again later.`)};
 				if (potatorngmessage == 6){
-				message.channel.send(`I can\'t just hand out brains all willy-nilly ${message.member.displayName}. It\'ll attract zombies.`)};
+				message.channel.send(`I can\'t just hand out potatoes all willy-nilly ${message.member.displayName}. It\'ll crash the potato economy.`)};
 				if (potatorngmessage == 7){
-				message.channel.send(`I got hungry and ate the last brain I had. Ask again later.`)};
+				message.channel.send(`I got hungry and ate the last potato I had. Ask again later.`)};
 				if (potatorngmessage == 8){
-				message.channel.send(`Oh, *you* want a brain? Well let me just strap on my *brain helmet*, squeeze down into a *brain cannon*, and fire off into *brain land*, where *brains* grow on *branies*. (No)`)};
+				message.channel.send(`Oh, *you* want a potato. Well let me just strap on my *potato helmet*, squeeze down into a *potato cannon*, and fire off into *potato land*, where *potatoes* grow on *potatoies*. (No)`)};
 				if (potatorngmessage == 9){
-				message.channel.send(`Sans ate all of our brains. Guy's fricken insane.`)};
+				message.channel.send(`Sans ate all of our potatoes. Guy's fricken insane.`)};
 				if (potatorngmessage == 10){
-				message.channel.send(`We\'re fresh out of brains. Ask again in a bit.`)};
+				message.channel.send(`We\'re fresh out of potatoes. Ask again in a bit.`)};
 				if (potatorngmessage == 11){
-				message.channel.send(`I had a brain for you, but Blizzard took it back.`)};
+				message.channel.send(`I had a potato for you, but Blizzard took it back.`)};
 				setTimeout(() => {
 					potatoRecently.delete(message.author.id);
 				}, timeouthour ); //3600000
