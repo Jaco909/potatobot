@@ -25,7 +25,7 @@ const { getwarn } = require('./commands/getwarn.js');
 const { help } = require('./commands/help.js');
 const { howis } = require('./commands/howis.js');
 const { iam } = require('./commands/iam.js');
-const { kill } = require('./commands/kill.js');
+const { reboot } = require('./commands/reboot.js');
 const { launchdate } = require('./commands/launchdate.js');
 const { messagefunc } = require('./commands/message.js');
 const { owo } = require('./commands/owo.js');
@@ -310,8 +310,8 @@ client.on('message', message => {
 						message.author.send(`Warnings will send messages to the warned user.`);
 					}
 				}
-				else if (command === 'kill') {
-					kill(logaction, message, usertier);
+				else if (command === 'reboot') {
+					reboot(logaction, message, usertier);
 				}
 				else {
 				console.log('invalid run!');

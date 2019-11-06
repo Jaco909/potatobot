@@ -118,9 +118,9 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		message.delete(10);
 		message.author.send(`**Usage:** \`!say [#channel name] [text]\`\n\**Channels:** All.\n\**Description:** Bot will send a message to the given channel #name.`);
 	}
-	else if (args[0] == `kill`) {
-		console.log('Kill help!');
-		message.author.send(`**Usage:** \`!kill\`\n\**Channels:** All.\n\**Description:** Forces the bot to run garbage code and crash. For when shit gets real bad.`);
+	else if (args[0] == `reboot`) {
+		console.log('Reboot help!');
+		message.author.send(`**Usage:** \`!kill\`\n\**Channels:** All.\n\**Description:** Bot will restart, applying any new changes.`);
 	}
 	else if (args[0] == undefined)
 	{
@@ -136,16 +136,16 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		}
 		if (usertier <= 4) {
 			console.log('Help discordmoderator run!');
-			message.author.send('\`\`\`Discord Moderator Commands\`\`\`\**Bot Controls**\n\`!addpotato\` : Triggers the internal potato counter.\n\`!message\` : Sets the bot\'s current game message *(currently wip)*.\n\`!say\` : Have the bot say something you write.\n\`!shutup\` : Forces the bot to stop typing.\n\`!status\` : Sets the status of the bot.\n\`!stream\` : Set the bot to display a Twitch stream.\n\`!potatoyell\` : Sets the threshold of when the bot yells about \`!potato\` usage.\n\ \n\**Moderation Commands**\n\`!purge\` : Deletes # messages from the channel.\n\ \n\**Unlisted Commands**\n\`!fuckgoback\` : We need to go back!\n\`!bitch\` : no u.');
+			message.author.send('\`\`\`Discord Moderator Commands\`\`\`\**Bot Controls**\n\`!addpotato\` : Triggers the internal potato counter.\n\`!message\` : Sets the bot\'s current game message *(currently wip)*.\n\`!say\` : Have the bot say something you write.\n\`!shutup\` : Forces the bot to stop typing.\n\`!status\` : Sets the status of the bot.\n\`!stream\` : Set the bot to display a Twitch stream.\n\`!potatoyell\` : Sets the threshold of when the bot yells about \`!potato\` usage.\n\`!reboot\` : Force bot to restart.\n\ \n\**Moderation Commands**\n\`!purge\` : Deletes # messages from the channel.\n\ \n\**Unlisted Commands**\n\`!fuckgoback\` : We need to go back!\n\`!bitch\` : no u.');
 		}
 		/* if (usertier <= 3) {
 			console.log('help MODERATOR run!');
 			message.author.send('\`\`\`Moderator Commands\`\`\`\n\`!status\` : Sets the status of the bot.\n\`!stream\` : Set the bot to display a Twitch stream.');
 		} */
-		if (usertier <= 2) {
+		/* if (usertier <= 2) {
 			console.log('Help officer run!');
-			message.author.send('\`\`\`Officer Commands\`\`\`\`!debug\` : Whatever garbage jaka is working on at the moment.\n\`!kill\` : Force bot to bake itself.');
-		}
+			message.author.send('\`\`\`Officer Commands\`\`\`\`!debug\` : Whatever garbage jaka is working on at the moment.');
+		} */
 		message.author.send('\`\`\` \`\`\`\n\Use !\`help\` **command** for more information about a command. All commands have help information.\n\All commands must be sent through **#botato_cellar**.');
 	}
 	/* else

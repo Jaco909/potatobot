@@ -195,3 +195,12 @@
 1.8.7.2
 •Updated !warn.
 	-Fixed,warn,message,and,log,file,joining,reason,string,with,commas.
+
+1.8.7.3
+•Updated roles.
+	-Fixed tank role pointing to the old role.
+•Updated !kill.
+	-Renamed to !reboot.
+	-Now a moderator command.
+•Updated !help.
+	-Updated !kill.
