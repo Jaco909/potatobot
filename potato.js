@@ -286,19 +286,15 @@ client.on('message', message => {
 					avatar(logaction, message, args, getUserFromMention, talk, client);
 				}
 				else if (command === 'warn'){
-					
 					warn(logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute);
 				}
 				else if (command === 'getwarn'){
-					
 					getwarn(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
 				}
 				else if (command === 'addwarninfo'){
-					
 					addwarninfo(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
 				}
 				else if (command === 'warnmute'){
-					
 					if (warnmute == 0)
 					{
 						warnmute = 1;
@@ -314,13 +310,13 @@ client.on('message', message => {
 					reboot(logaction, message, usertier);
 				}
 				else {
-				console.log('invalid run!');
-				message.author.send(`That is not a valid command. Please use \`!help\` in **#botato_cellar** for commands.`);
-				if (message.channel.type !== `dm`) {
-					message.delete(10);
+					console.log('invalid run!');
+					message.author.send(`That is not a valid command. Please use \`!help\` in **#botato_cellar** for commands.`);
+					if (message.channel.type !== `dm`) {
+						message.delete(10);
+					}
 				}
 			}
-		}
 			else  {
 			console.log('invalid channel!');
 			message.delete(10);
