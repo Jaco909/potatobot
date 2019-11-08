@@ -204,3 +204,7 @@
 	-Now a moderator command.
 •Updated !help.
 	-Updated !kill.
+
+1.8.8
+•Updated discord.js framework
+	-Attempt to fix faulty websocket error handling.
