@@ -1,4 +1,4 @@
-exports.help = function (logaction, message, args, usertier, getRandomInt, potatorole) {
+exports.help = function (logaction, message, args, usertier, getRandomInt, potatorole, client) {
 	logaction()
 	var stopgethelp = ["https://youtu.be/9Deg7VrpHbM", "https://youtu.be/NPtSGYi7HII?t=23s", "https://youtu.be/S4bmCvekW48", "https://youtu.be/9Deg7VrpHbM"];
 	if (args[0] == `help`) {
@@ -6,102 +6,468 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		message.delete(10);
 		const stoprngmessage = getRandomInt(1, 3);
 		const stophelp = stopgethelp[stoprngmessage];
-		message.author.send(`**Usage:** \`!help\`\n\**Channels:** *#botato_cellar*\n\**Description:** I... what... why? Why ask for help using help? You just overshot your destination by a command. Like, what are you even trying to achieve by doing this?\n\**STOP**\n${stophelp}`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!help`,
+			fields: [{
+				name: "Usage",
+				value: `!help [command]`
+			  },
+			  {
+				name: "Description",
+				value: `I... what... why? Why ask for help using help? You just overshot your destination by a command. Like, what are you even trying to achieve by doing this?\n\**STOP**\n${stophelp}`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `potato`) {
 		console.log('Potato help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!potato\`\n\**Channels:** *#botato_cellar*\n\**Description:** Ask the bot if there are any potatoes available. ||But we\'re usually out||`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!potato`,
+			fields: [{
+				name: "Usage",
+				value: `!potato`
+			  },
+			  {
+				name: "Description",
+				value: `Ask the bot if there are any potatoes available. ||But we\'re usually out||`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `owo`) {
 		console.log('Owo help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!owo [text]\`\n\**Channels:** *#botato_cellar*\n\**Description:** Care fow somie huggy wuggies?`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!owo`,
+			fields: [{
+				name: "Usage",
+				value: `!owo [sentence]`
+			  },
+			  {
+				name: "Description",
+				value: `Care fow somie huggy wuggies?`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `howis`) {
 		console.log('Howis help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!howis\`\n\**Channels:** *#botato_cellar*\n\**Description:** How is that person really doing?`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!howis`,
+			fields: [{
+				name: "Usage",
+				value: `!howis [object/person]`
+			  },
+			  {
+				name: "Description",
+				value: `How is that person really doing?`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `avatar`) {
 		console.log('Avatar help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!avatar [user]\`\n\**Channels:** *#botato_cellar*\n\**Description:** Returns the users avatar. Leave it blank to give your own avatar.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!avatar`,
+			fields: [{
+				name: "Usage",
+				value: `!avatar [@user]`
+			  },
+			  {
+				name: "Description",
+				value: `Returns the users avatar. Leave it blank to give your own avatar.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `warnmute`) {
 		console.log('Warnmute help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!warnmute\`\n\**Channels:** *#all*\n\**Description:** Will toggle warning messages being sent to the warned user.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!warnmute`,
+			fields: [{
+				name: "Usage",
+				value: `!warnmute`
+			  },
+			  {
+				name: "Description",
+				value: `Will toggle warning messages being sent to the warned user.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `warn`) {
 		console.log('Warn help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!warn [user] [reason]\`\n\**Channels:** *#all*\n\**Description:** Add a warning to the lister user with a reason.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!warn`,
+			fields: [{
+				name: "Usage",
+				value: `!warn [@user] [reason]`
+			  },
+			  {
+				name: "Description",
+				value: `Add a warning to the lister user with a reason.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `addwarninfo`) {
 		console.log('Warn help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!addwarninfo [warnlog] [info]\`\n\**Channels:** *#all*\n\**Description:** Will add additional info about a particular warning.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!addwarninfo`,
+			fields: [{
+				name: "Usage",
+				value: `!addwarninfo [warnlog] [info]`
+			  },
+			  {
+				name: "Description",
+				value: `Will add additional info about a particular warning.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `getwarn`) {
 		console.log('Getwarn help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!getwarn [warnlog]\`\n\**Channels:** *#all*\n\**Description:** Will retrieve the warning log given. Leave blank to see all warning logs.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!getwarn`,
+			fields: [{
+				name: "Usage",
+				value: `!getwarn [warnlog]`
+			  },
+			  {
+				name: "Description",
+				value: `Will retrieve the warning log given. Leave blank to see all warning logs.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `servers`) {
 		console.log('Servers help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!server [region]\`\n\**Channels:** *#botato_cellar*, *#looking_for_players*.\n\**Description:** Retrives information about current Potato servers. You can also add \`USA\` for USA servers and \`EU\` for Europe servers.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!servers`,
+			fields: [{
+				name: "Usage",
+				value: `!servers [region]`
+			  },
+			  {
+				name: "Description",
+				value: `Retrives information about current Potato servers. You can also add \`USA\` for USA servers and \`EU\` for Europe servers.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if(args[0] == `iam`) {
 		message.delete(10);
 		console.log('iam help!');
-		message.author.send(`**Usage:** \`!iam [role]\`\n\**Channels:** *#botato_cellar*.\n\**Description:** Gives you the requested role. Current available options: \n\`!iam madness\` to assign the role @Madness.\n\`!iam Testers\` to assign the role @Testers.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!iam`,
+			fields: [{
+				name: "Usage",
+				value: `!iam [role name]`
+			  },
+			  {
+				name: "Description",
+				value: `Gives you the requested role. Current available options: \n\`!iam madness\` to assign the role @Madness.\n\`!iam Testers\` to assign the role @Testers.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `shitpost`) {
 		console.log('Shitpost help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!shitpost\`\n\**Channels:** *#botato_cellar*.\n\**Description:** Sends the user a SFW garbage shitpost. Then again, all shitposts are garbage.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!shitpost`,
+			fields: [{
+				name: "Usage",
+				value: `!shitpost`
+			  },
+			  {
+				name: "Description",
+				value: `Sends the user a SFW garbage shitpost. Then again, all shitposts are garbage.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `changelog`) {
 		console.log('Changelog help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!changelog\`\n\**Channels:** *#botato_cellar*\n\**Description:** Lists the changelog, so I actually take the time to document what I've changed.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!changelog`,
+			fields: [{
+				name: "Usage",
+				value: `!changelog`
+			  },
+			  {
+				name: "Description",
+				value: `Lists the changelog, so I actually take the time to document what I've changed.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `purge`) {
 		console.log('Purge help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!purge #\`\n\**Channels:** All.\n\**Description:** Delete the # most recent messages from the channel. Remeber that the command counts as a message.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!purge`,
+			fields: [{
+				name: "Usage",
+				value: `!purge #`
+			  },
+			  {
+				name: "Description",
+				value: `Delete the # most recent messages from the channel. Remeber that the command counts as a message.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `fuckgoback`) {
 		console.log('Fuckgoback help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!fuckgoback\`\n\**Channels:** *#botato_cellar*.\n\**Description:** We went to far.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!fuckgoback`,
+			fields: [{
+				name: "Usage",
+				value: `!fuckgoback`
+			  },
+			  {
+				name: "Description",
+				value: `We went too far.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `shutup`) {
 		console.log('Shutup help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!shutup\`\n\**Channels:** All.\n\**Description:** If the bot is stuck in typing status, this will force it to stop. Issue is very rare ||I actually haven't seen it in days, so it\'s probably already fixed||, so this is more of a precaution.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!shutup`,
+			fields: [{
+				name: "Usage",
+				value: `!shutup`
+			  },
+			  {
+				name: "Description",
+				value: `If the bot is stuck in typing status, this will force it to stop. Issue is very rare ||I actually haven't seen it in months, so it\'s probably already fixed||, so this is more of a precaution.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `addpotato`) {
 		console.log('Addpotato help!');
-		message.author.send(`**Usage:** \`!addpotato\`\n\**Channels:** All.\n\**Description:** Adds 1 to the current counter of when the bot yells after using \`!potato\`. Bot will yell when # >= 10.`);
-		message.author.send(`**Curent count:** ${potatocount}`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!addpotato`,
+			fields: [{
+				name: "Usage",
+				value: `!addpotato`
+			  },
+			  {
+				name: "Description",
+				value: `Adds 1 to the current counter of when the bot yells after using \`!potato\`. Bot will yell when # >= 15.`
+			  },
+			  {
+				name: "Current count",
+				value: `${potatocount}`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `potatoyell`) {
 		console.log('Potatoyell help!');
-		message.author.send(`**Usage:** \`!potatoyell\`\n\**Channels:** All.\n\**Description:** Set\'s the current threshold for when the bot yells after \`!potato\`. Default is 15.`);
-		message.author.send(`**Curent threshold:** ${potatoyellnum}`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!potatoyell`,
+			fields: [{
+				name: "Usage",
+				value: `!potatoyell`
+			  },
+			  {
+				name: "Description",
+				value: `Set\'s the current threshold for when the bot yells after \`!potato\`. Default is 15.`
+			  },
+			  {
+				name: "Current threshold",
+				value: `${potatoyellnum}`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `stream`) {
 		console.log('Stream help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!stream twitchURL [username]\` \& \`!stream stop\`\n\**Channels:** All.\n\**Description:** Will set the status of the bot to stream to the url defined with \`Username is streaming!\`, and will make a post in the streaming channel. You can add a custom username after the twitch link if you would like to not use your discord username. \`!stream stop\` will end streaming status and clean the streaming announcement.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!potatoyell`,
+			fields: [{
+				name: "Usage",
+				value: `\`!stream twitchURL [username]\` \& \`!stream stop\``
+			  },
+			  {
+				name: "Description",
+				value: `Will set the status of the bot to stream to the url defined with \`Username is streaming!\`, and will make a post in the streaming channel. You can add a custom username after the twitch link if you would like to not use your discord username. \`!stream stop\` will end streaming status and clean the streaming announcement.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `status`) {
 		console.log('Status help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!status status\`\n\**Channels:** All.\n\**Description:** Sets the status of the bot. Options are: \`online\`, \`idle\`, \`dnd\`. This will set the message back to it's default setting.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!status`,
+			fields: [{
+				name: "Usage",
+				value: `!status [status]`
+			  },
+			  {
+				name: "Description",
+				value: `Sets the status of the bot. Options are: \`online\`, \`idle\`, \`dnd\`. This will set the message back to it's default setting.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	/* else if (args[0] == `launchdate`) {
 		console.log('Launchdate help!');
@@ -111,32 +477,234 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	else if (args[0] == `message`) {
 		console.log('Message help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!message [text]\`\n\**Channels:** All.\n\**Description:** Sets the playing text of the bot. Currently breaks sentences into arrays. Will fix soon. Type only \`!message\` to set the message back to normal. `);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!message`,
+			fields: [{
+				name: "Usage",
+				value: `!message [message]`
+			  },
+			  {
+				name: "Description",
+				value: `Sets the playing text of the bot. Type only \`!message\` to set the message back to normal.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `say`){
 		console.log('Say help!');
 		message.delete(10);
-		message.author.send(`**Usage:** \`!say [#channel name] [text]\`\n\**Channels:** All.\n\**Description:** Bot will send a message to the given channel #name.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!say`,
+			fields: [{
+				name: "Usage",
+				value: `!say [#channel] [message]`
+			  },
+			  {
+				name: "Description",
+				value: `Bot will send a message to the given channel #name.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == `reboot`) {
 		console.log('Reboot help!');
-		message.author.send(`**Usage:** \`!kill\`\n\**Channels:** All.\n\**Description:** Bot will restart, applying any new changes.`);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!reboot`,
+			fields: [{
+				name: "Usage",
+				value: `!reboot`
+			  },
+			  {
+				name: "Description",
+				value: `Bot will restart, applying any new changes.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	else if (args[0] == undefined)
 	{
 		console.log('help run!');
-		message.author.send('**Help**\n\`\`\`User Commands\`\`\`\**Fun Commands**\n\`!potato\` : RNG potato fun!\n\`!howis\` : How is that person doing?\n\`!shitpost\` : A stale shitpost, just for you.\n\ \n\**Discord Commands**\n\`!iam\` : Assign a role. Use \`!help iam\` for more info.\n\ \n\**Information Commands**\n\`!servers\` : Gives a list of potato servers. See `!servers help\` for more info.\n\`!avatar\` : Returns the user\'s avatar.\n\`!changelog\` : What crap got added now?');
+		message.author.send({embed: {
+			color: 4886754,
+			title: "User Commands",
+			fields: [{
+				name: "Fun Commands",
+				value: `~`
+			  },
+			  {
+				name: "!potato",
+				value: `RNG potato fun!`
+			  },
+			  {
+				name: "!howis",
+				value: `How is that person doing?`
+			  },
+			  {
+				name: "!shitpost",
+				value: `A stale shitpost, just for you.`
+			  },
+			  {
+				name: "Discord Commands",
+				value: `~`
+			  },
+			  {
+				name: "!iam",
+				value: `Assign a role. Use \`!help iam\` for more info.`
+			  },
+			  {
+				name: "Information Commands",
+				value: `~`
+			  },
+			  {
+				name: "!servers",
+				value: `Gives a list of potato servers. See \`!servers help\` for more info.`
+			  },
+			  {
+				name: "!avatar",
+				value: `Returns the user\'s avatar.`
+			  },
+			  {
+				name: "!changelog",
+				value: `What crap got added now?`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 		if (usertier <= 5) {
 			console.log('Help GIANT run!');
-			message.author.send('\`\`\`Giant Commands\`\`\`\`!stream\` : Sets the potato bot to display a stream. Use \`!stream help\` for more info.');
+			message.author.send({embed: {
+			color: 9442302,
+			title: "Giant Commands",
+			fields: [{
+				name: "!stream",
+				value: `Sets the potato bot to display a stream. Use \`!stream help\` for more info.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 		}
 		if (message.member.roles.has(`${potatorole}`)) {
 			console.log('Help POTATO run!');
-			message.author.send('\`\`\`Potato Commands\`\`\`\`!owo\` : Forces the bot to give huggy wuggies.');
+			message.author.send({embed: {
+			color: 8213292,
+			title: "Potatoed Commands",
+			fields: [{
+				name: "!owo",
+				value: `owoify a sentence.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 		}
 		if (usertier <= 4) {
 			console.log('Help discordmoderator run!');
-			message.author.send('\`\`\`Discord Moderator Commands\`\`\`\**Bot Controls**\n\`!addpotato\` : Triggers the internal potato counter.\n\`!message\` : Sets the bot\'s current game message *(currently wip)*.\n\`!say\` : Have the bot say something you write.\n\`!shutup\` : Forces the bot to stop typing.\n\`!status\` : Sets the status of the bot.\n\`!stream\` : Set the bot to display a Twitch stream.\n\`!potatoyell\` : Sets the threshold of when the bot yells about \`!potato\` usage.\n\`!reboot\` : Force bot to restart.\n\ \n\**Moderation Commands**\n\`!purge\` : Deletes # messages from the channel.\n\ \n\**Unlisted Commands**\n\`!fuckgoback\` : We need to go back!\n\`!bitch\` : no u.');
+			message.author.send({embed: {
+			color: 16740610,
+			title: "Moderator Commands",
+			fields: [{
+				name: "Bot Controls",
+				value: `~`
+			  },
+			  {
+				name: "!addpotato",
+				value: `Triggers the internal potato counter.`
+			  },
+			  {
+				name: "!message",
+				value: `Sets the bot\'s current game message.`
+			  },
+			  {
+				name: "!say",
+				value: `Have the bot say something you write in the desired channel.`
+			  },
+			  {
+				name: "!status",
+				value: `Sets the status of the bot.`
+			  },
+			  {
+				name: "!potatoyell",
+				value: `Sets the threshold of when the bot yells about \`!potato\` usage.`
+			  },
+			  {
+				name: "!reboot",
+				value: `Force bot to restart.`
+			  },
+			  {
+				name: "Moderation Commands",
+				value: `~`
+			  },
+			  {
+				name: "!purge",
+				value: `Deletes # messages from the channel.`
+			  },
+			  {
+				name: "!warn",
+				value: `Logs a warning about a user.`
+			  },
+			  {
+				name: "!addwarninfo",
+				value: `Adds information about a warning.`
+			  },
+			  {
+				name: "!getwarn",
+				value: `Gets a warning file.`
+			  },
+			  {
+				name: "!warnmute",
+				value: `Disables reporting warnings to the offender.`
+			  },
+			  {
+				name: "Unlisted Commands",
+				value: `~`
+			  },
+			  {
+				name: "!fuckgoback",
+				value: `Well we sure fucked that up.`
+			  },
+			  {
+				name: "!bitch",
+				value: `no u`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 		}
 		/* if (usertier <= 3) {
 			console.log('help MODERATOR run!');
@@ -146,7 +714,15 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			console.log('Help officer run!');
 			message.author.send('\`\`\`Officer Commands\`\`\`\`!debug\` : Whatever garbage jaka is working on at the moment.');
 		} */
-		message.author.send('\`\`\` \`\`\`\n\Use !\`help\` **command** for more information about a command. All commands have help information.\n\All commands must be sent through **#botato_cellar**.');
+		message.author.send({embed: {
+			color: 4886754,
+			title: `Use !\`help\` **command** for more information about a command. All commands have help information.\n\All commands must be sent through **#botato_cellar**.`,
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
 	}
 	/* else
 	{

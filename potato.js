@@ -313,7 +313,7 @@ client.on('message', message => {
 						shitpost(logaction, getRandomInt, message, shitRecently);
 					}
 					else if (command === 'help') {
-						help(logaction, message, args, usertier, getRandomInt, potatorole);
+						help(logaction, message, args, usertier, getRandomInt, potatorole, client);
 					}
 					else if (command === 'howis') {
 						howis(logaction, message, args, getRandomInt, howisrng, howisRecently, botchannel, timeout5min);

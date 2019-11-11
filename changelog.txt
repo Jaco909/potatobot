@@ -115,6 +115,9 @@
 	-Fixed command accepting no input.
 	-Fixed command accepting non-numeric inputs.
 
+1.7
+Was so unimportant that it was skipped entirely.
+
 1.7.1
 •Updated !iam.
 	-Changed Canteencrasher to Madness.
@@ -223,3 +226,7 @@
 	-Warnings are now sent in embeded messages.
 •Updated command logging.
 	-Logs are now saved in embeds.
+
+1.9.1
+•Updated !help
+	-Now sends messages in embeds.
