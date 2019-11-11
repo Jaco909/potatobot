@@ -591,7 +591,6 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			],
 			footer: {
 			  icon_url: client.user.avatarURL,
-			  text: "Beep Boop"
 			}
 		  }
 		});
@@ -607,7 +606,6 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			],
 			footer: {
 			  icon_url: client.user.avatarURL,
-			  text: "Beep Boop"
 			}
 		  }
 		});
@@ -624,7 +622,6 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			],
 			footer: {
 			  icon_url: client.user.avatarURL,
-			  text: "Beep Boop"
 			}
 		  }
 		});
@@ -701,7 +698,6 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			],
 			footer: {
 			  icon_url: client.user.avatarURL,
-			  text: "Beep Boop"
 			}
 		  }
 		});
