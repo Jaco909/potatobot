@@ -208,3 +208,18 @@
 1.8.8
 •Updated discord.js framework
 	-Attempt to fix faulty websocket error handling.
+
+1.9 "Embeding an Error"
+•Updated discord.js framework
+	-Undid patch for websocket error handling.
+	-Trying a new patch for websocket error handling.
+•Updated potatobot framework
+	-Bootleg error handling for when users have DMs disabled.
+	-Bans and unbans are now logged in the warning channel.
+•Updated !reboot.
+	-Updated code to work around new error handling.
+•Updated !warn.
+	-Fixed warn reason in user message being shifted by 1.
+	-Warnings are now sent in embeded messages.
+•Updated command logging.
+	-Logs are now saved in embeds.

@@ -11,6 +11,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 			else
 			{
 				console.log('Warn run!');
+				const Discord = require('discord.js')
 				logaction();
 				if (args[0].startsWith('<@') && args[0].endsWith('>')) {
 					var userid = args[0].slice(2, -1);
@@ -23,88 +24,68 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				talk.shift().toString();
 				time = (message.createdAt);
 				//warning for user exists maximum
-				if (fs.existsSync(`./warnings/9_${userid}.txt`)) {
-					fs.appendFileSync(`./warnings/9_${userid}.txt`, `\n**WARNING #10+**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					message.author.send(`${user.username}\'s warning has been appended to \`9_${userid}.txt\`. System warn limit reached.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 10+\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`9_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
-					if (warnmute == 0)
-					{
-						talk == (talk.shift().toString());
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
-					}
-				}
-				//warning for user exists 8-9
-				if (fs.existsSync(`./warnings/8_${userid}.txt`)) {
-					fs.renameSync(`./warnings/8_${userid}.txt`, `./warnings/9_${userid}.txt`, (err) => {
-						if (err) throw err;
-						console.log('Rename complete!');
-					});
-					fs.appendFileSync(`./warnings/9_${userid}.txt`, `\n**WARNING #9**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					message.author.send(`${user.username}\'s warning has been logged as \`9_${userid}.txt\`. Please use \`!addwarninfo 9_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 9\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`9_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
-					if (warnmute == 0)
-					{
-						talk == (talk.shift().toString());
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
-					}
-				}
-				//warning for user exists 7-8
-				if (fs.existsSync(`./warnings/7_${userid}.txt`)) {
-					fs.renameSync(`./warnings/7_${userid}.txt`, `./warnings/8_${userid}.txt`, (err) => {
-						if (err) throw err;
-						console.log('Rename complete!');
-					});
-					fs.appendFileSync(`./warnings/8_${userid}.txt`, `\n**WARNING #8**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					message.author.send(`${user.username}\'s warning has been logged as \`8_${userid}.txt\`. Please use \`!addwarninfo 8_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 8\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`8_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
-					if (warnmute == 0)
-					{
-						talk == (talk.shift().toString());
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
-					}
-				}
-				//warning for user exists 6-7
-				if (fs.existsSync(`./warnings/6_${userid}.txt`)) {
-					fs.renameSync(`./warnings/6_${userid}.txt`, `./warnings/7_${userid}.txt`, (err) => {
-						if (err) throw err;
-						console.log('Rename complete!');
-					});
-					fs.appendFileSync(`./warnings/7_${userid}.txt`, `\n**WARNING #7**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					message.author.send(`${user.username}\'s warning has been logged as \`7_${userid}.txt\`. Please use \`!addwarninfo 7_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 7\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`7_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
-					if (warnmute == 0)
-					{
-						talk == (talk.shift().toString());
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
-					}
-				}
-				//warning for user exists 5-6
 				if (fs.existsSync(`./warnings/5_${userid}.txt`)) {
-					fs.renameSync(`./warnings/5_${userid}.txt`, `./warnings/6_${userid}.txt`, (err) => {
-						if (err) throw err;
-						console.log('Rename complete!');
-					});
-					fs.appendFileSync(`./warnings/6_${userid}.txt`, `\n**WARNING #6**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
+					fs.appendFileSync(`./warnings/5_${userid}.txt`, `\n**WARNING #5+**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
 						if (err) throw err;
 						console.log('Append complete!');
 					});
-					message.author.send(`${user.username}\'s warning has been logged as \`6_${userid}.txt\`. Please use \`!addwarninfo 6_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 6\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`6_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
+					message.author.send({embed: {
+						color: 16738048,
+						title: "Warning Logged",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Warning Log",
+							value: `[5_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/5_${userid}.txt)`
+						  },
+						  {
+							name: "Please add any additional info or link to the offending image(s)",
+							value: `!addwarninfo 5_${userid}.txt [info]`
+						  },
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Beep Boop"
+						}
+					  }
+					});
+					client.channels.get(`${warnchannel}`).send({embed: {
+						color: 16738048,
+						author: {
+						  name: `${message.author.username}`,
+						  icon_url: `${message.author.displayAvatarURL}`
+						},
+						thumbnail: {
+							url: `${user.displayAvatarURL}`
+						},
+						title: "Warning Log",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Number of warnings",
+							value: "6"
+						  },
+						  {
+							name: "Reason",
+							value: `${talk.join(" ")}`
+						  },
+						  {
+							name: "Warning Log",
+							value: `[5_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/5_${userid}.txt)`
+						  },
+						  {
+							name: "CAUTION",
+							value: `@here This user has been warned over 5 times now. Action should be taken.`
+						  }
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
+						}
+					  }
+					});
 					if (warnmute == 0)
 					{
-						talk == (talk.shift().toString());
 						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
@@ -118,11 +99,59 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						if (err) throw err;
 						console.log('Append complete!');
 					});
-					message.author.send(`${user.username}\'s warning has been logged as \`5_${userid}.txt\`. Please use \`!addwarninfo 5_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 5\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`5_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
+					message.author.send({embed: {
+						color: 16738048,
+						title: "Warning Logged",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Warning Log",
+							value: `[5_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/5_${userid}.txt)`
+						  },
+						  {
+							name: "Please add any additional info or link to the offending image(s)",
+							value: `!addwarninfo 5_${userid}.txt [info]`
+						  },
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Beep Boop"
+						}
+					  }
+					});
+					client.channels.get(`${warnchannel}`).send({embed: {
+						color: 16738048,
+						author: {
+						  name: `${message.author.username}`,
+						  icon_url: `${message.author.displayAvatarURL}`
+						},
+						thumbnail: {
+							url: `${user.displayAvatarURL}`
+						},
+						title: "Warning Log",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Number of warnings",
+							value: "5"
+						  },
+						  {
+							name: "Reason",
+							value: `${talk.join(" ")}`
+						  },
+						  {
+							name: "Warning Log",
+							value: `5_${userid}.txt`
+						  }
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
+						}
+					  }
+					});
 					if (warnmute == 0)
 					{
-						talk == (talk.shift().toString());
 						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
@@ -136,11 +165,59 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						if (err) throw err;
 						console.log('Append complete!');
 					});
-					message.author.send(`${user.username}\'s warning has been logged as \`4_${userid}.txt\`. Please use \`!addwarninfo 4_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 4\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`4_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
+					message.author.send({embed: {
+						color: 16738048,
+						title: "Warning Logged",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Warning Log",
+							value: `[4_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/4_${userid}.txt)`
+						  },
+						  {
+							name: "Please add any additional info or link to the offending image(s)",
+							value: `!addwarninfo 4_${userid}.txt [info]`
+						  },
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Beep Boop"
+						}
+					  }
+					});
+					client.channels.get(`${warnchannel}`).send({embed: {
+						color: 16738048,
+						author: {
+						  name: `${message.author.username}`,
+						  icon_url: `${message.author.displayAvatarURL}`
+						},
+						thumbnail: {
+							url: `${user.displayAvatarURL}`
+						},
+						title: "Warning Log",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Number of warnings",
+							value: "4"
+						  },
+						  {
+							name: "Reason",
+							value: `${talk.join(" ")}`
+						  },
+						  {
+							name: "Warning Log",
+							value: `4_${userid}.txt`
+						  }
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
+						}
+					  }
+					});
 					if (warnmute == 0)
 					{
-						talk == (talk.shift().toString());
 						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
@@ -154,11 +231,59 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						if (err) throw err;
 						console.log('Append complete!');
 					});
-					message.author.send(`${user.username}\'s warning has been logged as \`3_${userid}.txt\`. Please use \`!addwarninfo 3_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 3\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`3_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
+					message.author.send({embed: {
+						color: 16738048,
+						title: "Warning Logged",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Warning Log",
+							value: `[3_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/3_${userid}.txt)`
+						  },
+						  {
+							name: "Please add any additional info or link to the offending image(s)",
+							value: `!addwarninfo 3_${userid}.txt [info]`
+						  },
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Beep Boop"
+						}
+					  }
+					});
+					client.channels.get(`${warnchannel}`).send({embed: {
+						color: 16738048,
+						author: {
+						  name: `${message.author.username}`,
+						  icon_url: `${message.author.displayAvatarURL}`
+						},
+						thumbnail: {
+							url: `${user.displayAvatarURL}`
+						},
+						title: "Warning Log",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Number of warnings",
+							value: "3"
+						  },
+						  {
+							name: "Reason",
+							value: `${talk.join(" ")}`
+						  },
+						  {
+							name: "Warning Log",
+							value: `3_${userid}.txt`
+						  }
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
+						}
+					  }
+					});
 					if (warnmute == 0)
 					{
-						talk == (talk.shift().toString());
 						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
@@ -172,12 +297,60 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						if (err) throw err;
 						console.log('Append complete!');
 					});
-					message.author.send(`${user.username}\'s warning has been logged as \`2_${userid}.txt\`. Please use \`!addwarninfo 2_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 2\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`2_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
+					message.author.send({embed: {
+						color: 16738048,
+						title: "Warning Logged",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Warning Log",
+							value: `[2_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/2_${userid}.txt)`
+						  },
+						  {
+							name: "Please add any additional info or link to the offending image(s)",
+							value: `!addwarninfo 2_${userid}.txt [info]`
+						  },
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Beep Boop"
+						}
+					  }
+					});
+					client.channels.get(`${warnchannel}`).send({embed: {
+						color: 16738048,
+						author: {
+						  name: `${message.author.username}`,
+						  icon_url: `${message.author.displayAvatarURL}`
+						},
+						thumbnail: {
+							url: `${user.displayAvatarURL}`
+						},
+						title: "Warning Log",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Number of warnings",
+							value: "2"
+						  },
+						  {
+							name: "Reason",
+							value: `${talk.join(" ")}`
+						  },
+						  {
+							name: "Warning Log",
+							value: `2_${userid}.txt`
+						  }
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
+						}
+					  }
+					});
 					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						talk == (talk.shift().toString());
 						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
@@ -187,13 +360,60 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 					fs.writeFileSync(`./warnings/1_${userid}.txt`, `\n**WARNING #1**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
 						if (err) throw err;
 					});
-					message.author.send(`${user.username}\'s warning has been logged as \`1_${userid}.txt\`. Please use \`!addwarninfo 1_${userid}.txt\` to add any additional info.`);
-					client.channels.get(`${warnchannel}`).send(`**Staff:** ${message.author.username}\n**Warning:** ${user}\n**Total Warnings:** 1\n**Reason:** ${talk.join(" ")}\n**User's Warning Log:** \`1_${userid}.txt\` \`\`\`Type !getwarn [filename] to open a user's warning file. \`\`\``);
-					
+					message.author.send({embed: {
+						color: 16738048,
+						title: "Warning Logged",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Warning Log",
+							value: `[1_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/1_${userid}.txt)`
+						  },
+						  {
+							name: "Please add any additional info or link to the offending image(s)",
+							value: `!addwarninfo 1_${userid}.txt [info]`
+						  },
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Beep Boop"
+						}
+					  }
+					});
+					client.channels.get(`${warnchannel}`).send({embed: {
+						color: 16738048,
+						author: {
+						  name: `${message.author.username}`,
+						  icon_url: `${message.author.displayAvatarURL}`
+						},
+						thumbnail: {
+							url: `${user.displayAvatarURL}`
+						},
+						title: "Warning Log",
+						description: `Offending User: <@${userid}>`,
+						fields: [{
+							name: "Number of warnings",
+							value: "1"
+						  },
+						  {
+							name: "Reason",
+							value: `${talk.join(" ")}`
+						  },
+						  {
+							name: "Warning Log",
+							value: `[1_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/1_${userid}.txt)`
+						  }
+						],
+						timestamp: new Date(),
+						footer: {
+						  icon_url: client.user.avatarURL,
+						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
+						}
+					  }
+					});
 					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						talk == (talk.shift().toString());
 						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}

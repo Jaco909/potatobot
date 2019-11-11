@@ -95,6 +95,14 @@ client.on('ready', () => {
 	client.user.setActivity('!help for info');
 });
 
+//attempt to fix websocket error
+client.on('error', () => {
+	console.log('WEBSOCKET ERROR DETECTED');
+	setTimeout(() => {
+		reconnect();
+		}, 5000 );
+});
+
 //auto robot role assign (dyno emergency catch)
 client.on('guildMemberAdd', member => {
 	console.log(member.user.tag + ' has joined the server!');
@@ -104,6 +112,30 @@ client.on('guildMemberAdd', member => {
 		member.addRole(`${robotrole}`);
 		console.log(member.user.tag + ' is now a robot!');
 		}, 600000 ); //600000
+});
+
+//log unbans
+client.on("guildBanRemove", function(guild, user){
+	console.log(`${user} has been unbanned!`);
+	client.channels.get(`${warnchannel}`).send({embed: {
+		color: 3174889,
+		title: "Ban Removed",
+		description: `Unbanned User: ${user}`,
+		timestamp: new Date(),
+	  }
+	});
+});
+
+//log bans
+client.on("guildBanAdd", function(guild, user){
+	console.log(`${user} has been banned!`);
+	client.channels.get(`${warnchannel}`).send({embed: {
+		color: 16711680,
+		title: "Ban Issued",
+		description: `Banned User: ${user}`,
+		timestamp: new Date(),
+	  }
+	});
 });
 
 //message recieved
@@ -119,12 +151,54 @@ client.on('message', message => {
 		//command logging
 		function logaction(rng, rng2, rng3) {
 			if ((command === 'potato') || (command === 'shitpost') || (command === 'howis') || (command === 'launchdate')) {
+				return client.channels.get(`${logchannel}`).send({embed: {
+						color: 9647333,
+						author: {
+						  name: `${message.member.displayName}`,
+						  icon_url: `${message.author.displayAvatarURL}`
+						},
+						title: "Channel",
+						description: `${message.channel}`,
+						fields: [{
+							name: "Command",
+							value: `${talk.join(" ")}`
+						  },
+						  {
+							name: "RNG",
+							value: `${rng}`
+						  }
+						],
+						timestamp: new Date(),
+					  }
+					});
+			}
+			else {
+				return client.channels.get(`${logchannel}`).send({embed: {
+						color: 3438828,
+						author: {
+						  name: `${message.member.displayName}`,
+						  icon_url: `${message.author.displayAvatarURL}`
+						},
+						title: "Channel",
+						description: `${message.channel}`,
+						fields: [{
+							name: "Command",
+							value: `${talk.join(" ")}`
+						  }
+						],
+						timestamp: new Date(),
+					  }
+					});
+			}
+		}
+		/* function logaction(rng, rng2, rng3) {
+			if ((command === 'potato') || (command === 'shitpost') || (command === 'howis') || (command === 'launchdate')) {
 				return client.channels.get(`${logchannel}`).send(`**Message From:** ${message.member.displayName}\n**Location:** ${message.channel}\n**Command:** ${talk.join(" ")}\n**RNG Values:** ${rng}\`\`\` \`\`\``);
 			}
 			else {
 				return client.channels.get(`${logchannel}`).send(`**Message From:** ${message.member.displayName}\n**Location:** ${message.channel}\n**Command:** ${talk.join(" ")}\`\`\` \`\`\``);
 			}
-		}
+		} */
 		
 		//role check function (usertier)
 		function roletier(manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole) {
@@ -196,6 +270,14 @@ client.on('message', message => {
 			}
 		}
 		
+		function resetBot(usertier) {
+			if (usertier <= 4)
+			{
+				console.log(`Wack.`)
+				guildMember.addRole(`${muterole}`); //invalid, throws error
+			}
+		}
+		
 		if ((message.channel.type !== `dm`))
 		{
 			roletier(manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole);
@@ -208,112 +290,128 @@ client.on('message', message => {
 					var run = command.toString();
 					run(logaction, client, message, args, usertier, getRandomInt, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, testersrole, canteencrasherrole, betarole, shitRecently, furtrim, owoedRecently, potatocount, potatoyellnum, streamchannel, talk, messageChannel);
 				} */
-				if (command === 'potato') {
-					if (potatocount >= potatoyellnum)
-					{
-						potatocount = 1;
-						potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, timeouthour, superpotatoRecently, ultrapotatoRecently, finalpotatoRecently, potatobanned);
+				try {
+					if (command === 'potato') {
+						if (potatocount >= potatoyellnum)
+						{
+							potatocount = 1;
+							potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, timeouthour, superpotatoRecently, ultrapotatoRecently, finalpotatoRecently, potatobanned);
+						}
+						else
+						{
+							potatocount = (potatocount + 1)
+							potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, timeouthour, superpotatoRecently, ultrapotatoRecently, finalpotatoRecently, potatobanned);
+						}
 					}
-					else
-					{
-						potatocount = (potatocount + 1)
-						potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, potatoyellnum, botchannel, timeouthour, superpotatoRecently, ultrapotatoRecently, finalpotatoRecently, potatobanned);
+					else if (command === 'servers') {
+						servers(logaction, message, args);
 					}
-				}
-				else if (command === 'servers') {
-					servers(logaction, message, args);
-				}
-				else if (command === 'iam') {
-					iam(logaction, message, args, botchannel, testersrole, canteencrasherrole, betarole);
-				}
-				else if (command === 'shitpost') {
-					shitpost(logaction, getRandomInt, message, shitRecently);
-				}
-				else if (command === 'help') {
-					help(logaction, message, args, usertier, getRandomInt, potatorole);
-				}
-				else if (command === 'howis') {
-					howis(logaction, message, args, getRandomInt, howisrng, howisRecently, botchannel, timeout5min);
-				}
-				else if (command === 'changelog') {
-					changelog(logaction, message);
-				}
-				else if (command === 'purge') {
-					purge(logaction, message, usertier, args);
-				}
-				else if (command === 'debug') {
-					debug(logaction, message, usertier);
-				}
-				else if (command === 'owo') {
-					owo(logaction, message, args, potatorole, furtrim, owoedRecently);
-				}
-				else if (command === 'fuckgoback') {
-					fuckgoback(logaction, message);
-				}
-				else if (command === 'shutup') {
-					shutup(logaction, message, usertier);
-				}
-				else if (command === 'addpotato') {
-					addpotato(logaction, message, usertier, potatocount);
-				}
-				else if (command === 'potatoyell') {
-					potatoyell(logaction, message, usertier, args, potatoyellnum);
-				}
-				else if (command === 'stream') {
-					stream(logaction, message, usertier, args, streamchannel, client);
-				}
-				else if (command === 'robot') {
-					robot(logaction, message, args, entrancechannel, robotrole, joinedRecently, member);
-				}
-				else if (command === 'status'){
-					status(logaction, message, usertier, args, client);
-				}
-				/* else if (command === 'launchdate'){
-					launchdate(logaction, message, getRandomInt);
-				} */
-				else if (command === 'message'){
-					messagefunc(logaction, message, usertier, args, talk, client);
-				}
-				else if (command === 'say'){
-					say(logaction, message, usertier, args, messageChannel);
-				}
-				else if (command === 'bitch'){
-					logaction()
-					message.delete(10);
-					message.author.send(`no u`);
-				}
-				else if (command === 'avatar'){
-					avatar(logaction, message, args, getUserFromMention, talk, client);
-				}
-				else if (command === 'warn'){
-					warn(logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute);
-				}
-				else if (command === 'getwarn'){
-					getwarn(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
-				}
-				else if (command === 'addwarninfo'){
-					addwarninfo(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
-				}
-				else if (command === 'warnmute'){
-					if (warnmute == 0)
-					{
-						warnmute = 1;
-						message.author.send(`Warnings will not send messages to the warned user.`);
+					else if (command === 'iam') {
+						iam(logaction, message, args, botchannel, testersrole, canteencrasherrole, betarole);
 					}
-					else
-					{
-						warnmute = 0;
-						message.author.send(`Warnings will send messages to the warned user.`);
+					else if (command === 'shitpost') {
+						shitpost(logaction, getRandomInt, message, shitRecently);
 					}
-				}
-				else if (command === 'reboot') {
-					reboot(logaction, message, usertier);
-				}
-				else {
-					console.log('invalid run!');
-					message.author.send(`That is not a valid command. Please use \`!help\` in **#botato_cellar** for commands.`);
-					if (message.channel.type !== `dm`) {
+					else if (command === 'help') {
+						help(logaction, message, args, usertier, getRandomInt, potatorole);
+					}
+					else if (command === 'howis') {
+						howis(logaction, message, args, getRandomInt, howisrng, howisRecently, botchannel, timeout5min);
+					}
+					else if (command === 'changelog') {
+						changelog(logaction, message);
+					}
+					else if (command === 'purge') {
+						purge(logaction, message, usertier, args);
+					}
+					else if (command === 'debug') {
+						debug(logaction, message, usertier);
+					}
+					else if (command === 'owo') {
+						owo(logaction, message, args, potatorole, furtrim, owoedRecently);
+					}
+					else if (command === 'fuckgoback') {
+						fuckgoback(logaction, message);
+					}
+					else if (command === 'shutup') {
+						shutup(logaction, message, usertier);
+					}
+					else if (command === 'addpotato') {
+						addpotato(logaction, message, usertier, potatocount);
+					}
+					else if (command === 'potatoyell') {
+						potatoyell(logaction, message, usertier, args, potatoyellnum);
+					}
+					else if (command === 'stream') {
+						stream(logaction, message, usertier, args, streamchannel, client);
+					}
+					else if (command === 'robot') {
+						robot(logaction, message, args, entrancechannel, robotrole, joinedRecently, member);
+					}
+					else if (command === 'status'){
+						status(logaction, message, usertier, args, client);
+					}
+					/* else if (command === 'launchdate'){
+						launchdate(logaction, message, getRandomInt);
+					} */
+					else if (command === 'message'){
+						messagefunc(logaction, message, usertier, args, talk, client);
+					}
+					else if (command === 'say'){
+						say(logaction, message, usertier, args, messageChannel);
+					}
+					else if (command === 'bitch'){
+						logaction()
 						message.delete(10);
+						message.author.send(`no u`);
+					}
+					else if (command === 'avatar'){
+						avatar(logaction, message, args, getUserFromMention, talk, client);
+					}
+					else if (command === 'warn'){
+						warn(logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute);
+					}
+					else if (command === 'getwarn'){
+						getwarn(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
+					}
+					else if (command === 'addwarninfo'){
+						addwarninfo(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
+					}
+					else if (command === 'warnmute'){
+						if (warnmute == 0)
+						{
+							warnmute = 1;
+							message.author.send(`Warnings will not send messages to the warned user.`);
+						}
+						else
+						{
+							warnmute = 0;
+							message.author.send(`Warnings will send messages to the warned user.`);
+						}
+					}
+					else if (command === 'reboot') {
+						resetBot(usertier);
+					}
+					else {
+						console.log('invalid run!');
+						message.author.send(`That is not a valid command. Please use \`!help\` in **#botato_cellar** for commands.`);
+						if (message.channel.type !== `dm`) {
+							message.delete(10);
+						}
+					}
+				}
+				catch (err){
+					if (err && err.message === `err is not defined`){
+						client.channels.get(`${botchannel}`).send(`You have DMs dissabled <@${message.member.id}>. Most bot functions will not work for you.`);
+					}
+					if (err && err.message === `guildMember is not defined`){
+						guildMember.addRole(`${muterole}`); //invalid, throws error
+						//I don't think you understand. I'm throwing an error to catch an error to then throw another error.
+						//It just works.
+					}
+					else {
+						console.log(`${err.message}`)
+						//client.channels.get(`${botchannel}`).send(`Wack.`);
 					}
 				}
 			}
