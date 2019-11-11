@@ -230,3 +230,7 @@ Was so unimportant that it was skipped entirely.
 1.9.1
 •Updated !help
 	-Now sends messages in embeds.
+
+1.9.2
+•Updated !warn
+	-Fixed url embeds in warns greater than 1.

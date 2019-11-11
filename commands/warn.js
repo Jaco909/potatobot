@@ -140,7 +140,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						  },
 						  {
 							name: "Warning Log",
-							value: `5_${userid}.txt`
+							value: `[5_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/5_${userid}.txt)`
 						  }
 						],
 						timestamp: new Date(),
@@ -206,7 +206,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						  },
 						  {
 							name: "Warning Log",
-							value: `4_${userid}.txt`
+							value: `[4_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/4_${userid}.txt)`
 						  }
 						],
 						timestamp: new Date(),
@@ -272,7 +272,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						  },
 						  {
 							name: "Warning Log",
-							value: `3_${userid}.txt`
+							value: `[3_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/3_${userid}.txt)`
 						  }
 						],
 						timestamp: new Date(),
@@ -338,7 +338,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						  },
 						  {
 							name: "Warning Log",
-							value: `2_${userid}.txt`
+							value: `[2_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/2_${userid}.txt)`
 						  }
 						],
 						timestamp: new Date(),
