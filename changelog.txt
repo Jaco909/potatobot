@@ -234,3 +234,7 @@ Was so unimportant that it was skipped entirely.
 1.9.2
 •Updated !warn
 	-Fixed url embeds in warns greater than 1.
+
+1.9.3
+•Updated discord.js framework
+	-Added better handling for websocket errors. 100% sucess rate with this current patch.
