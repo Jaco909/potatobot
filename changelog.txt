@@ -238,3 +238,7 @@ Was so unimportant that it was skipped entirely.
 1.9.3
 •Updated discord.js framework
 	-Added better handling for websocket errors. 100% sucess rate with this current patch.
+
+1.9.3.1
+•Updated discord.js & potatobot framework
+	-Removed 2 error catches for websocket errors. Bot will just use pm2 to fix this issue.

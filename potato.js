@@ -96,13 +96,13 @@ client.on('ready', () => {
 });
 
 //attempt to fix websocket error
-client.on('error', () => {
+/* client.on('error', () => {
 	console.log('WEBSOCKET ERROR DETECTED');
 	setTimeout(() => {
 		reconnect();
 		}, 5000 );
 });
-
+ */
 //auto robot role assign (dyno emergency catch)
 client.on('guildMemberAdd', member => {
 	console.log(member.user.tag + ' has joined the server!');
