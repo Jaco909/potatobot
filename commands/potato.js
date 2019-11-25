@@ -14,7 +14,12 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 		if (potatoRecently.has(message.author.id))
 		{
 			console.log('Potato too soon!');
-			if (finalpotatoRecently.has(message.author.id))
+			if (potatobanned.has(message.author.id))
+			{
+				console.log('Potato banned!');
+				message.delete(10);
+			}
+			if ((finalpotatoRecently.has(message.author.id) && (!potatobanned.has(message.author.id))))
 			{
 				console.log('Potato banned 1 day!');
 				potatobanned.add(message.author.id);

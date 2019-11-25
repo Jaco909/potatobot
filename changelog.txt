@@ -242,3 +242,7 @@ Was so unimportant that it was skipped entirely.
 1.9.3.1
 •Updated discord.js & potatobot framework
 	-Removed 2 error catches for websocket errors. Bot will just use pm2 to fix this issue.
+
+1.9.3.2
+•Updated !potato
+	-Fixed ban not deleting messages.
