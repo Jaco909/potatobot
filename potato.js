@@ -316,7 +316,7 @@ client.on('message', message => {
 						help(logaction, message, args, usertier, getRandomInt, potatorole, client);
 					}
 					else if (command === 'howis') {
-						howis(logaction, message, args, getRandomInt, howisrng, howisRecently, botchannel, timeout5min);
+						howis(logaction, message, args, getRandomInt, howisrng, howisRecently, botchannel, timeout5min, args);
 					}
 					else if (command === 'changelog') {
 						changelog(logaction, message);
