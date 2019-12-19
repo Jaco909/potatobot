@@ -1,6 +1,6 @@
 exports.shitpost = function (logaction, getRandomInt, message, shitRecently) {
 	
-	const shitrng = getRandomInt(1, 160);
+	const shitrng = getRandomInt(1, 184);
 	logaction(shitrng)
 	try {
 		if (shitRecently.has(message.author.id)) {
@@ -337,6 +337,54 @@ exports.shitpost = function (logaction, getRandomInt, message, shitRecently) {
 				message.author.send(`Let\'s see a spoonfull of sugar solve this. https://youtu.be/mHOchoMgZ3c`)};
 			if(shitrng == 160){
 				message.author.send(`This bot is partially powered by badonkers. https://youtu.be/y-0rq582Ww8`)};
+			if(shitrng == 161){
+				message.author.send(`HARDCORE PARKOUR! https://youtu.be/0xkLnFJ_UNs`)};
+			if(shitrng == 162){
+				message.author.send(`I always knew she was actually evil! https://youtu.be/PhhYswljEr8`)};
+			if(shitrng == 163){
+				message.author.send(`Yeet that little green punk. https://youtu.be/pbj-gzf9OeA`)};
+			if(shitrng == 164){
+				message.author.send(`Mad Uno skills. https://youtu.be/pnrBDXoYsg4`)};
+			if(shitrng == 165){
+				message.author.send(`Is it sad I know this is from The Dak Knight Rises? https://youtu.be/VZer5pbyDts`)};
+			if(shitrng == 166){
+				message.author.send(`We're going to take the hats of the 1% and give back to the 99%! https://youtu.be/mOOeR4UCJyw`)};
+			if(shitrng == 167){
+				message.author.send(`That poor thing. https://youtu.be/jM0GePXOdT0`)};
+			if(shitrng == 168){
+				message.author.send(`How do you spell what sound he made? https://youtu.be/18L2l8JEvE8`)};
+			if(shitrng == 169){
+				message.author.send(`Dead. Not big soup rice. https://youtu.be/2TOX3WeZJKw`)};
+			if(shitrng == 170){
+				message.author.send(`Beefy boi. https://youtu.be/4bxe2OoBaC4`)};
+			if(shitrng == 171){
+				message.author.send(`Randal was hot, ngl. https://youtu.be/SprpNby3PLU`)};
+			if(shitrng == 172){
+				message.author.send(`HEEEEEEEE'S CANON NOW! https://youtu.be/xt2OdUfYZbk`)};
+			if(shitrng == 173){
+				message.author.send(`Obligitory birb meme for Hellmet. https://youtu.be/6R8cXxvCaDk`)};
+			if(shitrng == 174){
+				message.author.send(`Because giant shit was the best idea ever. https://youtu.be/Il7bkXSivow`)};
+			if(shitrng == 175){
+				message.author.send(`Cute, yet so anoying. https://youtu.be/Zu0IUnlE9dU`)};
+			if(shitrng == 176){
+				message.author.send(`I'M TAKING A SHIT JC. GO AWAY. https://youtu.be/J7zTvC5yjjE`)};
+			if(shitrng == 177){
+				message.author.send(`Is that a Jojo reference? https://youtu.be/B-7T9zwyWx4`)};
+			if(shitrng == 178){
+				message.author.send(`Classic. https://youtu.be/OHxyZaZlaOs`)};
+			if(shitrng == 179){
+				message.author.send(`Divorce! HAHAHAHAHAHA! https://youtu.be/XDXrP9HET2A`)};
+			if(shitrng == 180){
+				message.author.send(`Patrick wait! https://youtu.be/5EJx08wQzGc`)};
+			if(shitrng == 181){
+				message.author.send(`AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA https://youtu.be/q5-cZIpldFk`)};
+			if(shitrng == 182){
+				message.author.send(`CBT is fun. https://youtu.be/q5-cZIpldFk`)};
+			if(shitrng == 183){
+				message.author.send(`Personaly, I prefer the AIR. https://youtu.be/EwWwqSE3JAI`)};
+			if(shitrng == 184){
+				message.author.send(`Does Kamek only know one spell? I mean really now. https://youtu.be/Dk8Qy7L5ZaI`)};
 		}
 	}
 	catch (err){

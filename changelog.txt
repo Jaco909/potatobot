@@ -246,3 +246,7 @@ Was so unimportant that it was skipped entirely.
 1.9.3.2
 •Updated !potato
 	-Fixed ban not deleting messages.
+
+1.9.4
+•Updated !shitpost
+	-24 new shitposts.
