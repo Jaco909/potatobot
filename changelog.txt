@@ -250,3 +250,7 @@ Was so unimportant that it was skipped entirely.
 1.9.4
 •Updated !shitpost
 	-24 new shitposts.
+
+1.9.4.1
+•Updated !iam
+	-Fixed the bot referencing a depreciated command.

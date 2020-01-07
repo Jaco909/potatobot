@@ -32,7 +32,7 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 		else {
 			message.delete(10);
 			console.log('iam invalid!');
-			message.author.send(`That is not a valid role. Please use \`!iam help\` for available roles.`);
+			message.author.send(`That is not a valid role. Please use \`!help iam\` for available roles.`);
 		}
 	}
 };
