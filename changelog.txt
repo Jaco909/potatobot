@@ -254,3 +254,16 @@ Was so unimportant that it was skipped entirely.
 1.9.4.1
 •Updated !iam
 	-Fixed the bot referencing a depreciated command.
+
+1.10 "Detention time"
+•Added !twarn
+•Added !warncheck
+•Updated !warn
+	-Now !pwarn.
+•Updated !help
+	-Added !twarn.
+	-Changed !warn to !pwarn.
+•Updated !getwarn
+	-Inputing no filename now gives a link to the warning logs.
+•Updated bot framework
+	-Now resets name on startup.

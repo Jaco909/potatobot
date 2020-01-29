@@ -141,20 +141,43 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		  }
 		});
 	}
-	else if (args[0] == `warn`) {
+	else if (args[0] == `pwarn`) {
 		console.log('Warn help!');
 		message.delete(10);
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
-			description: `!warn`,
+			description: `!pwarn`,
 			fields: [{
 				name: "Usage",
-				value: `!warn [@user] [reason]`
+				value: `!pwarn [@user] [reason]`
 			  },
 			  {
 				name: "Description",
-				value: `Add a warning to the lister user with a reason.`
+				value: `Add a permenent warning to the lister user with a reason.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
+	}
+	else if (args[0] == `twarn`) {
+		console.log('Warn help!');
+		message.delete(10);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!twarn`,
+			fields: [{
+				name: "Usage",
+				value: `!twarn [@user] [reason]`
+			  },
+			  {
+				name: "Description",
+				value: `Add a temporary warning to the lister user with a reason.`
 			  }
 			],
 			footer: {
@@ -668,8 +691,12 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 				value: `Deletes # messages from the channel.`
 			  },
 			  {
-				name: "!warn",
-				value: `Logs a warning about a user.`
+				name: "!pwarn",
+				value: `Logs a permenent warning about a user.`
+			  },
+			  {
+				name: "!twarn",
+				value: `Logs a temporary warning about a user.`
 			  },
 			  {
 				name: "!addwarninfo",

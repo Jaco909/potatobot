@@ -3,6 +3,8 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const commandFolder = './commands/';
 const warnFolder = './warnings/';
+const tempwarnFolder = './temp_warnings/';
+const warntimeFolder = './temp_dates/';
 
 //load base config
 const { prefix, token, timeouthour, timeout5min } = require('./config.json');
@@ -39,7 +41,9 @@ const { shitpost } = require('./commands/shitpost.js');
 const { shutup } = require('./commands/shutup.js');
 const { status } = require('./commands/status.js');
 const { stream } = require('./commands/stream.js');
+const { tempwarn } = require('./commands/tempwarn.js');
 const { warn } = require('./commands/warn.js');
+const { warncheck } = require('./commands/warncheck.js');
 
 //declare constants w/ temp values
 //clean up later
@@ -63,6 +67,8 @@ var roletier = 0;
 var usertier = 99;
 var warnmute = 0;
 var howisrng = 0;
+var date = 0;
+var militime = 0;
 
 //???
 client.commands = new Discord.Collection();
@@ -93,7 +99,14 @@ client.on('ready', () => {
     console.log('Bot online!');
 	client.user.setStatus('online');
 	client.user.setActivity('!help for info');
+	client.user.setUsername('Potatobot rc2')
+	var date = new Date();
+	var militime = date.getTime();
+	//console.log(`Current unix time: ${militime}`);
+	warncheck(fs, client, militime, date, warnchannel);
+	
 });
+
 
 //attempt to fix websocket error
 /* client.on('error', () => {
@@ -142,6 +155,8 @@ client.on("guildBanAdd", function(guild, user){
 client.on('message', message => {
 	if (message.content.startsWith(prefix) && !message.author.bot) {
 		console.log(`message from ${message.author.username}!`);
+		var date = new Date();
+		var militime = date.getTime();
 		const talk = message.content.toLocaleString().slice(prefix.length).split(' ');
 		const furtalk = `${message.content.toLocaleString().slice(prefix.length).split(' ')}`;
 		const args = message.content.toLocaleString().toLowerCase().slice(prefix.length).split(' ');
@@ -368,8 +383,14 @@ client.on('message', message => {
 					else if (command === 'avatar'){
 						avatar(logaction, message, args, getUserFromMention, talk, client);
 					}
-					else if (command === 'warn'){
+					else if (command === 'pwarn'){
 						warn(logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute);
+					}
+					else if (command === 'twarn'){
+						tempwarn(logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute, date, militime);
+					}
+					else if (command === 'warncheck'){
+						warncheck(fs, client, militime, date, warnchannel);
 					}
 					else if (command === 'getwarn'){
 						getwarn(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist);
@@ -390,6 +411,7 @@ client.on('message', message => {
 						}
 					}
 					else if (command === 'reboot') {
+						client.user.setUsername('Potatobot - offline')
 						resetBot(usertier);
 					}
 					else {

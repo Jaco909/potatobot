@@ -11,6 +11,11 @@ exports.getwarn = function (logaction, message, usertier, args, messageChannel, 
 				message.author.send(`${data}`);
 				});
 			}
+			else if (fs.existsSync(`./temp_warnings/${warnget}`)) {
+				fs.readFile(`./warnings/${args[0]}`, (err, data) => {
+				message.author.send(`${data}`);
+				});
+			}
 			else {
 				console.log('Getwarn invalid name!');
 				message.author.send(`That is not a valid file. Please use \`!getwarn\` with no text for a list of files.`);
@@ -20,7 +25,7 @@ exports.getwarn = function (logaction, message, usertier, args, messageChannel, 
 		{
 			logaction()
 			console.log('Getwarn list give!');
-			message.author.send(`${warnlist}`);
+			message.author.send(`https://github.com/Jaco909/potatobot/blob/master/warnings`);
 		}
 	}
 	else
