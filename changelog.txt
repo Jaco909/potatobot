@@ -268,6 +268,10 @@ Was so unimportant that it was skipped entirely.
 •Updated bot framework
 	-Now resets name on startup.
 
-1.10 "Detention time"
+1.10.1
 •Updated !warncheck
 	-"bans" -> "warns"
+
+1.10.2
+•Updated !twarn
+	-Messages sent to warned users use the temporary warn text instead of the perment warn text.

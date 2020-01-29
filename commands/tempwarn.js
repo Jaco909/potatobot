@@ -111,7 +111,7 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 					});
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//warning for user exists 4-5
@@ -203,7 +203,7 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//warning for user exists 3-4
@@ -295,7 +295,7 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//warning for user exists 2-3
@@ -387,7 +387,7 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//warning for user exists 1-2
@@ -479,7 +479,7 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//new warning user
