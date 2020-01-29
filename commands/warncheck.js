@@ -23,7 +23,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel) {
 								console.log(`1t_${userid}.txt was deleted`);
 								client.channels.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
-									title: "1 Temporary Bans Removed",
+									title: "1 Temporary Warning Removed",
 									description: `User: ${user}`,
 									timestamp: new Date(),
 								  }
@@ -40,7 +40,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel) {
 								console.log(`2t_${userid}.txt was deleted`);
 								client.channels.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
-									title: "2 Temporary Bans Removed",
+									title: "2 Temporary Warnings Removed",
 									description: `User: ${user}`,
 									timestamp: new Date(),
 								  }
@@ -57,7 +57,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel) {
 								console.log(`3t_${userid}.txt was deleted`);
 								client.channels.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
-									title: "3 Temporary Bans Removed",
+									title: "3 Temporary Warnings Removed",
 									description: `User: ${user}`,
 									timestamp: new Date(),
 								  }
@@ -74,7 +74,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel) {
 								console.log(`4t_${userid}.txt was deleted`);
 								client.channels.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
-									title: "4 Temporary Bans Removed",
+									title: "4 Temporary Warnings Removed",
 									description: `User: ${user}`,
 									timestamp: new Date(),
 								  }
@@ -91,7 +91,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel) {
 								console.log(`5t_${userid}.txt was deleted`);
 								client.channels.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
-									title: "5 Temporary Bans Removed",
+									title: "5 Temporary Warnings Removed",
 									description: `User: ${user}`,
 									timestamp: new Date(),
 								  }

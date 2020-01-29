@@ -99,7 +99,7 @@ client.on('ready', () => {
     console.log('Bot online!');
 	client.user.setStatus('online');
 	client.user.setActivity('!help for info');
-	client.user.setUsername('Potatobot rc2')
+	client.user.setUsername('Potatobot rc2');
 	var date = new Date();
 	var militime = date.getTime();
 	//console.log(`Current unix time: ${militime}`);

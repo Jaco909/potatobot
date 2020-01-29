@@ -267,3 +267,7 @@ Was so unimportant that it was skipped entirely.
 	-Inputing no filename now gives a link to the warning logs.
 •Updated bot framework
 	-Now resets name on startup.
+
+1.10 "Detention time"
+•Updated !warncheck
+	-"bans" -> "warns"
