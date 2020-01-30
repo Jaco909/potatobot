@@ -23,6 +23,9 @@ exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yo
 					},
 					title: "Wise words from Sntr",
 					description: `${yorickmessage}`,
+					/* footer: {
+					  text: ":yorick:"
+					} */
 					}
 				});
 			}
