@@ -284,3 +284,7 @@ Was so unimportant that it was skipped entirely.
 	-Locked to potato role and above.
 •Updated !help
 	-Added !yorick info.
+
+1.10.3.2
+•Updated !yorick
+	-Mesage is sent as a rich embed.

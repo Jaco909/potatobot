@@ -1,4 +1,4 @@
-exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yorickRecently, botchannel, timeout5min, args, potatorole, usertier) {
+exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yorickRecently, botchannel, timeout5min, args, potatorole, usertier, guild, client) {
 	if (message.member.roles.has(`${potatorole}`) || (usertier <= 4))
 	{
 		if (!yorickRecently.has(message.author.id)){
@@ -8,11 +8,23 @@ exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yo
 			logaction(yorickrng)
 			console.log('Yorick run!');
 			yorickRecently.add(message.author.id);
-			if (args == `hydrogen`){
+			if (args == `hydrogen`){ //I can't be arsed to remove this.
 				message.channel.send(`https://cdn.discordapp.com/attachments/587862013779378186/649350879144837152/hydroangery.jpg`);
 			}
 			else {
-				message.channel.send(`${yorickmessage}`);
+				const sntrid = '350339403677302785';
+				client.fetchUser(sntrid);
+				const sntr = client.users.get(sntrid);
+				message.channel.send({embed: {
+					color: 9647333,
+					author: {
+					  name: `Sntr`,
+					  icon_url: `${sntr.displayAvatarURL}`
+					},
+					title: "Wise words from Sntr",
+					description: `${yorickmessage}`,
+					}
+				});
 			}
 			setTimeout(() => {
 				yorickRecently.delete(message.author.id);
