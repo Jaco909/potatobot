@@ -5,6 +5,7 @@ const commandFolder = './commands/';
 const warnFolder = './warnings/';
 const tempwarnFolder = './temp_warnings/';
 const warntimeFolder = './temp_dates/';
+const bantimeFolder = './ban_dates/';
 
 //load base config
 const { prefix, token, timeouthour, timeout5min } = require('./config.json');
@@ -20,6 +21,7 @@ const { botchannel, streamchannel, logchannel, warnchannel, entrancechannel } = 
 const { addpotato } = require('./commands/addpotato.js');
 const { addwarninfo } = require('./commands/addwarninfo.js');
 const { avatar } = require('./commands/avatar.js');
+const { bantime } = require('./commands/bantime.js');
 const { changelog } = require('./commands/changelog.js');
 const { debug } = require('./commands/debug.js');
 const { fuckgoback } = require('./commands/fuckgoback.js');
@@ -103,22 +105,13 @@ client.on('ready', () => {
 	client.user.setStatus('online');
 	client.user.setActivity('!help for info');
 	client.user.setUsername('Potatobot rc2');
-	var date = new Date();
-	var militime = date.getTime();
+	//var date = new Date();
+	//var militime = date.getTime();
 	//console.log(`Current unix time: ${militime}`);
-	warncheck(fs, client, militime, date, warnchannel);
+	//warncheck(fs, client, militime, date, warnchannel);
 	
 });
 
-
-//attempt to fix websocket error
-/* client.on('error', () => {
-	console.log('WEBSOCKET ERROR DETECTED');
-	setTimeout(() => {
-		reconnect();
-		}, 5000 );
-});
- */
 //auto robot role assign (dyno emergency catch)
 client.on('guildMemberAdd', member => {
 	console.log(member.user.tag + ' has joined the server!');
@@ -144,14 +137,7 @@ client.on("guildBanRemove", function(guild, user){
 
 //log bans
 client.on("guildBanAdd", function(guild, user){
-	console.log(`${user} has been banned!`);
-	client.channels.get(`${warnchannel}`).send({embed: {
-		color: 16711680,
-		title: "Ban Issued",
-		description: `Banned User: ${user}`,
-		timestamp: new Date(),
-	  }
-	});
+	bantime(guild, user, client, fs, warnchannel);
 });
 
 //message recieved
@@ -165,6 +151,9 @@ client.on('message', message => {
 		const args = message.content.toLocaleString().toLowerCase().slice(prefix.length).split(' ');
 		const command = args.shift().toLowerCase();
 		const guild = message.guild
+		
+		//warncheck
+		warncheck(fs, client, militime, date, warnchannel, guild);
 		
 		//command logging
 		function logaction(rng, rng2, rng3) {

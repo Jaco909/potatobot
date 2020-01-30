@@ -288,3 +288,7 @@ Was so unimportant that it was skipped entirely.
 1.10.3.2
 •Updated !yorick
 	-Mesage is sent as a rich embed.
+
+1.10.4
+•Updated ban system
+	-Bot will now automatically unban users at the end of their ban period.

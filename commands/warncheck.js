@@ -1,4 +1,6 @@
-exports.warncheck = function (fs, client, militime, date, warnchannel) {
+exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
+	
+	//warn checks
 	fs.readdir(`./temp_dates`, function(err, filenames) {
 		if (err) {
 		  onError(err);
@@ -108,7 +110,40 @@ exports.warncheck = function (fs, client, militime, date, warnchannel) {
 				}
 			}
 			else {
-				console.log(`No expired warns`)
+				//console.log(`No expired warns`)
+			}
+		}
+	});
+	
+	//ban check
+	fs.readdir(`./ban_dates`, function(err, filenames) {
+		if (err) {
+		  onError(err);
+		  return;
+		}
+		filenames.forEach(checktime);
+		
+		function checktime(item){
+			filetime = item.slice(0,-4);
+			//console.log(filetime);
+			releasetime = +filetime;
+			//console.log(releasetime);
+			if (+releasetime <= militime){
+				console.log(`Expired ban!`);
+				if (fs.existsSync(`./ban_dates/${filetime}.txt`)) {
+					fs.readFile(`./ban_dates/${filetime}.txt`, (err, userid) => {
+						console.log(`Date file exists!`)
+						//unban
+						guild.unban(`${userid}`);
+						//delete file
+						fs.unlink(`./ban_dates/${filetime}.txt`, (err) => {
+							if (err) throw err;
+						});
+					});
+				}
+			}
+			else {
+				//console.log(`No expired bans`)
 			}
 		}
 	});
