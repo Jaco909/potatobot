@@ -72,6 +72,29 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		  }
 		});
 	}
+	else if (args[0] == `yorick`) {
+		console.log('Yorick help!');
+		message.delete(10);
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!yorick`,
+			fields: [{
+				name: "Usage",
+				value: `!yorick`
+			  },
+			  {
+				name: "Description",
+				value: `What wise words does the almighty snitter have?`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL,
+			  text: "Beep Boop"
+			}
+		  }
+		});
+	}
 	else if (args[0] == `howis`) {
 		console.log('Howis help!');
 		message.delete(10);
@@ -640,7 +663,11 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			title: "Potatoed Commands",
 			fields: [{
 				name: "!owo",
-				value: `owoify a sentence.`
+				value: `Owoify a sentence.`
+			  },
+			  {
+				name: "!yorick",
+				value: `Wise words from the almighty snitter.`
 			  }
 			],
 			footer: {

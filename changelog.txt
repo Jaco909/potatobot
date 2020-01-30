@@ -278,3 +278,9 @@ Was so unimportant that it was skipped entirely.
 
 1.10.3
 •Added !yorick
+
+1.10.3.1
+•Updated !yorick
+	-Locked to potato role and above.
+•Updated !help
+	-Added !yorick info.

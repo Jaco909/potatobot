@@ -349,7 +349,7 @@ client.on('message', message => {
 						owo(logaction, message, args, potatorole, furtrim, owoedRecently);
 					}
 					else if (command === 'yorick') {
-						yorick(logaction, message, args, getRandomInt, yorickrng, yorickRecently, botchannel, timeout5min, args);
+						yorick(logaction, message, args, getRandomInt, yorickrng, yorickRecently, botchannel, timeout5min, args, potatorole, usertier);
 					}
 					else if (command === 'fuckgoback') {
 						fuckgoback(logaction, message);
