@@ -44,6 +44,7 @@ const { stream } = require('./commands/stream.js');
 const { tempwarn } = require('./commands/tempwarn.js');
 const { warn } = require('./commands/warn.js');
 const { warncheck } = require('./commands/warncheck.js');
+const { yorick } = require('./commands/yorick.js');
 
 //declare constants w/ temp values
 //clean up later
@@ -57,6 +58,7 @@ const potatobanned = new Set(); //potato
 const owoedRecently = new Set(); //owo
 const shitRecently = new Set(); //shitpost
 const howisRecently = new Set(); //howis
+const yorickRecently = new Set(); //yorick
 const channelist = new Set(); //debug
 const commandlist = [];
 const warnlist = [];
@@ -67,6 +69,7 @@ var roletier = 0;
 var usertier = 99;
 var warnmute = 0;
 var howisrng = 0;
+var yorickrng = 0;
 var date = 0;
 var militime = 0;
 
@@ -345,6 +348,9 @@ client.on('message', message => {
 					else if (command === 'owo') {
 						owo(logaction, message, args, potatorole, furtrim, owoedRecently);
 					}
+					else if (command === 'yorick') {
+						yorick(logaction, message, args, getRandomInt, yorickrng, yorickRecently, botchannel, timeout5min, args);
+					}
 					else if (command === 'fuckgoback') {
 						fuckgoback(logaction, message);
 					}
@@ -416,6 +422,7 @@ client.on('message', message => {
 					}
 					else {
 						console.log('invalid run!');
+						console.log(`${talk}`);
 						message.author.send(`That is not a valid command. Please use \`!help\` in **#botato_cellar** for commands.`);
 						if (message.channel.type !== `dm`) {
 							message.delete(10);

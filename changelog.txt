@@ -275,3 +275,6 @@ Was so unimportant that it was skipped entirely.
 1.10.2
 •Updated !twarn
 	-Messages sent to warned users use the temporary warn text instead of the perment warn text.
+
+1.10.3
+•Added !yorick
