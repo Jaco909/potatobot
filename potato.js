@@ -168,7 +168,7 @@ client.on('message', message => {
 		
 		//command logging
 		function logaction(rng, rng2, rng3) {
-			if ((command === 'potato') || (command === 'shitpost') || (command === 'howis') || (command === 'launchdate')) {
+			if ((command === 'potato') || (command === 'shitpost') || (command === 'howis') || (command === 'yorick') || (command === 'launchdate')) {
 				return client.channels.get(`${logchannel}`).send({embed: {
 						color: 9647333,
 						author: {
