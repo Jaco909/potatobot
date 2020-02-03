@@ -367,6 +367,9 @@ client.on('message', message => {
 					else if (command === 'message'){
 						messagefunc(logaction, message, usertier, args, talk, client);
 					}
+					else if (command === 'nuq'){
+						message.author.send(`https://youtu.be/1nDnqLDmFrs?t=11`);
+					}
 					else if (command === 'say'){
 						say(logaction, message, usertier, args, messageChannel);
 					}
