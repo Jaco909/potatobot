@@ -365,3 +365,7 @@ Was so unimportant that it was skipped entirely.
 	-Added more quotes.
 	-Quotes are stored in /data/yorick.txt.
 	-Dynamicaly loads new quotes.
+
+2.0.1
+•Updated !add
+	-Gives verification on appends.

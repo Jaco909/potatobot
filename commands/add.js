@@ -12,6 +12,7 @@ exports.add = function (logaction, fs, args, talk, usertier, message) {
 				fs.appendFile(`./data/activities.txt`, `\n${talk.join(" ")}`, (err) => {
 					if (err) throw err;
 					console.log('Activity append complete!');
+					mesage.reply(`File appended.`);
 				});
 			}
 		}
@@ -23,6 +24,7 @@ exports.add = function (logaction, fs, args, talk, usertier, message) {
 				fs.appendFile(`./data/shitposts.txt`, `\n${talk.join(" ")}`, (err) => {
 					if (err) throw err;
 					console.log('Shitposts append complete!');
+					mesage.reply(`File appended.`);
 				});
 			}
 		}
@@ -34,6 +36,7 @@ exports.add = function (logaction, fs, args, talk, usertier, message) {
 				fs.appendFile(`./data/potatoresponce.txt`, `\n${talk.join(" ")}`, (err) => {
 					if (err) throw err;
 					console.log('Potatofail append complete!');
+					mesage.reply(`File appended.`);
 				});
 			}
 		}
@@ -45,6 +48,7 @@ exports.add = function (logaction, fs, args, talk, usertier, message) {
 				fs.appendFile(`./data/howis.txt`, `\n${talk.join(" ")}`, (err) => {
 					if (err) throw err;
 					console.log('Howis append complete!');
+					mesage.reply(`File appended.`);
 				});
 			}
 		}
@@ -55,6 +59,7 @@ exports.add = function (logaction, fs, args, talk, usertier, message) {
 			fs.appendFile(`./data/yorick.txt`, `\n${talk.join(" ")}`, (err) => {
 				if (err) throw err;
 				console.log('Yorick append complete!');
+				mesage.reply(`File appended.`);
 			});
 		}
 	}
