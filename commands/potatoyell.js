@@ -1,4 +1,4 @@
-exports.potatoyell = function (logaction, message, usertier, args, potatoyellnum) {
+exports.potatoyell = function (logaction, message, usertier, args, fs) {
 	logaction()
 	if (usertier <= 4)
 	{
@@ -6,28 +6,32 @@ exports.potatoyell = function (logaction, message, usertier, args, potatoyellnum
 		{
 			if (!args.some(isNaN))
 			{
-				message.delete(10);
+				message.delete({ timeout: 10});
 				console.log('Potatoyell run!');
-				potatoyellnum = args[0];
-				message.author.send(`**Curent threshold:** ${potatoyellnum}`);
+				fs.unlink(`./data/potatoyellnum.txt`, (err) => {
+					if (err) throw err;
+				});
+				setTimeout(() => {
+					fs.writeFileSync(`./data/potatoyellnum.txt`, `${args[0]}`, (err) => {
+						if (err) throw err;
+					});
+				}, 50 );
+				message.author.send(`**Curent threshold:** ${args[0]}`);
 			}
 			else
 			{
-				console.log('Potatoyell error NaN!');
-				message.delete(10);
+				message.delete({ timeout: 10});
 				message.author.send(`Invalid threshold #.`);
 			}
 		}
 		else
 		{
-			console.log('Potatoyell error blank!');
-			message.delete(10);
+			message.delete({ timeout: 10});
 			message.author.send(`Invalid threshold #.`);
 		}
 	}
 	else {
-		console.log('Potatoyell block!');
-		message.delete(10);
+		message.delete({ timeout: 10});
 		message.author.send(`You do not have access to this command.`);
 	}
 };

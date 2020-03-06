@@ -21,21 +21,21 @@ exports.purge = function (logaction, message, usertier, args) {
 			else
 			{
 				console.log('Purge error NaN!');
-				message.delete(10);
+				message.delete({ timeout: 10});
 				message.author.send(`Invalid purge #.`);
 			}
 		}
 		else
 		{
 			console.log('Purge error blank!');
-			message.delete(10);
+			message.delete({ timeout: 10});
 			message.author.send(`Invalid purge ammount.`);
 		}
 	}
 	else
 	{
 		console.log('Purge block!');
-		message.delete(10);
+		message.delete({ timeout: 10});
 		message.author.send(`You do not have access to this command.`);
 	}
 };

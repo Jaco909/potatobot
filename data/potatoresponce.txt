@@ -1,0 +1,12 @@
+I'm sorry. We're currently out of potatoes. Try again later.
+These things, they take time. Come back later.
+Look, we were struck by a potato famine, and I've got kids to feed. I can't give you this potato.
+We used up all of our potatoes making meme badges. I need to harvest some more.
+I have a potato. But honestly, I just don't like you. Ask again later.
+I can't just hand out potatoes all willy-nilly ${message.member.displayName}. It'll crash the potato economy.
+I got hungry and ate the last potato I had. Ask again later.
+Oh, *you* want a potato. Well let me just strap on my *potato helmet*, squeeze down into a *potato cannon*, and fire off into *potato land*, where *potatoes* grow on *potatoies*.
+Sans ate all of our potatoes. Guy's fricken insane.
+We're fresh out of potatoes. Ask again in a bit.
+I had a potato for you, but Blizzard took it back.
+By now you should realize how pointless this is. But I digress. No potatoes for you.

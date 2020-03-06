@@ -9,7 +9,6 @@ exports.avatar = function (logaction, message, args, getUserFromMention, talk, c
 		else
 		{
 			console.log('Avatar other!');
-			logaction(user);
 			if (args[0].startsWith('<@') && args[0].endsWith('>')) {
 				var userid = args[0].slice(2, -1);
 
@@ -17,13 +16,16 @@ exports.avatar = function (logaction, message, args, getUserFromMention, talk, c
 					userid = userid.slice(1);
 				}
 			}
-			return message.channel.send(`${user.username}'s avatar: ${user.displayAvatarURL}`);
+			client.user.fetch(userid);
+			const user = client.users.cache.get(userid);
+			logaction(user);
+			return message.reply(`${user.username}'s avatar: ${user.avatarURL({ format: 'png', dynamic: true, size: 1024 })}`);
 		}
 	}
 	else
 	{
 		console.log('Avatar user!');
 		logaction();
-		return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
+		return message.channel.send(`Your avatar: ${message.author.avatarURL({ format: 'png', dynamic: true, size: 1024 })}`);
 	}
 };

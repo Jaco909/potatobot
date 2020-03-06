@@ -1,6 +1,6 @@
 exports.status = function (logaction, message, usertier, args, client) {
 	logaction()
-	if (usertier <= 4)
+	if (usertier <= 5)
 	{
 		console.log('Status run!');
 		console.log(`${args}`);
@@ -9,7 +9,7 @@ exports.status = function (logaction, message, usertier, args, client) {
 	}
 	else {
 		console.log('Status block!');
-		message.delete(10);
+		message.delete({ timeout: 10});
 		message.author.send(`You do not have access to this command.`);
 	}
 };

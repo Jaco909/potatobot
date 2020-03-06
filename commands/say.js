@@ -1,13 +1,13 @@
-exports.say = function (logaction, message, usertier, args, messageChannel) {
+exports.say = function (logaction, message, usertier, args, talk, messageChannel, guild) {
 	logaction()
-	if (usertier <= 4)
+	if (usertier <= 5)
 	{
 		if (args[0] !== undefined)
 		{
 			if ((isNaN(args[0])) && (args[0].startsWith('<#') && args[0].endsWith('>')) && (args[1] !== undefined))
 			{
 				console.log('Say run!');
-				messageChannel(args[0]);
+				messageChannel(args[0], talk, guild);
 			}
 			else
 			{

@@ -2,26 +2,26 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 	logaction()
 	if (message.channel.id === `${botchannel}`) {
 		if (args.length && args[0] == 'testers') {
-			if(message.member.roles.has(`${testersrole}`)){
+			if(message.member.roles.cache.has(`${testersrole}`)){
 				console.log('iam tester remove!');
-				message.member.removeRole(`${testersrole}`);
+				message.member.roles.remove(`${testersrole}`);
 				message.author.send(`You have been removed from Testers.`);
 			}
 			else {
 				console.log('iam tester add!');
-				message.member.addRole(`${testersrole}`);
+				message.member.roles.add(`${testersrole}`);
 				message.author.send(`You now have the role Testers.`);
 			}
 		}
 		else if(args.length && args[0] == 'madness') {
-			if(message.member.roles.has(`${canteencrasherrole}`)){
+			if(message.member.roles.cache.has(`${canteencrasherrole}`)){
 				console.log('iam madness remove!');
-				message.member.removeRole(`${canteencrasherrole}`);
+				message.member.roles.remove(`${canteencrasherrole}`);
 				message.author.send(`You have been removed from Madness.`);
 			}
 			else {
 				console.log('iam madness add!');
-				message.member.addRole(`${canteencrasherrole}`);
+				message.member.roles.add(`${canteencrasherrole}`);
 				message.author.send(`You now have the role Madness.`);
 			}
 		}
@@ -30,7 +30,7 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 			console.log('iam gay!');
 		}
 		else {
-			message.delete(10);
+			message.delete({ timeout: 10})
 			console.log('iam invalid!');
 			message.author.send(`That is not a valid role. Please use \`!help iam\` for available roles.`);
 		}

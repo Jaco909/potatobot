@@ -288,7 +288,80 @@ Was so unimportant that it was skipped entirely.
 1.10.3.2
 •Updated !yorick
 	-Mesage is sent as a rich embed.
+	-Unlocked from potato role.
 
 1.10.4
 •Updated ban system
 	-Bot will now automatically unban users at the end of their ban period.
+
+2.0 "Fix Everything"
+•Updated discord.js framework to v12.0.1. Respective reworks include:
+	-Message deletion
+	-User role gathering
+	-User id gathering
+	-Guild channel gathering
+	-Role assignment
+	-Avatar display
+•Updated potato bot
+	-Channel retrevial is now guild based instead of client based.
+	-Bot no longer reacts to any messages from DMs.
+	-Usertier now retrives the user's highest role to assign tier.
+	-Reorganized command list.
+	-Removed obsolete debug files.
+•Split more functions off of the main file.
+	-Usertier
+	-OwO conversion
+	-Channel id retrevial
+	-User id retrevial
+•Better tracking of message errors.
+•Updated temporary warn tracker
+	-Now removes any info files generated for temporary warns.
+•Added !add
+	-Allows users to add custom responces to howis, potato, shitpost, and yorick.
+•Updated !addwarninfo
+	-No longer lists all warns when no file is listed.
+	-Now acccepts info for temporary warns.
+•Updated !getwarn
+	-Sends links to the github repository when run with no file requested.
+•Updated !fuckgoback
+	-Now sends message via DM.
+•Updated !howis
+	-Responces are stored in /data/howis.txt.
+	-RNG var is delcared inside the command instead of the main bot file.
+	-Added more responses.
+	-Dynamicaly loads new responces.
+•Updated !launchdate
+	-Removed.
+•Updated !potato
+	-You can now recieve multiple potatoes.
+	-Potato chance increased by 30%.
+	-Activities are stored in /data/activities.txt.
+	-Failed potato responces are stored in /data/potatoresponce.txt.
+	-Dynamicaly loads new responces.
+	-Sending !potato durring cooldown outputs the block message to DM.
+	-Removed the progressive cooldown system.
+	-Removed typing status indicator.
+	-Optimized responce selection.
+•Updated !potatoyell
+	-Now stores the last value given in /data/potatoyellnum.txt.
+•Updated !pwarn
+	-Fixed user's 5th warning not being logged in #warnings.
+	-Invalid warn variables now reply in the same channel issued.
+•Updated !servers
+	-Removed MIA, AU, JAP, SGP.
+•Updated !shitpost
+	-Added new shitposts.
+	-Shitposts are stored in /data/shitposts.txt.
+	-Dynamicaly loads new shitposts.
+	-Optimized responce selection.
+•Updated !stream
+	-Command now rejects input if no url is given.
+	-Removed.
+•Updated !twarn
+	-Invalid warn variables now reply in the same channel issued.
+•Updated !warncheck
+	-Removed. This is now automatically called on all commands.
+•Updated !yorick
+	-Added more quotes.
+	-Quotes are stored in /data/yorick.txt.
+	-Dynamicaly loads new quotes.

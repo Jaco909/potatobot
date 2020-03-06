@@ -1,4 +1,4 @@
-exports.warn = function (logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute) {
+exports.warn = function (logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute, guild) {
 	if (usertier <= 4)
 	{
 		if ((args[0] !== undefined) && (args[1] !== undefined))
@@ -12,7 +12,6 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 			{
 				console.log('Warn run!');
 				const Discord = require('discord.js')
-				logaction();
 				if (args[0].startsWith('<@') && args[0].endsWith('>')) {
 					var userid = args[0].slice(2, -1);
 
@@ -23,6 +22,8 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				talk.shift();
 				talk.shift().toString();
 				time = (message.createdAt);
+				client.user.fetch(userid);
+				const user = client.users.cache.get(userid);
 				//warning for user exists maximum
 				if (fs.existsSync(`./warnings/5_${userid}.txt`)) {
 					fs.appendFileSync(`./warnings/5_${userid}.txt`, `\n**WARNING #5+**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
@@ -44,19 +45,19 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Beep Boop"
 						}
 					  }
 					});
-					client.channels.get(`${warnchannel}`).send({embed: {
+					guild.channels.cache.get(`${warnchannel}`).send({embed: {
 						color: 16738048,
 						author: {
 						  name: `${message.author.username}`,
-						  icon_url: `${message.author.displayAvatarURL}`
+						  icon_url: `${message.author.displayAvatarURL()}`
 						},
 						thumbnail: {
-							url: `${user.displayAvatarURL}`
+							url: `${user.avatarURL()}`
 						},
 						title: "Warning Log",
 						description: `Offending User: <@${userid}>`,
@@ -79,14 +80,15 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
 						}
 					  }
 					});
+					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//warning for user exists 4-5
@@ -114,19 +116,19 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Beep Boop"
 						}
 					  }
 					});
-					client.channels.get(`${warnchannel}`).send({embed: {
+					guild.channels.cache.get(`${warnchannel}`).send({embed: {
 						color: 16738048,
 						author: {
 						  name: `${message.author.username}`,
-						  icon_url: `${message.author.displayAvatarURL}`
+						  icon_url: `${message.author.avatarURL()}`
 						},
 						thumbnail: {
-							url: `${user.displayAvatarURL}`
+							url: `${user.avatarURL()}`
 						},
 						title: "Warning Log",
 						description: `Offending User: <@${userid}>`,
@@ -145,14 +147,15 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
 						}
 					  }
 					});
+					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//warning for user exists 3-4
@@ -180,19 +183,19 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Beep Boop"
 						}
 					  }
 					});
-					client.channels.get(`${warnchannel}`).send({embed: {
+					guild.channels.cache.get(`${warnchannel}`).send({embed: {
 						color: 16738048,
 						author: {
 						  name: `${message.author.username}`,
-						  icon_url: `${message.author.displayAvatarURL}`
+						  icon_url: `${message.author.displayAvatarURL()}`
 						},
 						thumbnail: {
-							url: `${user.displayAvatarURL}`
+							url: `${user.avatarURL()}`
 						},
 						title: "Warning Log",
 						description: `Offending User: <@${userid}>`,
@@ -211,14 +214,15 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
 						}
 					  }
 					});
+					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//warning for user exists 2-3
@@ -246,19 +250,19 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Beep Boop"
 						}
 					  }
 					});
-					client.channels.get(`${warnchannel}`).send({embed: {
+					guild.channels.cache.get(`${warnchannel}`).send({embed: {
 						color: 16738048,
 						author: {
 						  name: `${message.author.username}`,
-						  icon_url: `${message.author.displayAvatarURL}`
+						  icon_url: `${message.author.displayAvatarURL()}`
 						},
 						thumbnail: {
-							url: `${user.displayAvatarURL}`
+							url: `${user.avatarURL()}`
 						},
 						title: "Warning Log",
 						description: `Offending User: <@${userid}>`,
@@ -277,14 +281,15 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
 						}
 					  }
 					});
+					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//warning for user exists 1-2
@@ -312,19 +317,19 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Beep Boop"
 						}
 					  }
 					});
-					client.channels.get(`${warnchannel}`).send({embed: {
+					guild.channels.cache.get(`${warnchannel}`).send({embed: {
 						color: 16738048,
 						author: {
 						  name: `${message.author.username}`,
-						  icon_url: `${message.author.displayAvatarURL}`
+						  icon_url: `${message.author.displayAvatarURL()}`
 						},
 						thumbnail: {
-							url: `${user.displayAvatarURL}`
+							url: `${user.avatarURL()}`
 						},
 						title: "Warning Log",
 						description: `Offending User: <@${userid}>`,
@@ -343,7 +348,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
 						}
 					  }
@@ -351,7 +356,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 				//new warning user
@@ -375,19 +380,19 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Beep Boop"
 						}
 					  }
 					});
-					client.channels.get(`${warnchannel}`).send({embed: {
+					guild.channels.cache.get(`${warnchannel}`).send({embed: {
 						color: 16738048,
 						author: {
 						  name: `${message.author.username}`,
-						  icon_url: `${message.author.displayAvatarURL}`
+						  icon_url: `${message.author.displayAvatarURL()}`
 						},
 						thumbnail: {
-							url: `${user.displayAvatarURL}`
+							url: `${user.avatarURL()}`
 						},
 						title: "Warning Log",
 						description: `Offending User: <@${userid}>`,
@@ -406,7 +411,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 						],
 						timestamp: new Date(),
 						footer: {
-						  icon_url: client.user.avatarURL,
+						  icon_url: client.user.avatarURL(),
 						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
 						}
 					  }
@@ -414,7 +419,7 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 					console.log('Warning logged!');
 					if (warnmute == 0)
 					{
-						client.users.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
 				}
 			}
@@ -422,14 +427,14 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 		else
 		{
 			console.log('Warn error args!');
-			message.delete(10);
-			message.author.send(`Invalid warn variables. Please enter a username and reason at minimum.`);
+			message.delete({ timeout: 10});
+			message.reply(`Invalid warn variables. Please enter a @username and reason.`);
 		}
 	}
 	else
 	{
 		console.log('Warn block!');
-		message.delete(10);
+		message.delete({ timeout: 10});
 		message.author.send(`You do not have access to this command.`);
 	}
 };

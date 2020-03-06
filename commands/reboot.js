@@ -5,7 +5,7 @@ exports.reboot = function (logaction, message, usertier) {
 		guildMember.addRole(`${muterole}`); //invalid, throws error
 	}
 	else {
-		message.delete(10);
+		message.delete({ timeout: 10});
 		message.author.send(`You do not have access to this command.`);
 	}
 };

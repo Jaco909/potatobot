@@ -1,11 +1,14 @@
 {
   "name": "potatobot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Discord bot for Potato's MvM Servers",
   "main": "potato.js",
   "author": "Jakapoa",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "@discordjs/collection": "^0.1.5",
+    "discord.js": "github:discordjs/discord.js",
+    "prism-media": "^1.2.1",
+    "ws": "^7.2.1"
   }
 }

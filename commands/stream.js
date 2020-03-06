@@ -1,9 +1,9 @@
-exports.stream = function (logaction, message, usertier, args, streamchannel, client) {
+exports.stream = function (logaction, message, usertier, args, streamchannel, client, guild) {
 	logaction()
-	if (usertier <= 5)
+	if (usertier <= 6)
 	{
 		//selfstream mode
-		if (args[0] !== `stop`)
+		if ((args[0] !== `stop`) && (args.length !== 0))
 		{
 			console.log('Self Stream run!');
 			client.user.setPresence({
@@ -13,7 +13,7 @@ exports.stream = function (logaction, message, usertier, args, streamchannel, cl
 					url: `${args[0]}`
 				}
 			});
-			client.channels.get(`${streamchannel}`).send(`${message.member.displayName} is kicking some robot butt! Watch it live at ${args[0]}`);
+			guild.channels.cache.get(`${streamchannel}`).send(`${message.member.displayName} is kicking some robot butt! Watch it live at ${args[0]}`);
 		}
 		//secondarystream mode
 		if ((args[0] !== `stop`) && (args.length == 2))
@@ -21,24 +21,29 @@ exports.stream = function (logaction, message, usertier, args, streamchannel, cl
 			console.log('Secondary Stream run!');
 			client.user.setPresence({
 				game: {
-					name: `${args[1]} is streaming!`,
+					name: `${args[0]} is streaming!`,
 					type: "STREAMING",
-					url: `${args[0]}`
+					url: `${args[1]}`
 				}
 			});
-			client.channels.get(`${streamchannel}`).send(`${args[1]} is kicking some robot butt! Watch it live at ${args[0]}`);
+			guild.channels.cache.get(`${streamchannel}`).send(`${args[0]} is kicking some robot butt! Watch it live at ${args[1]}`);
 		}
 		if (args[0] == `stop`)
 		{
 			console.log('Stream stop!');
 			client.user.setStatus('online');
 			client.user.setActivity('!help for info');
-			client.channels.get(`${streamchannel}`).bulkDelete(1);
+			guild.channels.cache.get(`${streamchannel}`).bulkDelete(1);
+		}
+		else {
+			console.log('Stream fail!');
+			message.delete({ timeout: 10});
+			message.author.send(`Please add a valid url.`);
 		}
 	}
 	else {
 		console.log('Stream block!');
-		message.delete(10);
+		message.delete({ timeout: 10});
 		message.author.send(`You do not have access to this command.`);
 	}
 };

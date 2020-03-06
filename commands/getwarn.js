@@ -5,7 +5,6 @@ exports.getwarn = function (logaction, message, usertier, args, messageChannel, 
 		{
 			var warnget = args[0]
 			logaction()
-			console.log('Getwarn give!');
 			if (fs.existsSync(`./warnings/${warnget}`)) {
 				fs.readFile(`./warnings/${args[0]}`, (err, data) => {
 				message.author.send(`${data}`);
@@ -25,13 +24,13 @@ exports.getwarn = function (logaction, message, usertier, args, messageChannel, 
 		{
 			logaction()
 			console.log('Getwarn list give!');
-			message.author.send(`https://github.com/Jaco909/potatobot/blob/master/warnings`);
+			message.author.send(`**Permanent Warns:** https://github.com/Jaco909/potatobot/tree/master/warnings \n **Temporary Warns:** https://github.com/Jaco909/potatobot/tree/master/temp_warnings`);
 		}
 	}
 	else
 	{
 		console.log('Getwarn block!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send(`You do not have access to this command.`);
 	}
 };

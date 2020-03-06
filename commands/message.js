@@ -1,6 +1,6 @@
 exports.messagefunc = function (logaction, message, usertier, args, talk, client) {
 	logaction()
-	if (usertier <= 4)
+	if (usertier <= 5)
 	{
 		if (args[0] !== undefined)
 		{
@@ -16,7 +16,7 @@ exports.messagefunc = function (logaction, message, usertier, args, talk, client
 	}
 	else {
 		console.log('Message block!');
-		message.delete(10);
+		message.delete({ timeout: 10});
 		message.author.send(`You do not have access to this command.`);
 	}
 };

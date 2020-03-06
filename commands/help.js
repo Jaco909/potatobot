@@ -1,9 +1,9 @@
-exports.help = function (logaction, message, args, usertier, getRandomInt, potatorole, client) {
+exports.help = function (logaction, message, args, usertier, getRandomInt, potatorole, client, guild) {
 	logaction()
 	var stopgethelp = ["https://youtu.be/9Deg7VrpHbM", "https://youtu.be/NPtSGYi7HII?t=23s", "https://youtu.be/S4bmCvekW48", "https://youtu.be/9Deg7VrpHbM"];
 	if (args[0] == `help`) {
 		console.log('Help help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		const stoprngmessage = getRandomInt(1, 3);
 		const stophelp = stopgethelp[stoprngmessage];
 		message.author.send({embed: {
@@ -20,7 +20,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -28,7 +28,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `potato`) {
 		console.log('Potato help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -43,7 +43,30 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
+			  text: "Beep Boop"
+			}
+		  }
+		});
+	}
+	else if (args[0] == `add`) {
+		console.log('Add help!');
+		message.delete({ timeout: 10})
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!add`,
+			fields: [{
+				name: "Usage",
+				value: `!add [command] [text]`
+			  },
+			  {
+				name: "Description",
+				value: `Adds a custom response to the listed command. Valid commands are:\n**Shitpost:** Adds a new shitpost.\n**Howis:** Adds a new !howis response.\n**Potatofail:** Adds a new potato rejection response.\n**Activity:** Adds a new response about !potato usage.\n**Yorick:** Adds a new !yorick response.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -51,7 +74,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `owo`) {
 		console.log('Owo help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -66,7 +89,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -74,7 +97,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `yorick`) {
 		console.log('Yorick help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -89,7 +112,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -97,7 +120,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `howis`) {
 		console.log('Howis help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -112,7 +135,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -120,7 +143,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `avatar`) {
 		console.log('Avatar help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -135,7 +158,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -143,7 +166,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `warnmute`) {
 		console.log('Warnmute help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -158,7 +181,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -166,7 +189,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `pwarn`) {
 		console.log('Warn help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -181,7 +204,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -189,7 +212,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `twarn`) {
 		console.log('Warn help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -204,7 +227,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -212,7 +235,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `addwarninfo`) {
 		console.log('Warn help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -227,7 +250,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -235,7 +258,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `getwarn`) {
 		console.log('Getwarn help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -250,7 +273,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -258,7 +281,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `servers`) {
 		console.log('Servers help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -269,18 +292,18 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  },
 			  {
 				name: "Description",
-				value: `Retrives information about current Potato servers. You can also add \`USA\` for USA servers and \`EU\` for Europe servers.`
+				value: `Retrives information about current Potato servers. Valid regions: \n\`PHL\`\n\`TX\`\n\`EU\``
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
 		});
 	}
 	else if(args[0] == `iam`) {
-		message.delete(10);
+		message.delete({ timeout: 10})
 		console.log('iam help!');
 		message.author.send({embed: {
 			color: 8213292,
@@ -296,7 +319,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -304,7 +327,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `shitpost`) {
 		console.log('Shitpost help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -319,7 +342,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -327,7 +350,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `changelog`) {
 		console.log('Changelog help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -342,7 +365,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -350,7 +373,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `purge`) {
 		console.log('Purge help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -365,7 +388,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -373,7 +396,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `fuckgoback`) {
 		console.log('Fuckgoback help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -388,7 +411,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -396,7 +419,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `shutup`) {
 		console.log('Shutup help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -411,7 +434,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -437,7 +460,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -463,7 +486,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -471,7 +494,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `stream`) {
 		console.log('Stream help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -486,7 +509,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -494,7 +517,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `status`) {
 		console.log('Status help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -509,20 +532,15 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
 		});
 	}
-	/* else if (args[0] == `launchdate`) {
-		console.log('Launchdate help!');
-		message.delete(10);
-		message.author.send(`**Usage:** \`!status status\`\n\**Channels:** *#botato_cellar*.\n\**Description:** Sets the status of the bot. Options are: \`online\`, \`idle\`, \`dnd\`. This will set the message back to it's default setting.`);
-	} */
 	else if (args[0] == `message`) {
 		console.log('Message help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -537,7 +555,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -545,7 +563,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	}
 	else if (args[0] == `say`){
 		console.log('Say help!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send({embed: {
 			color: 8213292,
 			title: "Command",
@@ -560,7 +578,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -582,7 +600,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -636,11 +654,11 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			}
 		  }
 		});
-		if (usertier <= 5) {
+		/* if (usertier <= 6) {
 			console.log('Help GIANT run!');
 			message.author.send({embed: {
 			color: 9442302,
@@ -651,12 +669,12 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			}
 		  }
 		});
-		}
-		if (message.member.roles.has(`${potatorole}`)) {
+		} */
+		if (message.member.roles.cache.has(`${potatorole}`)) {
 			console.log('Help POTATO run!');
 			message.author.send({embed: {
 			color: 8213292,
@@ -671,7 +689,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			}
 		  }
 		});
@@ -684,6 +702,10 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			fields: [{
 				name: "Bot Controls",
 				value: `~`
+			  },
+			  {
+				name: "!add",
+				value: `Adds new responses to the bot's mesages.`
 			  },
 			  {
 				name: "!addpotato",
@@ -710,8 +732,8 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 				value: `Force bot to restart.`
 			  },
 			  {
-				name: "Moderation Commands",
-				value: `~`
+				name: "**Moderation Commands**",
+				value: ` `
 			  },
 			  {
 				name: "!purge",
@@ -738,8 +760,8 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 				value: `Disables reporting warnings to the offender.`
 			  },
 			  {
-				name: "Unlisted Commands",
-				value: `~`
+				name: "**Unlisted Commands**",
+				value: ` `
 			  },
 			  {
 				name: "!fuckgoback",
@@ -751,24 +773,16 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  }
 			],
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			}
 		  }
 		});
 		}
-		/* if (usertier <= 3) {
-			console.log('help MODERATOR run!');
-			message.author.send('\`\`\`Moderator Commands\`\`\`\n\`!status\` : Sets the status of the bot.\n\`!stream\` : Set the bot to display a Twitch stream.');
-		} */
-		/* if (usertier <= 2) {
-			console.log('Help officer run!');
-			message.author.send('\`\`\`Officer Commands\`\`\`\`!debug\` : Whatever garbage jaka is working on at the moment.');
-		} */
 		message.author.send({embed: {
 			color: 4886754,
 			title: `Use !\`help\` **command** for more information about a command. All commands have help information.\n\All commands must be sent through **#botato_cellar**.`,
 			footer: {
-			  icon_url: client.user.avatarURL,
+			  icon_url: client.user.avatarURL(),
 			  text: "Beep Boop"
 			}
 		  }
@@ -777,7 +791,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 	/* else
 	{
 		console.log('help error!');
-		message.delete(10);
+		message.delete({ timeout: 10})
 		message.author.send(`.`);
 	} */
 };
