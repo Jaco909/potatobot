@@ -43,6 +43,9 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 										if (err) throw err;
 									});
 								}, 1000);
+								setTimeout(() => {
+									potatoRecently.delete(message.author.id);
+								}, 3600000 ); //3600000
 							});
 						}
 						else{
@@ -51,6 +54,9 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 									if (err) throw err;
 								});
 							}, 1000);
+							setTimeout(() => {
+								potatoRecently.delete(message.author.id);
+							}, 3600000 ); //3600000
 						}
 					}
 					else{
@@ -62,14 +68,13 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 							potatoresponce = potatoresponce.split("\n")
 							potatoresponcecount = potatoresponce.length
 							var potatorngmessage = getRandomInt(1, potatoresponcecount);
-							message.channel.send(potatoresponce[potatorngmessage]);
-						});
-						setTimeout(() => {
+							message.channel.send(`${potatoresponce[potatorngmessage]}`);
+							setTimeout(() => {
 							potatoRecently.delete(message.author.id);
-						}, timeouthour ); //3600000
+							}, 3600000 ); //3600000
+						});
 						if (potatocount >= potatoyellnum) {
 							console.log('Potato yell!');
-							//message.channel.startTyping();
 							setTimeout(() => {
 								message.channel.send('**C\'mon guys, are just going to sit there and spam !potato all day?**');
 							}, 2000);
@@ -80,9 +85,6 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 								message.channel.send(`**${potatoyell}**`);
 								potatocount = 0
 							}, 4000);
-							/* setTimeout(() => {
-								shutup(message);
-							}, 4100); */
 						}
 					}
 				}

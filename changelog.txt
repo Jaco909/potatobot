@@ -369,3 +369,7 @@ Was so unimportant that it was skipped entirely.
 2.0.1
 •Updated !add
 	-Gives verification on appends.
+
+2.0.2
+•Updated !potato
+	-Correctly sends the message as a string instead of plain text.

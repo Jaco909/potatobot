@@ -145,7 +145,7 @@ client.on("guildBanAdd", function(guild, user){
 });
 
 //message suppression for DMs
-/* client.on('message', message => {
+client.on('message', message => {
 	if ((!message.author.bot) && (message.channel.id != 480079567458140171) && (message.channel.id != 480080287393382402) && (message.channel.id != 661750808026808370) && (message.channel.id != 437863525965365249) && (message.channel.id != 606836121325797377) && (message.channel.id != 437863546852999168) && (message.channel.id != 572097290119020551) && (message.channel.id != 504399559993196545) && (message.channel.id != 655472399713828865) && (message.channel.id != 487328581320441888) && (message.channel.id != 593502787145302021) && (message.channel.id != 437863876587945985) && (message.channel.id != 480416823695638578) && (message.channel.id != 480416908223447052) && (message.channel.id != 505837134335442964) && (message.channel.id != 587862013779378186) && (message.channel.id != 650479881133490187) && (message.channel.id != 415523320281301004) && (message.channel.id != 415530274294726666) && (message.channel.id != 415530382897840128) && (message.channel.id != 551330160545234944) && (message.channel.id != 626459691278532663) && (message.channel.id != 679201651961102358)){
 		date = new Date();
 		console.log(`${date}`);
@@ -153,7 +153,7 @@ client.on("guildBanAdd", function(guild, user){
 		console.log(message.channel.id);
 		console.log(`${message}`);
 	}
-}); */
+});
 
 //message recieved
 client.on('message', message => {
@@ -243,7 +243,7 @@ client.on('message', message => {
 				guildMember.addRole(`${muterole}`); //invalid, throws error
 			}
 		}
-		if ((message.channel.id === `${botchannel}`) || (message.channel.id === `${entrancechannel}`) || (usertier <=4))
+		if ((message.channel.id === `${botchannel}`) || (message.channel.id === `${entrancechannel}`) || (usertier <=5))
 		{
 			try {
 				if (command === 'add') {
