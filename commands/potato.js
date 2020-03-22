@@ -10,7 +10,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			fs.readFile(`./data/potatoyellnum.txt`, (err, potatoyellnum) => {
 				potatoyellnum = potatoyellnum.toLocaleString();
 				potatoyellnum = parseInt(potatoyellnum);
-				const potatorng = getRandomInt(2, 71);
+				const potatorng = getRandomInt(60, 80);
 				const potatorngyell = getRandomInt(1, activitycount);
 				const potatoyell = activities[potatorngyell];
 				const potatorngmessage = getRandomInt(1, 10);
@@ -67,7 +67,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 							potatoresponce = potatoresponce.toLocaleString();
 							potatoresponce = potatoresponce.split("\n")
 							potatoresponcecount = potatoresponce.length
-							var potatorngmessage = getRandomInt(1, potatoresponcecount);
+							var potatorngmessage = getRandomInt(1, potatoresponcecount).toLocaleString();
 							message.channel.send(`${potatoresponce[potatorngmessage]}`);
 							setTimeout(() => {
 							potatoRecently.delete(message.author.id);
