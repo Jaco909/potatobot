@@ -10,7 +10,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			fs.readFile(`./data/potatoyellnum.txt`, (err, potatoyellnum) => {
 				potatoyellnum = potatoyellnum.toLocaleString();
 				potatoyellnum = parseInt(potatoyellnum);
-				const potatorng = getRandomInt(60, 80);
+				const potatorng = getRandomInt(61, 71);
 				const potatorngyell = getRandomInt(1, activitycount);
 				const potatoyell = activities[potatorngyell];
 				const potatorngmessage = getRandomInt(1, 10);
@@ -43,6 +43,32 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 										if (err) throw err;
 									});
 								}, 1000);
+								setTimeout(() => {
+									if (potatovalue == 2){
+									message.channel.send(`Well aren't you special, ${message.member.displayName}. You have ${potatovalue} potatoes now.`);
+									}
+									if (potatovalue == 3){
+										message.channel.send(`You have ${potatovalue} potatoes now. Why are you trying to hoard potatoes?`);
+									}
+									if (potatovalue == 4){
+										message.channel.send(`You have ${potatovalue} potatoes now. Are you trying to start a farm or something?`);
+									}
+									if (potatovalue == 5){
+										message.channel.send(`This is getting out of hand, now there are ${potatovalue} of them.`);
+									}
+									if (potatovalue == 6){
+										message.channel.send(`Seriously ${message.member.displayName}, you have ${potatovalue} potatoes now. What are you even trying to achieve here?`);
+									}
+									if (potatovalue == 7){
+										message.channel.send(`Well well, check out the big potatoes on ${message.member.displayName}. How many you got now? ${potatovalue}? Wooooow.`);
+									}
+									if (potatovalue == 8){
+										message.channel.send(`Holy shamoley! ${potatovalue} potatoes! They don't even do anything!`);
+									}
+									if (potatovalue <= 9){
+										message.channel.send(`@207174577783177216 could you add more phrases? This clown has soooooo many potatoes.`);
+									}
+								}, 2000);
 								setTimeout(() => {
 									potatoRecently.delete(message.author.id);
 								}, 3600000 ); //3600000
