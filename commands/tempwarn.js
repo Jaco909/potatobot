@@ -25,98 +25,9 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 				time = (message.createdAt);
 				client.user.fetch(userid);
 				const user = client.users.cache.get(userid);
-				//warning for user exists maximum
-				if (fs.existsSync(`./temp_warnings/5t_${userid}.txt`)) {
-					fs.appendFileSync(`./temp_warnings/5t_${userid}.txt`, `\n**WARNING #5+**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					//check for existing timestamp
-					fs.readdir(`./temp_dates`, function(err, filenames) {
-						if (err) {
-						  onError(err);
-						  return;
-						}
-						filenames.forEach(checkid);
-						
-						function checkid(file){
-							filename = file.slice(0,-4);
-							fs.readFile(`./temp_dates/${filename}.txt`, (err, useridfromfile) => {
-								if (err) {
-								  onError(err);
-								  return;
-								}
-								if (useridfromfile == userid) {
-									console.log(`existing time found`)
-									fs.renameSync(`./temp_dates/${filename}.txt`, `./temp_dates/${militime}.txt`, (err) => {
-										if (err) throw err;
-										console.log('Rename complete!');
-									});
-								}
-							});
-						}
-					});
-					message.author.send({embed: {
-						color: 16738048,
-						title: "Temporary Warning Logged",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Warning Log Url",
-							value: `[5t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/5t_${userid}.txt)`
-						  },
-						  {
-							name: "Please add any additional info or link to the offending image(s)",
-							value: `!addwarninfo 5t_${userid}.txt [info]`
-						  },
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Beep Boop"
-						}
-					  }
-					});
-					guild.channels.cache.get(`${warnchannel}`).send({embed: {
-						color: 16738048,
-						author: {
-						  name: `${message.author.username}`,
-						  icon_url: `${message.author.avatarURL()}`
-						},
-						thumbnail: {
-							url: `${user.avatarURL()}`
-						},
-						title: "Temporary Warning Log",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Number of warnings",
-							value: "6"
-						  },
-						  {
-							name: "Reason",
-							value: `${talk.join(" ")}`
-						  },
-						  {
-							name: "Warning Log",
-							value: `[5t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/5t_${userid}.txt)`
-						  },
-						  {
-							name: "CAUTION",
-							value: `@here This user has been warned over 5 times now. Action should be taken.`
-						  }
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
-						}
-					  }
-					});
-					if (warnmute == 0)
-					{
-						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
-					}
-				}
-				//warning for user exists 4-5
+				const banid = message.mentions.users.first();
+				const banmember = message.guild.member(banid);
+				//warning for user exists 4-5perma
 				if (fs.existsSync(`./temp_warnings/4t_${userid}.txt`)) {
 					fs.renameSync(`./temp_warnings/4t_${userid}.txt`, `./temp_warnings/5t_${userid}.txt`, (err) => {
 						if (err) throw err;
@@ -206,6 +117,10 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 					if (warnmute == 0)
 					{
 						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
+					}
+					//potato banhammer
+					if (banmember){
+						banmember.ban({});
 					}
 				}
 				//warning for user exists 3-4
@@ -299,6 +214,10 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 					{
 						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
 					}
+					//iron banhammer
+					if (banmember){
+						banmember.ban({});
+					}
 				}
 				//warning for user exists 2-3
 				if (fs.existsSync(`./temp_warnings/2t_${userid}.txt`)) {
@@ -390,6 +309,10 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 					if (warnmute == 0)
 					{
 						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
+					}
+					//squeeky toy banhammer
+					if (banmember){
+						banmember.ban({});
 					}
 				}
 				//warning for user exists 1-2

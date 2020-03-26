@@ -366,10 +366,12 @@ Was so unimportant that it was skipped entirely.
 	-Quotes are stored in /data/yorick.txt.
 	-Dynamicaly loads new quotes.
 
-2.0.1
-•Updated !add
-	-Gives verification on appends.
-
-2.0.2
+2.1 "Autobahn"
 •Updated !potato
-	-Correctly sends the message as a string instead of plain text.
+	-Bot comments on the ammount of potatoes you currently have.
+•Updated warn system
+	-3+ warns of the same type automatically ban the user.
+	-Temp warns now last 31 days.
+	-Removed tracking for bans over 5.
+•Updated ban system
+	-Fixed auto-unban tracking.

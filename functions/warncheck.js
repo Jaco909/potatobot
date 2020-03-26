@@ -11,7 +11,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 		function checktime(item){
 			filetime = item.slice(0,-4);
 			//console.log(filetime);
-			releasetime = +filetime + 8035200000;
+			releasetime = +filetime + 2678400000;
 			//console.log(releasetime);
 			if (+releasetime < militime){
 				console.log(`Expired warn!`);
@@ -164,7 +164,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 					fs.readFile(`./ban_dates/${filetime}.txt`, (err, userid) => {
 						console.log(`Date file exists!`)
 						//unban
-						guild.unban(`${userid}`);
+						guild.members.unban(`${userid}`);
 						//delete file
 						fs.unlink(`./ban_dates/${filetime}.txt`, (err) => {
 							if (err) throw err;

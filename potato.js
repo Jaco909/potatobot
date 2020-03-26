@@ -141,6 +141,8 @@ client.on("guildBanRemove", function(guild, user){
 
 //log bans
 client.on("guildBanAdd", function(guild, user){
+	console.log(`${user}`);
+	console.log(`${user.id}`);
 	bantime(guild, user, client, fs, warnchannel);
 });
 

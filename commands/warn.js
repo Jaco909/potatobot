@@ -24,74 +24,9 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				time = (message.createdAt);
 				client.user.fetch(userid);
 				const user = client.users.cache.get(userid);
-				//warning for user exists maximum
-				if (fs.existsSync(`./warnings/5_${userid}.txt`)) {
-					fs.appendFileSync(`./warnings/5_${userid}.txt`, `\n**WARNING #5+**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					message.author.send({embed: {
-						color: 16738048,
-						title: "Warning Logged",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Warning Log",
-							value: `[5_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/5_${userid}.txt)`
-						  },
-						  {
-							name: "Please add any additional info or link to the offending image(s)",
-							value: `!addwarninfo 5_${userid}.txt [info]`
-						  },
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Beep Boop"
-						}
-					  }
-					});
-					guild.channels.cache.get(`${warnchannel}`).send({embed: {
-						color: 16738048,
-						author: {
-						  name: `${message.author.username}`,
-						  icon_url: `${message.author.displayAvatarURL()}`
-						},
-						thumbnail: {
-							url: `${user.avatarURL()}`
-						},
-						title: "Warning Log",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Number of warnings",
-							value: "6"
-						  },
-						  {
-							name: "Reason",
-							value: `${talk.join(" ")}`
-						  },
-						  {
-							name: "Warning Log",
-							value: `[5_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/5_${userid}.txt)`
-						  },
-						  {
-							name: "CAUTION",
-							value: `@here This user has been warned over 5 times now. Action should be taken.`
-						  }
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
-						}
-					  }
-					});
-					console.log('Warning logged!');
-					if (warnmute == 0)
-					{
-						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
-					}
-				}
-				//warning for user exists 4-5
+				const banid = message.mentions.users.first();
+				const banmember = message.guild.member(banid);
+				//warning for user exists 4-5perma
 				if (fs.existsSync(`./warnings/4_${userid}.txt`)) {
 					fs.renameSync(`./warnings/4_${userid}.txt`, `./warnings/5_${userid}.txt`, (err) => {
 						if (err) throw err;
@@ -156,6 +91,10 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 					if (warnmute == 0)
 					{
 						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+					}
+					//potato banhammer
+					if (banmember){
+						banmember.ban({});
 					}
 				}
 				//warning for user exists 3-4
@@ -224,6 +163,10 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 					{
 						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
 					}
+					//iron banhammer
+					if (banmember){
+						banmember.ban({});
+					}
 				}
 				//warning for user exists 2-3
 				if (fs.existsSync(`./warnings/2_${userid}.txt`)) {
@@ -290,6 +233,10 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 					if (warnmute == 0)
 					{
 						client.users.cache.get(`${userid}`).send(`You have recieved a warning. **Reason:** ${talk.join(" ")}.`);
+					}
+					//squeeky toy banhammer
+					if (banmember){
+						banmember.ban({});
 					}
 				}
 				//warning for user exists 1-2
