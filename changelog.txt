@@ -375,3 +375,8 @@ Was so unimportant that it was skipped entirely.
 	-Removed tracking for bans over 5.
 •Updated ban system
 	-Fixed auto-unban tracking.
+
+2.1.1
+•Updated !potato
+	-Learned the difference between < and >.
+	-Fixed broken mention.

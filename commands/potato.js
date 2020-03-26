@@ -65,8 +65,8 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 									if (potatovalue == 8){
 										message.channel.send(`Holy shamoley! ${potatovalue} potatoes! They don't even do anything!`);
 									}
-									if (potatovalue <= 9){
-										message.channel.send(`@207174577783177216 could you add more phrases? This clown has soooooo many potatoes.`);
+									if (potatovalue >= 9){
+										message.channel.send(`<@207174577783177216> could you add more phrases? This clown has soooooo many potatoes.`);
 									}
 								}, 2000);
 								setTimeout(() => {
