@@ -27,8 +27,10 @@ commandlist.forEach(commandname => {
 const { add } = require('./commands/add.js');
 const { addpotato } = require('./commands/addpotato.js');
 const { addwarninfo } = require('./commands/addwarninfo.js');
+const { afenable } = require('./commands/afenable.js');
 const { avatar } = require('./commands/avatar.js');
 const { changelog } = require('./commands/changelog.js');
+const { debug } = require('./commands/debug.js');
 const { fuckgoback } = require('./commands/fuckgoback.js');
 const { getwarn } = require('./commands/getwarn.js');
 const { help } = require('./commands/help.js');
@@ -51,6 +53,8 @@ const { warn } = require('./commands/warn.js');
 const { yorick } = require('./commands/yorick.js');
 
 //load functions
+const { aprilfools } = require('./functions/AFrun.js');
+const { aprilfoolsreset } = require('./functions/AFcleanup.js');
 const { bantime } = require('./functions/bantime.js');
 const { furtrim } = require('./functions/furtrim.js');
 const { messageChannel } = require('./functions/messageChannel.js');
@@ -62,13 +66,20 @@ const warnFolder = './warnings/';
 const tempwarnFolder = './temp_warnings/';
 const warntimeFolder = './temp_dates/';
 const bantimeFolder = './ban_dates/';
+const AFFolder = './af_data/';
 
-//check for missing data files
+//check for missing data files; write dummy file.
 if (!fs.existsSync(`./data/activities.txt`)) {
 	console.log(`DATA FILE MISSING: activities.txt`);
+	fs.writeFileSync(`./data/activities.txt`, `DATA FILE MISSING: activities.txt <@207174577783177216> you fucked up big time.`, (err) => {});
 }
 if (!fs.existsSync(`./data/potatoyellnum.txt`)) {
 	console.log(`DATA FILE MISSING: potatoyellnum.txt`);
+	fs.writeFileSync(`./data/potatoyellnum.txt`, `DATA FILE MISSING: potatoyellnum.txt <@207174577783177216> you fucked up big time.`, (err) => {});
+}
+if (!fs.existsSync(`./data/afstate.txt`)) {
+	console.log(`DATA FILE MISSING: afstate.txt`);
+	fs.writeFileSync(`./data/afstate.txt`, `0`, (err) => {});
 }
 
 //declare constants w/ temp values
@@ -89,6 +100,7 @@ var warnmute = 0;
 var yorickrng = 0;
 var date = 0;
 var militime = 0;
+var afstate = 0;
 
 //???
 client.commands = new Discord.Collection();
@@ -114,6 +126,9 @@ client.on('ready', () => {
 	client.user.setStatus('online');
 	client.user.setActivity('!help for info');
 	client.user.setUsername('Potatobot rc3');
+	fs.readFile(`./data/afstate.txt`, (err, afstated) => {
+		afstate = afstated
+	});
 });
 
 //auto robot role assign (dyno emergency catch)
@@ -157,6 +172,23 @@ client.on('message', message => {
 	}
 });
 
+//aprilfools
+client.on('message', message => {
+	if (!message.author.bot){
+		const guild = message.guild;
+		const grabhighest = guild.member(message.author).roles.highest;
+		const rolehighest = String(grabhighest).slice(3, -1);
+		usertier = roletier(rolehighest, usertier, manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole, exstaff);
+		fs.readFile(`./data/afstate.txt`, (err, afstated) => {
+			afstate = afstated
+			if (afstate == 1){
+				aprilfools(message, usertier, fs, guild, getRandomInt);
+			}
+		});
+	}
+});
+
+
 //message recieved
 client.on('message', message => {
 	if (message.content.startsWith(prefix) && !message.author.bot && (message.channel.type !== `dm`)) {
@@ -180,7 +212,7 @@ client.on('message', message => {
 		warncheck(fs, client, militime, date, warnchannel, guild);
 		
 		//command logging
-		function logaction(rng) {
+		function logaction(rng, rng2, rng3) {
 			if ((command === 'potato') || (command === 'shitpost') || (command === 'howis') || (command === 'yorick')) {
 				return guild.channels.cache.get(`${logchannel}`).send({embed: {
 						color: 9647333,
@@ -197,6 +229,28 @@ client.on('message', message => {
 						  {
 							name: "RNG",
 							value: `${rng}`
+						  }
+						],
+						timestamp: new Date(),
+					}
+					});
+			}
+			else if (command === 'aprilfools') {
+				return guild.channels.cache.get(`${logchannel}`).send({embed: {
+						color: 9647333,
+						author: {
+						  name: `${message.member.displayName}`,
+						  icon_url: `${message.author.displayAvatarURL()}`
+						},
+						title: "AF Cleanup",
+						description: `Attempted to restore ${rng} usernames.`,
+						fields: [{
+							name: "Processed Usernames",
+							value: `${rng2}`
+						  },
+						  {
+							name: "Failed Changes",
+							value: `${rng3}`
 						  }
 						],
 						timestamp: new Date(),
@@ -256,6 +310,9 @@ client.on('message', message => {
 				}
 				else if (command === 'addwarninfo'){
 					addwarninfo(logaction, message, usertier, args, messageChannel, fs, talk, warnchannel, client, moderator, warnlist, guild);
+				}
+				else if (command === 'aprilfools'){
+					afenable(logaction, message, usertier, args, fs, guild, aprilfoolsreset, client);
 				}
 				else if (command === 'avatar'){
 					avatar(logaction, message, args, getUserFromMention, talk, client);
@@ -350,6 +407,9 @@ client.on('message', message => {
 					yorick(logaction, message, args, getRandomInt, yorickrng, yorickRecently, botchannel, timeout5min, args, potatorole, usertier, guild, client, fs);
 				}
 				
+				else if (command === 'debug'){
+					debug(logaction, message, usertier, guild);
+				}
 				else if (command === 'nuq'){
 					message.author.send(`https://youtu.be/1nDnqLDmFrs?t=11`);
 				}
