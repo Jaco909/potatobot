@@ -1,5 +1,5 @@
 exports.afenable = function (logaction, message, usertier, args, fs, guild, aprilfoolsreset, client) {
-	if (usertier <= 4)
+	if (usertier <= 5)
 	{
 		if (args[0] != undefined)
 		{
@@ -20,7 +20,9 @@ exports.afenable = function (logaction, message, usertier, args, fs, guild, apri
 					fs.writeFileSync(`./data/afstate.txt`, `0`, (err) => {
 						if (err) throw err;
 					});
-					aprilfoolsreset(fs, guild, client, logaction);
+					setTimeout(() => {
+						aprilfoolsreset(fs, guild, client, logaction);
+					}, 500 );
 					message.reply('April fools mode disabled. Restoring usernames...');
 				}
 				else{

@@ -174,7 +174,7 @@ client.on('message', message => {
 
 //aprilfools
 client.on('message', message => {
-	if (!message.author.bot){
+	if (!message.author.bot && (message.channel.type !== `dm`)){
 		const guild = message.guild;
 		const grabhighest = guild.member(message.author).roles.highest;
 		const rolehighest = String(grabhighest).slice(3, -1);

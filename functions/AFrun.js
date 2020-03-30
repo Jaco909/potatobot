@@ -1,5 +1,5 @@
 exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
-	if (usertier >= 4){
+	if (usertier >= 5){
 		const guildMember = message.member;
 		var userid = message.member.id;
 		var name = guildMember.nickname;
@@ -34,8 +34,8 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 									potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
 								}
 								while (potatoname > 32)
-								//guildMember.setNickname(`${potatoname}`);
-								guildMember.setNickname(`${name}͔`);
+								guildMember.setNickname(`${potatoname}`);
+								//guildMember.setNickname(`${name}͔`);
 							});
 						});
 					});
@@ -72,8 +72,8 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 									potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
 								}
 								while (potatoname > 32)
-								//guildMember.setNickname(`${potatoname}`);
-								guildMember.setNickname(`${name}͔`);
+								guildMember.setNickname(`${potatoname}`);
+								//guildMember.setNickname(`${name}͔`);
 							});
 						});
 					});
