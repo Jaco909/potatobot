@@ -6,27 +6,40 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 		
 		if (!fs.existsSync(`./af_data/${userid}.txt`)) {
 			if (name != undefined){
-				fs.writeFileSync(`./af_data/${userid}.txt`, `${name}`, (err) => {
-					if (err) throw err;
-					setTimeout(() => {
-						fs.readFile(`./data/AF.txt`, (err, potatoname) => {
-							potatoname = potatoname.toLocaleString();
-							potatoname = potatoname.split("\n");
-							potatonamecount = potatoname.length
-							var potatonamerng = getRandomInt(1, potatonamecount);
-							var potatonamerng2 = getRandomInt(3, 10);
-							var potatoname = potatoname[potatonamerng];
-							if (potatonamerng2 < 6){
-								potatoname = potatoname + " Spud" + ` ${name}`;
-								guildMember.setNickname(`${potatoname}`);
-							}
-							else if (potatonamerng2 >= 6){
-								potatoname = potatoname + " Potato" + ` ${name}`;
-								guildMember.setNickname(`${potatoname}`);
-							}
+				fs.writeFileSync(`./af_data/${userid}.txt`, `${name}`, (err) => {});
+				setTimeout(() => {
+					fs.readFile(`./data/AF1.txt`, (err, potato1) => {
+						fs.readFile(`./data/AF2.txt`, (err, potato2) => {
+							fs.readFile(`./data/AF3.txt`, (err, potato3) => {
+								potato1 = potato1.toLocaleString();
+								potato2 = potato2.toLocaleString();
+								potato3 = potato3.toLocaleString();
+								potato1 = potato1.split("\n");
+								potato2 = potato2.split("\n");
+								potato3 = potato3.split("\n");
+								potato1count = potato1.length
+								potato2count = potato2.length
+								potato3count = potato3.length
+								var potato1rng = getRandomInt(1, potato1count);
+								var potato2rng = getRandomInt(1, potato2count);
+								var potato3rng = getRandomInt(1, potato3count);
+								var potatoname1 = potato1[potato1rng];
+								var potatoname2 = potato2[potato2rng];
+								var potatoname3 = potato3[potato3rng];
+								potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
+								do{
+									var potatoname1 = potato1[potato1rng];
+									var potatoname2 = potato2[potato2rng];
+									var potatoname3 = potato3[potato3rng];
+									potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
+								}
+								while (potatoname > 32)
+								//guildMember.setNickname(`${potatoname}`);
+								guildMember.setNickname(`${name}͔`);
+							});
 						});
-					}, 100 );
-				});
+					});
+				}, 100 );
 			}
 			else if (name == undefined){
 				var name = guildMember.displayName;
@@ -34,21 +47,35 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 					if (err) throw err;
 				});
 				setTimeout(() => {
-					fs.readFile(`./data/AF.txt`, (err, potatoname) => {
-						potatoname = potatoname.toLocaleString();
-						potatoname = potatoname.split("\n");
-						potatonamecount = potatoname.length
-						var potatonamerng = getRandomInt(1, potatonamecount);
-						var potatonamerng2 = getRandomInt(3, 10);
-						var potatoname = potatoname[potatonamerng];
-						if (potatonamerng2 < 6){
-							potatoname = potatoname + " Spud" + ` ${name}`;
-							guildMember.setNickname(`${potatoname}`);
-						}
-						else if (potatonamerng2 >= 6){
-							potatoname = potatoname + " Potato" + ` ${name}`;
-							guildMember.setNickname(`${potatoname}`);
-						}
+					fs.readFile(`./data/AF1.txt`, (err, potato1) => {
+						fs.readFile(`./data/AF2.txt`, (err, potato2) => {
+							fs.readFile(`./data/AF3.txt`, (err, potato3) => {
+								potato1 = potato1.toLocaleString();
+								potato2 = potato2.toLocaleString();
+								potato3 = potato3.toLocaleString();
+								potato1 = potato1.split("\n");
+								potato2 = potato2.split("\n");
+								potato3 = potato3.split("\n");
+								potato1count = potato1.length
+								potato2count = potato2.length
+								potato3count = potato3.length
+								var potato1rng = getRandomInt(1, potato1count);
+								var potato2rng = getRandomInt(1, potato2count);
+								var potato3rng = getRandomInt(1, potato3count);
+								var potatoname1 = potato1[potato1rng];
+								var potatoname2 = potato2[potato2rng];
+								var potatoname3 = potato3[potato3rng];
+								do{
+									var potatoname1 = potato1[potato1rng];
+									var potatoname2 = potato2[potato2rng];
+									var potatoname3 = potato3[potato3rng];
+									potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
+								}
+								while (potatoname > 32)
+								//guildMember.setNickname(`${potatoname}`);
+								guildMember.setNickname(`${name}͔`);
+							});
+						});
 					});
 				}, 100 );
 			}

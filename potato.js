@@ -66,7 +66,7 @@ const warnFolder = './warnings/';
 const tempwarnFolder = './temp_warnings/';
 const warntimeFolder = './temp_dates/';
 const bantimeFolder = './ban_dates/';
-const AFFolder = './af_data/';
+//const AFFolder = './af_data/';
 
 //check for missing data files; write dummy file.
 if (!fs.existsSync(`./data/activities.txt`)) {
