@@ -23,10 +23,6 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 								var potato1rng = getRandomInt(1, potato1count);
 								var potato2rng = getRandomInt(1, potato2count);
 								var potato3rng = getRandomInt(1, potato3count);
-								var potatoname1 = potato1[potato1rng];
-								var potatoname2 = potato2[potato2rng];
-								var potatoname3 = potato3[potato3rng];
-								potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
 								do{
 									var potatoname1 = potato1[potato1rng];
 									var potatoname2 = potato2[potato2rng];
@@ -61,9 +57,6 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 								var potato1rng = getRandomInt(1, potato1count);
 								var potato2rng = getRandomInt(1, potato2count);
 								var potato3rng = getRandomInt(1, potato3count);
-								var potatoname1 = potato1[potato1rng];
-								var potatoname2 = potato2[potato2rng];
-								var potatoname3 = potato3[potato3rng];
 								do{
 									var potatoname1 = potato1[potato1rng];
 									var potatoname2 = potato2[potato2rng];
