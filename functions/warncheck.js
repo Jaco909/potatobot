@@ -155,9 +155,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 		
 		function checktime(item){
 			filetime = item.slice(0,-4);
-			//console.log(filetime);
 			releasetime = +filetime;
-			//console.log(releasetime);
 			if (+releasetime <= militime){
 				console.log(`Expired ban!`);
 				if (fs.existsSync(`./ban_dates/${filetime}.txt`)) {
@@ -166,14 +164,13 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 						//unban
 						guild.members.unban(`${userid}`);
 						//delete file
-						fs.unlink(`./ban_dates/${filetime}.txt`, (err) => {
-							if (err) throw err;
-						});
+						setTimeout(() => {
+							fs.unlink(`./ban_dates/${filetime}.txt`, (err) => {
+								if (err) throw err;
+							});
+						}, 300 );
 					});
 				}
-			}
-			else {
-				//console.log(`No expired bans`)
 			}
 		}
 	});
