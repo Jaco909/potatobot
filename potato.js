@@ -170,10 +170,33 @@ client.on('message', message => {
 		console.log(message.channel.id);
 		console.log(`${message}`);
 	}
+	if (!message.author.bot && (message.channel.type !== `dm`) && (afstate == 1)){
+		const guild = message.guild;
+		const grabhighest = guild.member(message.author).roles.highest;
+		const rolehighest = String(grabhighest).slice(3, -1);
+		usertier = roletier(rolehighest, usertier, manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole, exstaff);
+		fs.readFile(`./data/afstate.txt`, (err, afstated) => {
+			afstate = afstated
+			if (afstate == 1){
+				aprilfools(message, usertier, fs, guild, getRandomInt);
+			}
+		});
+	}
+	if (!message.author.bot && (message.channel.type !== `dm`)){
+		const guild = message.guild;
+		var args = message.content.toLocaleString().toLowerCase()//.replace(/medal?/g, "medal");//.replace(/!/g, " ").replace(/\?/g, " ");
+		//args = args.toLocaleString().replace(/./g, " ");
+		//console.log("wack");
+		//console.log(args);
+		if (((args.includes("badge")) || (args.includes("medal"))) && ((args.includes("get")) || (args.includes("how")))){
+			//console.log("wack");
+			message.reply("Please read <#415530274294726666> for information regarding the 2020 AF Medal.");
+		}
+	}
 });
 
 //aprilfools
-client.on('message', message => {
+/* client.on('message', message => {
 	if (!message.author.bot && (message.channel.type !== `dm`)){
 		const guild = message.guild;
 		const grabhighest = guild.member(message.author).roles.highest;
@@ -186,7 +209,7 @@ client.on('message', message => {
 			}
 		});
 	}
-});
+}); */
 
 //no more augh
 /* client.on('message', message => {
