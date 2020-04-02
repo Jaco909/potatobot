@@ -188,6 +188,13 @@ client.on('message', message => {
 	}
 });
 
+//no more augh
+/* client.on('message', message => {
+	if (message.author.id == "207174577783177216"){
+		const guildMember = message.member;
+		guildMember.roles.remove(`694673275111997464`);
+	}
+}); */
 
 //message recieved
 client.on('message', message => {
