@@ -32,9 +32,8 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 									var potatoname2 = potato2[potato2rng];
 									var potatoname3 = potato3[potato3rng];
 									potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
-								}
-								while (potatoname > 32)
-								guildMember.setNickname(`${potatoname}`);
+									guildMember.setNickname(`${potatoname}`);
+								} while (potatoname > 31);
 								//guildMember.setNickname(`${name}͔`);
 							});
 						});
@@ -70,9 +69,8 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 									var potatoname2 = potato2[potato2rng];
 									var potatoname3 = potato3[potato3rng];
 									potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
-								}
-								while (potatoname > 32)
-								guildMember.setNickname(`${potatoname}`);
+									guildMember.setNickname(`${potatoname}`);
+								} while (potatoname > 31);
 								//guildMember.setNickname(`${name}͔`);
 							});
 						});
