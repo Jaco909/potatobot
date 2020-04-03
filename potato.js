@@ -182,13 +182,13 @@ client.on('message', message => {
 			}
 		});
 	}
-	/* if (!message.author.bot && (message.channel.type !== `dm`)){
+	if (!message.author.bot && (message.channel.type !== `dm`)){
 		const guild = message.guild;
 		var args = message.content.toLocaleString().toLowerCase();
 		if (((args.includes("badge")) || (args.includes("medal"))) && ((args.includes("get")) || (args.includes("how")) || (args.includes("obtain")) || (args.includes("where's")) || (args.includes("wheres")))){
 			message.reply("Please read <#415530274294726666> for information regarding the 2020 AF Medal.");
 		}
-	} */
+	}
 });
 
 //aprilfools

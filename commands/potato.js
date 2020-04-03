@@ -10,7 +10,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			fs.readFile(`./data/potatoyellnum.txt`, (err, potatoyellnum) => {
 				potatoyellnum = potatoyellnum.toLocaleString();
 				potatoyellnum = parseInt(potatoyellnum);
-				const potatorng = getRandomInt(61, 77);
+				const potatorng = getRandomInt(61, 81);
 				const potatorngyell = getRandomInt(1, activitycount);
 				const potatoyell = activities[potatorngyell];
 				const potatorngmessage = getRandomInt(1, 10);
@@ -65,7 +65,34 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 									if (potatovalue == 8){
 										message.channel.send(`Holy shamoley! ${potatovalue} potatoes! They don't even do anything!`);
 									}
-									if (potatovalue >= 9){
+									if (potatovalue == 9){
+										message.channel.send(`You're up to ${potatovalue} potatoes now. I seriously don't understand why you bother.`);
+									}
+									if (potatovalue == 10){
+										message.channel.send(`${potatovalue} potatoes now. This is going in my cringe compliation.`);
+									}
+									if (potatovalue == 11){
+										message.channel.send(`Up to ${potatovalue} now. How about a story?`);
+									}
+									if (potatovalue == 12){
+										message.channel.send(`There once was someone who had so many potatoes, they died.`);
+									}
+									if (potatovalue == 13){
+										message.channel.send(`The end. What did you expect? People with ${potatovalue} potatoes get shit stories.`);
+									}
+									if (potatovalue == 14){
+										message.channel.send(`You keep getting potatoes and I'm running out of responces. Let's stop at ${potatovalue}, shall we?`);
+									}
+									if (potatovalue == 15){
+										message.channel.send(`${potatovalue} potatoes? Bruh, I said stop.`);
+									}
+									if (potatovalue == 16){
+										message.channel.send(`I'm tired of writing more phrases, so I'm just going to owo the next one. Oh, ${potatovalue} by the way.`);
+									}
+									if (potatovalue == 16){
+										message.channel.send(`OwO whaz this? ${potatovalue} potaytoes? uwu ey diwndn't know sowmeone cowuld hawve sow mawny powtatowes! How awbout a huggy wuggy? I down't bwite. OwO`);
+									}
+									if (potatovalue >= 17){
 										message.channel.send(`<@207174577783177216> could you add more phrases? This clown has soooooo many potatoes.`);
 									}
 								}, 2000);
