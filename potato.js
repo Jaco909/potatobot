@@ -182,11 +182,26 @@ client.on('message', message => {
 			}
 		});
 	}
-	if (!message.author.bot && (message.channel.id == 415530382897840128)){
+	if (!message.author.bot && (message.channel.type !== `dm`) && (message.channel.id == 415530382897840128)){
 		const guild = message.guild;
-		var args = message.content.toLocaleString().toLowerCase();
-		if (((args.includes("badge")) || (args.includes("medal"))) && ((args.includes("get")) || (args.includes("how")) || (args.includes("obtain")) || (args.includes("where's")) || (args.includes("wheres")))){
-			message.reply("Please read <#415530274294726666> for information regarding the 2020 AF Medal.");
+		var userid = message.author.id
+		if (!fs.existsSync(`./help_data/${userid}.txt`)) {
+			var args = message.content.toLocaleString().toLowerCase();
+			if (((args.includes("badge")) || (args.includes("medal"))) && ((args.includes("get")) || (args.includes("how")) || (args.includes("obtain")) || (args.includes("where's")) || (args.includes("wheres")))){
+				message.reply("Please read <#415530274294726666> for information regarding the 2020 AF Medal. Do understand that you will not recieve your badge untill the next TF2 update.");
+				fs.writeFileSync(`./help_data/${userid}.txt`, `wack`, (err) => {
+					if (err) throw err;
+				});
+			}
+		}
+		if (!fs.existsSync(`./help_data2/${userid}.txt`)) {
+			var args = message.content.toLocaleString().toLowerCase();
+			if (((args.includes("trash")) || (args.includes("sequoia"))) && ((args.includes("crash")) || (args.includes("broken")))){
+				message.reply("We are aware of players having issues with the mission Trash on Sequoia. Players are not required to complete this mission in order to earn the AF 2020 badge.");
+				fs.writeFileSync(`./help_data2/${userid}.txt`, `wack`, (err) => {
+					if (err) throw err;
+				});
+			}
 		}
 	}
 });
