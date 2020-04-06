@@ -1,0 +1,5 @@
+
+**WARNING #1**
+**Staff:** BotRot
+**Date:** Sun Apr 05 2020 03:53:32 GMT-0400 (Eastern Daylight Time)
+**Reason:** spam 18+ voice on env_microphone

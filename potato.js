@@ -182,7 +182,7 @@ client.on('message', message => {
 			}
 		});
 	}
-	if (!message.author.bot && (message.channel.type !== `dm`)){
+	if (!message.author.bot && (message.channel.id == 415530382897840128)){
 		const guild = message.guild;
 		var args = message.content.toLocaleString().toLowerCase();
 		if (((args.includes("badge")) || (args.includes("medal"))) && ((args.includes("get")) || (args.includes("how")) || (args.includes("obtain")) || (args.includes("where's")) || (args.includes("wheres")))){
