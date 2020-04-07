@@ -1,6 +1,6 @@
 exports.reboot = function (logaction, message, usertier) {
 	logaction()
-	if (usertier <= 4)
+	if (usertier <= 5)
 	{
 		guildMember.addRole(`${muterole}`); //invalid, throws error
 	}
