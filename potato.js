@@ -170,7 +170,7 @@ client.on('message', message => {
 		console.log(message.channel.id);
 		console.log(`${message}`);
 	}
-	if (!message.author.bot && (message.channel.type !== `dm`) && (afstate == 1)){
+	/* if (!message.author.bot && (message.channel.type !== `dm`) && (afstate == 1)){
 		const guild = message.guild;
 		const grabhighest = guild.member(message.author).roles.highest;
 		const rolehighest = String(grabhighest).slice(3, -1);
@@ -181,7 +181,7 @@ client.on('message', message => {
 				aprilfools(message, usertier, fs, guild, getRandomInt);
 			}
 		});
-	}
+	} */
 	if (!message.author.bot && (message.channel.type !== `dm`) && (message.channel.id == 415530382897840128)){
 		const guild = message.guild;
 		var userid = message.author.id
@@ -393,7 +393,7 @@ client.on('message', message => {
 						}
 						else
 						{
-							potatocount = (potatocount + 1)
+							potatocount = (+potatocount + 1)
 							potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, botchannel, timeouthour, fs, shutup, args);
 						}
 					});

@@ -2,31 +2,61 @@ exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yo
 	if (message.member.roles.cache.has(`${potatorole}`) || (usertier <= 99))
 	{
 		if (!yorickRecently.has(message.author.id)){
-			fs.readFile(`./data/yorick.txt`, (err, yorick) => {
-				yorick = yorick.toLocaleString();
-				yorick = yorick.split("\n")
-				yorickcount = yorick.length
-				var yorickrng = getRandomInt(1, yorickcount);
-				logaction(yorickrng)
-				console.log('Yorick run!');
-				yorickRecently.add(message.author.id);
-				const sntrid = '350339403677302785'; //350339403677302785
-				client.user.fetch(sntrid);
-				const sntr = client.users.cache.get(sntrid);
-				message.channel.send({embed: {
-					color: 9647333,
-					author: {
-					  name: `Sntr`,
-					  icon_url: `${sntr.displayAvatarURL()}`
-					},
-					title: "Wise words from Sntr",
-					description: `${yorick[yorickrng]}`,
-					}
+			var filerng = getRandomInt(1, 10);
+			if (filerng > 5 ){
+				fs.readFile(`./data/yorick.txt`, (err, yorick) => {
+					yorick = yorick.toLocaleString();
+					yorick = yorick.split("\n")
+					yorickcount = yorick.length
+					var yorickrng = getRandomInt(1, yorickcount);
+					logaction(yorickrng)
+					console.log('Yorick run!');
+					yorickRecently.add(message.author.id);
+					const sntrid = '350339403677302785'; //350339403677302785
+					client.user.fetch(sntrid);
+					const sntr = client.users.cache.get(sntrid);
+					message.channel.send({embed: {
+						color: 9647333,
+						author: {
+						  name: `Skeleton`,
+						  icon_url: `${sntr.displayAvatarURL()}`
+						},
+						title: "Words from a skeleton",
+						description: `${yorick[yorickrng]}`,
+						}
+					});
+					setTimeout(() => {
+						yorickRecently.delete(message.author.id);
+					}, timeout5min ); //300000
 				});
-				setTimeout(() => {
-					yorickRecently.delete(message.author.id);
-				}, timeout5min ); //300000
-			});
+			}
+			if (filerng < 6 ){
+				fs.readFile(`./data/jaka.txt`, (err, yorick) => {
+					yorick = yorick.toLocaleString();
+					yorick = yorick.split("\n")
+					yorickcount = yorick.length
+					var yorickrng = getRandomInt(1, yorickcount);
+					logaction(yorickrng)
+					console.log('Jaka run!');
+					yorickRecently.add(message.author.id);
+					const jakaid = '207174577783177216'; //207174577783177216
+					client.user.fetch(jakaid);
+					const jaka = client.users.cache.get(jakaid);
+					message.channel.send({embed: {
+						color: 9647333,
+						author: {
+						  name: `Degenerate`,
+						  icon_url: `${jaka.displayAvatarURL()}`
+						},
+						title: "Words from a weeb",
+						description: `${yorick[yorickrng]}`,
+						}
+					});
+					setTimeout(() => {
+						yorickRecently.delete(message.author.id);
+					}, timeout5min ); //300000
+				});
+			}
 		}
 		else {
 			message.delete({ timeout: 10});

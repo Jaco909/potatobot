@@ -10,7 +10,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			fs.readFile(`./data/potatoyellnum.txt`, (err, potatoyellnum) => {
 				potatoyellnum = potatoyellnum.toLocaleString();
 				potatoyellnum = parseInt(potatoyellnum);
-				const potatorng = getRandomInt(61, 75);
+				const potatorng = getRandomInt(61, 81);
 				const potatorngyell = getRandomInt(1, activitycount);
 				const potatoyell = activities[potatorngyell];
 				const potatorngmessage = getRandomInt(1, 10);
@@ -22,7 +22,10 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				else if (!potatoRecently.has(message.author.id)){
 					if(potatorng == 69){
 						console.log('Potato give!');
-						const guildMember = message.member;
+						setTimeout(() => {
+							potatoRecently.delete(message.author.id);
+						}, 3600000 ); //3600000
+						var guildMember = message.member;
 						guildMember.roles.add(`${potatorole}`);
 						if(potatorngmessage >= 6){
 						message.channel.send('Here, have a potato. It\'s worthless.');}
@@ -34,7 +37,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 							fs.readFile(`./potatodata/${userid}.txt`, (err, potatovalue) => {
 								potatovalue = potatovalue.toLocaleString();
 								potatovalue = parseInt(potatovalue);
-								potatovalue = (potatovalue + 1);
+								potatovalue = (+potatovalue + 1);
 								fs.unlink(`./potatodata/${userid}.txt`, (err) => {
 									if (err) throw err;
 								});
@@ -89,16 +92,35 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 									if (potatovalue == 16){
 										message.channel.send(`I'm tired of writing more phrases, so I'm just going to owo the next one. Oh, ${potatovalue} by the way.`);
 									}
-									if (potatovalue == 16){
+									if (potatovalue == 17){
 										message.channel.send(`OwO whaz this? ${potatovalue} potaytoes? uwu ey diwndn't know sowmeone cowuld hawve sow mawny powtatowes! How awbout a huggy wuggy? I down't bwite. OwO`);
 									}
-									if (potatovalue >= 17){
-										message.channel.send(`<@207174577783177216> could you add more phrases? This clown has soooooo many potatoes.`);
+									if (potatovalue == 18){
+										message.channel.send(`I'm getting tired of having to write ${potatovalue} of these. Onto the generic responces we go!`);
+									}
+									if (potatovalue > 18){
+										if(potatorngmessage == 1){
+											message.channel.send(`Would you trade ${potatovalue} potatoes for my unusual? It has a robo-crate effect.`);}
+										if(potatorngmessage == 2){
+											message.channel.send(`People like you with ${potatovalue} potatoes get generic responces so I can go back to doing nothing.`);}
+										if(potatorngmessage == 3){
+											message.channel.send(`For once I'm out of edgy or rude things to say. Congrats on ${potatovalue} I guess.`);}
+										if(potatorngmessage == 4){
+											message.channel.send(`If you like potatoes so much, why don't you marry one? You've got ${potatovalue} to choose from.`);}
+										if(potatorngmessage == 5){
+											message.channel.send(`I should set up a potato sink so people like you with ${potatovalue} potatoes don't ruin the potato economy.`);}
+										if(potatorngmessage == 6){
+											message.channel.send(`I'M MAKING ${potatovalue} MASHED POTATOES, AND NOBODY CAN STOP ME!`);}
+										if(potatorngmessage == 7){
+											message.channel.send(`Instead of farming ${potatovalue} potatoes, go farm me some yorick quotes.`);}
+										if(potatorngmessage == 8){
+											message.channel.send(`This is an automated responce to simply reply the ammount of collected potatoes that this individual user has accrued, for reasons that nobody actually knows. ${potatovalue}.`);}
+										if(potatorngmessage == 9){
+											message.channel.send(`Fuck it, potato gambling it is. Casino city was a bad influence. You get ${potatovalue} potato chips.`);}
+										if(potatorngmessage == 10){
+											message.channel.send(`The local exchange rate for ${potatovalue} potatoes is about... tree fiddy pre potato.`);}
 									}
 								}, 2000);
-								setTimeout(() => {
-									potatoRecently.delete(message.author.id);
-								}, 3600000 ); //3600000
 							});
 						}
 						else{
@@ -107,9 +129,6 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 									if (err) throw err;
 								});
 							}, 1000);
-							setTimeout(() => {
-								potatoRecently.delete(message.author.id);
-							}, 3600000 ); //3600000
 						}
 					}
 					else{
