@@ -135,6 +135,9 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 						}
 						else {
 							console.log(`No userfile exists!`)
+							fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
+								if (err) throw err;
+							});
 						}
 					});
 				}

@@ -391,3 +391,7 @@ Was so unimportant that it was skipped entirely.
 2.1.3
 •Updated !potato.
 	-Added more count phrases.
+
+2.1.4
+•Updated warncheck
+	-Attempt to fix mistargeted file deletion.
