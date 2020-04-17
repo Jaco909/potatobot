@@ -182,7 +182,7 @@ client.on('message', message => {
 			}
 		});
 	} */
-	if (!message.author.bot && (message.channel.type !== `dm`) && (message.channel.id == 415530382897840128)){
+	/* if (!message.author.bot && (message.channel.type !== `dm`) && (message.channel.id == 415530382897840128)){
 		const guild = message.guild;
 		var userid = message.author.id
 		if (!fs.existsSync(`./help_data/${userid}.txt`)) {
@@ -203,7 +203,7 @@ client.on('message', message => {
 				});
 			}
 		}
-	}
+	} */
 });
 
 //aprilfools
