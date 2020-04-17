@@ -3,7 +3,7 @@ exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yo
 	{
 		if (!yorickRecently.has(message.author.id)){
 			var filerng = getRandomInt(1, 10);
-			if (filerng > 5 ){
+			if (filerng => 2 ){
 				fs.readFile(`./data/yorick.txt`, (err, yorick) => {
 					yorick = yorick.toLocaleString();
 					yorick = yorick.split("\n")
@@ -30,7 +30,7 @@ exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yo
 					}, timeout5min ); //300000
 				});
 			}
-			if (filerng < 6 ){
+			if (filerng < 2 ){
 				fs.readFile(`./data/jaka.txt`, (err, yorick) => {
 					yorick = yorick.toLocaleString();
 					yorick = yorick.split("\n")
