@@ -395,3 +395,7 @@ Was so unimportant that it was skipped entirely.
 2.1.4
 •Updated warncheck
 	-Attempt to fix mistargeted file deletion.
+
+2.1.5
+•Updated !yorick
+	-Fixed double posting.
