@@ -2,14 +2,14 @@ exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yo
 	if (message.member.roles.cache.has(`${potatorole}`) || (usertier <= 99))
 	{
 		if (!yorickRecently.has(message.author.id)){
-			var filerng = getRandomInt(2, 10);
+			var filerng = getRandomInt(1, 10);
 			if (filerng > 1 ){
 				fs.readFile(`./data/yorick.txt`, (err, yorick) => {
 					yorick = yorick.toLocaleString();
 					yorick = yorick.split("\n")
 					yorickcount = yorick.length
 					var yorickrng = getRandomInt(1, yorickcount);
-					logaction(yorickrng)
+					logaction(filerng, yorickrng)
 					console.log('Yorick run!');
 					yorickRecently.add(message.author.id);
 					const sntrid = '350339403677302785'; //350339403677302785
@@ -36,7 +36,7 @@ exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yo
 					yorick = yorick.split("\n")
 					yorickcount = yorick.length
 					var yorickrng = getRandomInt(1, yorickcount);
-					logaction(yorickrng)
+					logaction(filerng, yorickrng)
 					console.log('Jaka run!');
 					yorickRecently.add(message.author.id);
 					const jakaid = '207174577783177216'; //207174577783177216
