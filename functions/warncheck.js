@@ -11,7 +11,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 		function checktime(item){
 			filetime = item.slice(0,-4);
 			//console.log(filetime);
-			releasetime = +filetime + 2678400000;
+			releasetime = +filetime + 2678400000; //31 days
 			//console.log(releasetime);
 			if (+releasetime < militime){
 				console.log(`Expired warn!`);
