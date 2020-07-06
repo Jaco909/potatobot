@@ -29,6 +29,9 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 							fs.unlink(`./temp_warnings/1t_${userid}.txt`, (err) => {
 								if (err) throw err;
 								console.log(`1t_${userid}.txt was deleted`);
+								fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
+									if (err) throw err;
+								});
 								guild.channels.cache.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
 									title: "1 Temporary Warning Removed",
@@ -36,9 +39,6 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 									timestamp: new Date(),
 								  }
 								});
-							});
-							fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
-								if (err) throw err;
 							});
 						}
 						else if (fs.existsSync(`./temp_warnings/2t_${userid}.txt`)) {
@@ -135,9 +135,6 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 						}
 						else {
 							console.log(`No userfile exists!`)
-							fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
-								if (err) throw err;
-							});
 						}
 					});
 				}
