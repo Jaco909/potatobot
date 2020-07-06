@@ -98,7 +98,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 									if (potatovalue == 18){
 										message.channel.send(`I'm getting tired of having to write ${potatovalue} of these. Onto the generic responces we go!`);
 									}
-									if (potatovalue > 18){
+									if ((potatovalue > 18) && (potatovalue !== 69)){
 										if(potatorngmessage == 1){
 											message.channel.send(`Would you trade ${potatovalue} potatoes for my unusual? It has a robo-crate effect.`);}
 										if(potatorngmessage == 2){
@@ -119,6 +119,9 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 											message.channel.send(`Fuck it, potato gambling it is. Casino city was a bad influence. You get ${potatovalue} potato chips.`);}
 										if(potatorngmessage == 10){
 											message.channel.send(`The local exchange rate for ${potatovalue} potatoes is about... tree fiddy pre potato.`);}
+									}
+									if (potatovalue == 69){
+										message.channel.send(`Congrats. You hit the big funny number. The meme gods smile uppon you, for you have done what no man... no BEING, has ever accomplished. This is where I'd actually enable something that uses all of those stored potatoes, but I uhhhhhhhhhhh have to put out some fires first. If I somehow actually manage to get that written in before you hit the sex number, then disregard this message as now I'm simply rambling to see how long I can make this message. It's actually pretty easy; all you have to do is focus on one subject then quickly shift to another. Like see that semicollin, I don't even know if I used it right. And did I even spell semicollin right? I have no clue, I turned off auto-updates and now my spell check is broken. What am I at now? 754 characters. Damn, not even halfway to the maximum character limit. I can do this, I just need to use the big words. Anyway, how was your day? Extravagent? Wait, *what do you mean **extravagent*** doesn't mean lavish? It just means wastefull now? The fuck, dictionary.com needs to get their shit together. Man, I've been using that word wrong all along. Anyway, I have no clue what you'll spend all of those potatoes on. I mean seriously, it's discord. What can I even do? Actually, I have an idea now. And now that I write it down, it sounds impratical and the staff would hate it. Uhhhhhh what else... OH! OHHHHHH! That's actually pretty funny. Might be annoying to implement, but it's funny. Might need to clear potatoes every now and then to keep it fair. Or mabey just add in a penalty for being the potato lord. Yeah, that works. And I'll need to make some minigames or some shit. Idk man, probably not. Ya'll are so entertained with just !potato. I could add !meatball and that would give you people another years worth of fun. Anyway, there's 1919 characters. Might as well end it on a cool number. Thankfully I don't have to write more, because it's 2am and I don't know why I wrote any of this. Fuck you, stop spamming !potato.`);
 									}
 								}, 2000);
 							});
