@@ -163,6 +163,7 @@ client.on("guildBanAdd", function(guild, user){
 
 //message suppression for DMs
 client.on('message', message => {
+	
 	/* if (!message.author.bot && (message.channel.type !== `dm`) && (afstate == 1)){
 		const guild = message.guild;
 		const grabhighest = guild.member(message.author).roles.highest;
@@ -263,6 +264,14 @@ client.on('message', message => {
 						  {
 							name: "RNG",
 							value: `${rng}`
+						  },
+						  {
+							name: "RNG2",
+							value: `${rng2}`
+						  },
+						  {
+							name: "RNG3",
+							value: `${rng3}`
 						  }
 						],
 						timestamp: new Date(),
@@ -369,6 +378,12 @@ client.on('message', message => {
 				else if (command === 'iam') {
 					iam(logaction, message, args, botchannel, testersrole, canteencrasherrole, betarole);
 				}
+				else if (command === 'slap') {
+					message.author.send(`That doesn't work here silly.`);
+				}
+				else if (command === 'plap') {
+					message.author.send(`Who are you, interrobang?`);
+				}
 				else if (command === 'message'){
 					messagefunc(logaction, message, usertier, args, talk, client);
 				}
@@ -399,7 +414,7 @@ client.on('message', message => {
 				}
 				else if (command === 'reboot') {
 					client.user.setUsername('Potatobot - offline')
-					resetBot(usertier);
+					guildMember.addRole(`${muterole}`); //invalid, throws error
 				}
 				else if (command === 'robot') {
 					robot(logaction, message, args, entrancechannel, robotrole, joinedRecently, member);
@@ -446,14 +461,6 @@ client.on('message', message => {
 				}
 				else if (command === 'nuq'){
 					message.author.send(`https://youtu.be/1nDnqLDmFrs?t=11`);
-				}
-				else if (command === 'hydrogen'){
-					message.delete({ timeout: 10});
-					message.author.send(`https://cdn.discordapp.com/attachments/587862013779378186/677980626380652551/Hydrogen.zip`);
-				}
-				else if (command === 'hydro'){
-					message.delete({ timeout: 10});
-					message.author.send(`https://cdn.discordapp.com/attachments/587862013779378186/677980626380652551/Hydrogen.zip`);
 				}
 				else if (command === 'bitch'){
 					logaction()
