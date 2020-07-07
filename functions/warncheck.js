@@ -52,16 +52,16 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 							fs.unlink(`./temp_warnings/2t_${userid}.txt`, (err) => {
 								if (err) throw err;
 								console.log(`2t_${userid}.txt was deleted`);
+								fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
+									if (err) throw err;
+								});
 								guild.channels.cache.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
-									title: "2 Temporary Warnings Removed",
+									title: "2 Temporary Warning Removed",
 									description: `User: ${user}`,
 									timestamp: new Date(),
 								  }
 								});
-							});
-							fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
-								if (err) throw err;
 							});
 						}
 						else if (fs.existsSync(`./temp_warnings/3t_${userid}.txt`)) {
@@ -75,16 +75,16 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 							fs.unlink(`./temp_warnings/3t_${userid}.txt`, (err) => {
 								if (err) throw err;
 								console.log(`3t_${userid}.txt was deleted`);
+								fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
+									if (err) throw err;
+								});
 								guild.channels.cache.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
-									title: "3 Temporary Warnings Removed",
+									title: "3 Temporary Warning Removed",
 									description: `User: ${user}`,
 									timestamp: new Date(),
 								  }
 								});
-							});
-							fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
-								if (err) throw err;
 							});
 						}
 						else if (fs.existsSync(`./temp_warnings/4t_${userid}.txt`)) {
@@ -98,39 +98,16 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 							fs.unlink(`./temp_warnings/4t_${userid}.txt`, (err) => {
 								if (err) throw err;
 								console.log(`4t_${userid}.txt was deleted`);
-								guild.channels.cache.get(`${warnchannel}`).send({embed: {
-									color: 3174889,
-									title: "4 Temporary Warnings Removed",
-									description: `User: ${user}`,
-									timestamp: new Date(),
-								  }
-								});
-							});
-							fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
-								if (err) throw err;
-							});
-						}
-						else if (fs.existsSync(`./temp_warnings/5t_${userid}.txt`)) {
-							user = ('<@' + `${userid}` + '>');
-							if (fs.existsSync(`./temp_warnings/5t_${userid}_info.txt`)) {
-								fs.unlink(`./temp_warnings/5t_${userid}_info.txt`, (err) => {
-									console.log(`5t_${userid}_info.txt was deleted`);
+								fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
 									if (err) throw err;
 								});
-							}
-							fs.unlink(`./temp_warnings/5t_${userid}.txt`, (err) => {
-								if (err) throw err;
-								console.log(`5t_${userid}.txt was deleted`);
 								guild.channels.cache.get(`${warnchannel}`).send({embed: {
 									color: 3174889,
-									title: "5 Temporary Warnings Removed",
+									title: "4 Temporary Warning Removed",
 									description: `User: ${user}`,
 									timestamp: new Date(),
 								  }
 								});
-							});
-							fs.unlink(`./temp_dates/${filetime}.txt`, (err) => {
-								if (err) throw err;
 							});
 						}
 						else {
