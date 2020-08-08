@@ -315,7 +315,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  },
 			  {
 				name: "Description",
-				value: `Gives you the requested role. Current available options: \n\`!iam madness\` to assign the role @Madness.\n\`!iam Testers\` to assign the role @Testers.`
+				value: `Gives you the requested role. Current available options: \n\`!iam titanium\` to assign the role @Titanium Tank.\n\`!iam Testers\` to assign the role @Testers.`
 			  }
 			],
 			footer: {

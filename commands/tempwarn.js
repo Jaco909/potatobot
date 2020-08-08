@@ -1,5 +1,5 @@
 exports.tempwarn = function (logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute, date, militime, guild) {
-	if (usertier <= 4)
+	if (usertier <= 6)
 	{
 		if ((args[0] !== undefined) && (args[1] !== undefined))
 		{
