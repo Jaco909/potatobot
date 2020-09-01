@@ -101,6 +101,7 @@ var yorickrng = 0;
 var date = 0;
 var militime = 0;
 var afstate = 0;
+var medalstate = 1;
 
 //???
 client.commands = new Discord.Collection();
@@ -156,20 +157,12 @@ client.on("guildBanRemove", function(guild, user){
 
 //log bans
 client.on("guildBanAdd", function(guild, user){
-	console.log(`${user}`);
-	console.log(`${user.id}`);
 	bantime(guild, user, client, fs, warnchannel);
 });
 
 //message suppression for DMs
 client.on('message', message => {
-	if ((!message.author.bot) && (message.channel.id != 480079567458140171) && (message.channel.id != 480080287393382402) && (message.channel.id != 661750808026808370) && (message.channel.id != 437863525965365249) && (message.channel.id != 606836121325797377) && (message.channel.id != 437863546852999168) && (message.channel.id != 572097290119020551) && (message.channel.id != 504399559993196545) && (message.channel.id != 655472399713828865) && (message.channel.id != 487328581320441888) && (message.channel.id != 593502787145302021) && (message.channel.id != 437863876587945985) && (message.channel.id != 480416823695638578) && (message.channel.id != 480416908223447052) && (message.channel.id != 505837134335442964) && (message.channel.id != 587862013779378186) && (message.channel.id != 650479881133490187) && (message.channel.id != 415523320281301004) && (message.channel.id != 729752874770497556) && (message.channel.id != 415530274294726666) && (message.channel.id != 415530382897840128) && (message.channel.id != 551330160545234944) && (message.channel.id != 626459691278532663) && (message.channel.id != 679201651961102358)){
-		date = new Date();
-		console.log(`${date}`);
-		console.log(`${message.author.username}`);
-		console.log(message.channel.id);
-		console.log(`${message}`);
-	}
+	
 	/* if (!message.author.bot && (message.channel.type !== `dm`) && (afstate == 1)){
 		const guild = message.guild;
 		const grabhighest = guild.member(message.author).roles.highest;
@@ -182,28 +175,19 @@ client.on('message', message => {
 			}
 		});
 	} */
-	/* if (!message.author.bot && (message.channel.type !== `dm`) && (message.channel.id == 415530382897840128)){
+	if (!message.author.bot && (message.channel.type !== `dm`) && (message.channel.id == 415530382897840128) && (medalstate == 1)){
 		const guild = message.guild;
 		var userid = message.author.id
 		if (!fs.existsSync(`./help_data/${userid}.txt`)) {
 			var args = message.content.toLocaleString().toLowerCase();
-			if (((args.includes("badge")) || (args.includes("medal"))) && ((args.includes("get")) || (args.includes("how")) || (args.includes("obtain")) || (args.includes("where's")) || (args.includes("wheres")))){
-				message.reply("Please read <#415530274294726666> for information regarding the 2020 AF Medal. Do understand that you will not recieve your badge untill the next TF2 update.");
+			if (((args.includes("badge")) || (args.includes("medal")) || (args.includes("medals")) || (args.includes("badges"))) && ((args.includes("get")) || (args.includes("given")) || (args.includes("how")) || (args.includes("obtain")) || (args.includes("where's")) || (args.includes("receive")) || (args.includes("didn't")) || (args.includes("wheres")) || (args.includes("haven't "))|| (args.includes("havent"))|| (args.includes("give"))|| (args.includes("gotten")))){
+				message.reply("https://youtu.be/0d6yBHDvKUw");
 				fs.writeFileSync(`./help_data/${userid}.txt`, `wack`, (err) => {
 					if (err) throw err;
 				});
 			}
 		}
-		if (!fs.existsSync(`./help_data2/${userid}.txt`)) {
-			var args = message.content.toLocaleString().toLowerCase();
-			if (((args.includes("trash")) || (args.includes("sequoia"))) && ((args.includes("crash")) || (args.includes("broken")))){
-				message.reply("We are aware of players having issues with the mission Trash on Sequoia. Players are not required to complete this mission in order to earn the AF 2020 badge.");
-				fs.writeFileSync(`./help_data2/${userid}.txt`, `wack`, (err) => {
-					if (err) throw err;
-				});
-			}
-		}
-	} */
+	}
 });
 
 //aprilfools
@@ -219,14 +203,6 @@ client.on('message', message => {
 				aprilfools(message, usertier, fs, guild, getRandomInt);
 			}
 		});
-	}
-}); */
-
-//no more augh
-/* client.on('message', message => {
-	if (message.author.id == "207174577783177216"){
-		const guildMember = message.member;
-		guildMember.roles.remove(`694673275111997464`);
 	}
 }); */
 
@@ -385,10 +361,22 @@ client.on('message', message => {
 					iam(logaction, message, args, botchannel, testersrole, canteencrasherrole, betarole);
 				}
 				else if (command === 'slap') {
-					message.author.send(`That doesn't work here silly.`);
+					message.reply(`That doesn't work here silly.`);
 				}
 				else if (command === 'plap') {
-					message.author.send(`Who are you, interrobang?`);
+					message.reply(`Who are you, interrobang?`);
+				}
+				else if (command === 'medalyell'){
+					if (medalstate == 0)
+					{
+						medalstate = 1;
+						message.reply(`Will attempt to yell about medal questions.`);
+					}
+					else
+					{
+						medalstate = 0;
+						message.reply(`Will not yell about medal questions.`);
+					}
 				}
 				else if (command === 'message'){
 					messagefunc(logaction, message, usertier, args, talk, client);

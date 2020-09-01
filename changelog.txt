@@ -399,3 +399,14 @@ Was so unimportant that it was skipped entirely.
 2.1.5
 •Updated !yorick
 	-Fixed double posting.
+
+2.2 "I'm warning you!"
+•Updated !pwarn, !twarn, & bancheck system
+	-Optimized code.
+	-Removed sending confirmation messages to admin.
+	-Fixed warns not logging in #warns when a user does not have an avatar.
+	-Warn logs will show a user's total warns.
+	-Warns will pull a user's total warns when checking to ban.
+	-Ban logs will give the user's last known username if they have recieved at least one warn.
+	-Ban logs list ban duration if applicable.
+	-Bans on users with temp bans can be made permenent by reacting with trashcan emote.

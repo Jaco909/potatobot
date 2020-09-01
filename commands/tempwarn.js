@@ -1,18 +1,19 @@
 exports.tempwarn = function (logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute, date, militime, guild) {
-	if (usertier <= 6)
+	if (usertier <= 4)
 	{
 		if ((args[0] !== undefined) && (args[1] !== undefined))
 		{
 			const user = getUserFromMention(args[0]);
 			if (!user) {
 				console.log('Warn error mention!');
-				return message.reply('Please use a proper mention.');
+				return message.reply('Please use a proper mention and reason.');
 			}
 			else
 			{
-				console.log('Warn run!');
+				console.log('Temp Warn run!');
 				const Discord = require('discord.js')
-				logaction();
+				
+				//rework this later
 				if (args[0].startsWith('<@') && args[0].endsWith('>')) {
 					var userid = args[0].slice(2, -1);
 
@@ -20,90 +21,114 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 						userid = userid.slice(1);
 					}
 				}
-				talk.shift();
-				talk.shift().toString();
-				time = (message.createdAt);
+				
+				//fetch userid
 				client.user.fetch(userid);
+				
+				//fetch banid
 				const user = client.users.cache.get(userid);
 				const banid = message.mentions.users.first();
 				const banmember = message.guild.member(banid);
-				//warning for user exists 4-5perma
-				if (fs.existsSync(`./temp_warnings/4t_${userid}.txt`)) {
-					fs.renameSync(`./temp_warnings/4t_${userid}.txt`, `./temp_warnings/5t_${userid}.txt`, (err) => {
+				
+				//presets
+				var warnnumber = 6;
+				var tempwarnnumber = 6;
+				var foundwarn = -1;
+				var tempfoundwarn = -1;
+				var newwarnnumber = 0;
+				time = (message.createdAt);
+				talk.shift();
+				talk.shift().toString();
+				
+				//pull username for banlogs
+				var name = message.member.nickname;
+				if (name != undefined){
+					fs.writeFileSync(`./data/userdata/idnames/${userid}.txt`,`${name}`, (err) => {
 						if (err) throw err;
-						console.log('Rename complete!');
 					});
-					fs.appendFileSync(`./temp_warnings/5t_${userid}.txt`, `\n**WARNING #5**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
+				}
+				else if (name == undefined){
+					var name = message.member.displayName;
+					fs.writeFileSync(`./data/userdata/idnames/${userid}.txt`,`${name}`, (err) => {
 						if (err) throw err;
-						console.log('Append complete!');
 					});
-					//check for existing timestamp
-					fs.readdir(`./temp_dates`, function(err, filenames) {
-						if (err) {
-						  onError(err);
-						  return;
-						}
-						filenames.forEach(checkid);
-						
-						function checkid(file){
-							filename = file.slice(0,-4);
-							fs.readFile(`./temp_dates/${filename}.txt`, (err, useridfromfile) => {
-								if (err) {
-								  onError(err);
-								  return;
-								}
-								if (useridfromfile == userid) {
-									console.log(`existing time found`)
-									fs.renameSync(`./temp_dates/${filename}.txt`, `./temp_dates/${militime}.txt`, (err) => {
-										if (err) throw err;
-										console.log('Rename complete!');
-									});
-								}
-							});
-						}
+				}
+				
+				//find current warn amount if any
+				do{
+					warnnumber = (warnnumber - 1)
+					if (fs.existsSync(`./warnings/${warnnumber}_${userid}.txt`)){
+						foundwarn = warnnumber
+					}
+				}
+				while (warnnumber >= 1)
+				
+				//if warns are found, set the var warnnumber
+				if (foundwarn != -1) {
+					warnnumber = foundwarn
+				}
+				console.log(`Previous Warns: ${warnnumber}`);
+				
+				//find current temp warn amount if any
+				do{
+					tempwarnnumber = (tempwarnnumber - 1)
+					if (fs.existsSync(`./temp_warnings/${tempwarnnumber}t_${userid}.txt`)){
+						tempfoundwarn = tempwarnnumber
+					}
+				}
+				while (tempwarnnumber >= 1)
+				
+				//if warns are found, set the var warnnumber
+				if (tempfoundwarn != -1) {
+					tempwarnnumber = tempfoundwarn
+				}
+				console.log(`Previous Tempwarns: ${tempwarnnumber}`);
+				var totalwarns = (warnnumber + tempwarnnumber);
+				console.log(`Total Previous Warns: ${totalwarns}`);
+				
+				//generate file for new warns
+				if (warnnumber == 0) {
+					fs.writeFileSync(`./temp_warnings/0t_${userid}.txt`,``, (err) => {
+						if (err) throw err;
 					});
-					message.author.send({embed: {
-						color: 16738048,
-						title: "Temporary Warning Logged",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Warning Log Url",
-							value: `[5t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/5t_${userid}.txt)`
-						  },
-						  {
-							name: "Please add any additional info or link to the offending image(s)",
-							value: `!addwarninfo 5t_${userid}.txt [info]`
-						  },
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Beep Boop"
-						}
-					  }
-					});
+				}
+				
+				//warn code
+				newwarnnumber = (tempwarnnumber + 1);
+				console.log(`New Warn Amount: ${totalwarns + 1}`);
+				fs.renameSync(`./temp_warnings/${tempwarnnumber}t_${userid}.txt`, `./temp_warnings/${newwarnnumber}t_${userid}.txt`, (err) => {
+					if (err) throw err;
+				});
+				fs.appendFileSync(`./temp_warnings/${newwarnnumber}t_${userid}.txt`, `\n**WARNING #${newwarnnumber}**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
+					if (err) throw err;
+				});
+				console.log('Warn file generated!');
+				
+				//message log
+				//catch default avatars
+				if (!user.avatarURL() || !message.author.displayAvatarURL()) {
 					guild.channels.cache.get(`${warnchannel}`).send({embed: {
 						color: 16738048,
 						author: {
 						  name: `${message.author.username}`,
-						  icon_url: `${message.author.avatarURL()}`
-						},
-						thumbnail: {
-							url: `${user.avatarURL()}`
 						},
 						title: "Temporary Warning Log",
 						description: `Offending User: <@${userid}>`,
 						fields: [{
-							name: "Number of temporary warnings",
-							value: "5"
+							name: "Temporary warning #",
+							value: `${newwarnnumber}`
+						  },
+						  {
+							name: "Total Warnings",
+							value: `${totalwarns + 1}`
 						  },
 						  {
 							name: "Reason",
 							value: `${talk.join(" ")}`
 						  },
 						  {
-							name: "Warning Log Url",
-							value: `[5t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/5t_${userid}.txt)`
+							name: "Warning Log",
+							value: `[${newwarnnumber}t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/${newwarnnumber}t_${userid}.txt)`
 						  }
 						],
 						timestamp: new Date(),
@@ -113,76 +138,14 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 						}
 					  }
 					});
-					console.log('Warning logged!');
-					if (warnmute == 0)
-					{
-						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
-					}
-					//potato banhammer
-					if (banmember){
-						banmember.ban({});
-					}
 				}
-				//warning for user exists 3-4
-				if (fs.existsSync(`./temp_warnings/3t_${userid}.txt`)) {
-					fs.renameSync(`./temp_warnings/3t_${userid}.txt`, `./temp_warnings/4t_${userid}.txt`, (err) => {
-						if (err) throw err;
-						console.log('Rename complete!');
-					});
-					fs.appendFileSync(`./temp_warnings/4t_${userid}.txt`, `\n**WARNING #4**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					//check for existing timestamp
-					fs.readdir(`./temp_dates`, function(err, filenames) {
-						if (err) {
-						  onError(err);
-						  return;
-						}
-						filenames.forEach(checkid);
-						
-						function checkid(file){
-							filename = file.slice(0,-4);
-							fs.readFile(`./temp_dates/${filename}.txt`, (err, useridfromfile) => {
-								if (err) {
-								  onError(err);
-								  return;
-								}
-								if (useridfromfile == userid) {
-									console.log(`existing time found`)
-									fs.renameSync(`./temp_dates/${filename}.txt`, `./temp_dates/${militime}.txt`, (err) => {
-										if (err) throw err;
-										console.log('Rename complete!');
-									});
-								}
-							});
-						}
-					});
-					message.author.send({embed: {
-						color: 16738048,
-						title: "Temporary Warning Logged",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Warning Log Url",
-							value: `[4t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/4t_${userid}.txt)`
-						  },
-						  {
-							name: "Please add any additional info or link to the offending image(s)",
-							value: `!addwarninfo 4t_${userid}.txt [info]`
-						  },
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Beep Boop"
-						}
-					  }
-					});
+				//normal message
+				else {
 					guild.channels.cache.get(`${warnchannel}`).send({embed: {
 						color: 16738048,
 						author: {
 						  name: `${message.author.username}`,
-						  icon_url: `${message.author.avatarURL()}`
+						  icon_url: `${message.author.displayAvatarURL()}`
 						},
 						thumbnail: {
 							url: `${user.avatarURL()}`
@@ -190,16 +153,20 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 						title: "Temporary Warning Log",
 						description: `Offending User: <@${userid}>`,
 						fields: [{
-							name: "Number of temporary warnings",
-							value: "4"
+							name: "Temporary warning #",
+							value: `${newwarnnumber}`
+						  },
+						  {
+							name: "Total Warnings",
+							value: `${totalwarns + 1}`
 						  },
 						  {
 							name: "Reason",
 							value: `${talk.join(" ")}`
 						  },
 						  {
-							name: "Warning Log Url",
-							value: `[4t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/4t_${userid}.txt)`
+							name: "Warning Log",
+							value: `[${newwarnnumber}t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/${newwarnnumber}t_${userid}.txt)`
 						  }
 						],
 						timestamp: new Date(),
@@ -209,283 +176,31 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 						}
 					  }
 					});
-					console.log('Warning logged!');
-					if (warnmute == 0)
-					{
-						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
-					}
-					//iron banhammer
-					if (banmember){
-						banmember.ban({});
-					}
 				}
-				//warning for user exists 2-3
-				if (fs.existsSync(`./temp_warnings/2t_${userid}.txt`)) {
-					fs.renameSync(`./temp_warnings/2t_${userid}.txt`, `./temp_warnings/3t_${userid}.txt`, (err) => {
-						if (err) throw err;
-						console.log('Rename complete!');
-					});
-					fs.appendFileSync(`./temp_warnings/3t_${userid}.txt`, `\n**WARNING #3**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					//check for existing timestamp
-					fs.readdir(`./temp_dates`, function(err, filenames) {
-						if (err) {
-						  onError(err);
-						  return;
-						}
-						filenames.forEach(checkid);
-						
-						function checkid(file){
-							filename = file.slice(0,-4);
-							fs.readFile(`./temp_dates/${filename}.txt`, (err, useridfromfile) => {
-								if (err) {
-								  onError(err);
-								  return;
-								}
-								if (useridfromfile == userid) {
-									console.log(`existing time found`)
-									fs.renameSync(`./temp_dates/${filename}.txt`, `./temp_dates/${militime}.txt`, (err) => {
-										if (err) throw err;
-										console.log('Rename complete!');
-									});
-								}
-							});
-						}
-					});
-					message.author.send({embed: {
-						color: 16738048,
-						title: "Temporary Warning Logged",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Warning Log Url",
-							value: `[3t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/3t_${userid}.txt)`
-						  },
-						  {
-							name: "Please add any additional info or link to the offending image(s)",
-							value: `!addwarninfo 3t_${userid}.txt [info]`
-						  },
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Beep Boop"
-						}
-					  }
-					});
-					guild.channels.cache.get(`${warnchannel}`).send({embed: {
-						color: 16738048,
-						author: {
-						  name: `${message.author.username}`,
-						  icon_url: `${message.author.avatarURL()}`
-						},
-						thumbnail: {
-							url: `${user.avatarURL()}`
-						},
-						title: "Temporary Warning Log",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Number of temporary warnings",
-							value: "3"
-						  },
-						  {
-							name: "Reason",
-							value: `${talk.join(" ")}`
-						  },
-						  {
-							name: "Warning Log Url",
-							value: `[3t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/3t_${userid}.txt)`
-						  }
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
-						}
-					  }
-					});
-					console.log('Warning logged!');
-					if (warnmute == 0)
-					{
-						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
-					}
-					//squeeky toy banhammer
-					if (banmember){
-						banmember.ban({});
-					}
-				}
-				//warning for user exists 1-2
-				if (fs.existsSync(`./temp_warnings/1t_${userid}.txt`)) {
-					fs.renameSync(`./temp_warnings/1t_${userid}.txt`, `./temp_warnings/2t_${userid}.txt`, (err) => {
-						if (err) throw err;
-						console.log('Rename complete!');
-					});
-					fs.appendFileSync(`./temp_warnings/2t_${userid}.txt`, `\n**WARNING #2**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-						console.log('Append complete!');
-					});
-					//check for existing timestamp
-					fs.readdir(`./temp_dates`, function(err, filenames) {
-						if (err) {
-						  onError(err);
-						  return;
-						}
-						filenames.forEach(checkid);
-						
-						function checkid(file){
-							filename = file.slice(0,-4);
-							fs.readFile(`./temp_dates/${filename}.txt`, (err, useridfromfile) => {
-								if (err) {
-								  onError(err);
-								  return;
-								}
-								if (useridfromfile == userid) {
-									console.log(`existing time found`)
-									fs.renameSync(`./temp_dates/${filename}.txt`, `./temp_dates/${militime}.txt`, (err) => {
-										if (err) throw err;
-										console.log('Rename complete!');
-									});
-								}
-							});
-						}
-					});
-					message.author.send({embed: {
-						color: 16738048,
-						title: "Temporary Warning Logged",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Warning Log Url",
-							value: `[2t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/2t_${userid}.txt)`
-						  },
-						  {
-							name: "Please add any additional info or link to the offending image(s)",
-							value: `!addwarninfo 2t_${userid}.txt [info]`
-						  },
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Beep Boop"
-						}
-					  }
-					});
-					guild.channels.cache.get(`${warnchannel}`).send({embed: {
-						color: 16738048,
-						author: {
-						  name: `${message.author.username}`,
-						  icon_url: `${message.author.avatarURL()}`
-						},
-						thumbnail: {
-							url: `${user.avatarURL()}`
-						},
-						title: "Temporary Warning Log",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Number of temporary warnings",
-							value: "2"
-						  },
-						  {
-							name: "Reason",
-							value: `${talk.join(" ")}`
-						  },
-						  {
-							name: "Warning Log Url",
-							value: `[2t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/2t_${userid}.txt)`
-						  }
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
-						}
-					  }
-					});
-					console.log('Warning logged!');
-					if (warnmute == 0)
-					{
-						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
-					}
-				}
-				//new warning user
-				else if ((!fs.existsSync(`./temp_warnings/1t_${userid}.txt`)) && (!fs.existsSync(`./temp_warnings/2t_${userid}.txt`)) && (!fs.existsSync(`./temp_warnings/3t_${userid}.txt`)) && (!fs.existsSync(`./temp_warnings/4t_${userid}.txt`)) && (!fs.existsSync(`./temp_warnings/5t_${userid}.txt`)) && (!fs.existsSync(`./temp_warnings/6t_${userid}.txt`)))
+				console.log('Temp Warning logged!');
+				if (warnmute == 0)
 				{
-					fs.writeFileSync(`./temp_warnings/1t_${userid}.txt`, `\n**WARNING #1**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-						if (err) throw err;
-					});
-					fs.writeFileSync(`./temp_dates/${militime}.txt`, `${userid}`, (err) => {
-						if (err) throw err;
-					});
-					message.author.send({embed: {
-						color: 16738048,
-						title: "Temporary Warning Logged",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Warning Log Url",
-							value: `[1t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/1t_${userid}.txt)`
-						  },
-						  {
-							name: "Please add any additional info or link to the offending image(s)",
-							value: `!addtwarninfo 1t_${userid}.txt [info]`
-						  },
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Beep Boop"
-						}
-					  }
-					});
-					guild.channels.cache.get(`${warnchannel}`).send({embed: {
-						color: 16738048,
-						author: {
-						  name: `${message.author.username}`,
-						  icon_url: `${message.author.avatarURL()}`
-						},
-						thumbnail: {
-							url: `${user.avatarURL()}`
-						},
-						title: "Temporary Warning Log",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Number of temporary warnings",
-							value: "1"
-						  },
-						  {
-							name: "Reason",
-							value: `${talk.join(" ")}`
-						  },
-						  {
-							name: "Warning Log Url",
-							value: `[1t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/temp_warnings/1t_${userid}.txt)`
-						  }
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
-						}
-					  }
-					});
-					console.log('Warning logged!');
-					if (warnmute == 0)
-					{
-						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
-					}
+					client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
+				}
+				//ban code
+				if ((totalwarns + 1) >= 3) {
+					setTimeout(() => {
+						banmember.ban({});
+					}, 1000 );
 				}
 			}
 		}
 		else
 		{
-			console.log('Warn error args!');
+			console.log('Warn block!');
 			message.delete({ timeout: 10});
-			message.reply(`Invalid warn variables. Please enter a username and reason at minimum.`);
+			return message.reply('Please use a proper mention and reason.');
 		}
 	}
 	else
 	{
 		console.log('Warn block!');
 		message.delete({ timeout: 10});
-		message.author.send(`You do not have access to this command.`);
+		return message.reply(`You do not have access to this command.`);
 	}
 };

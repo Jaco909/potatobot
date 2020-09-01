@@ -733,7 +733,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  },
 			  {
 				name: "**Moderation Commands**",
-				value: ` `
+				value: `~`
 			  },
 			  {
 				name: "!purge",
@@ -761,7 +761,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  },
 			  {
 				name: "**Unlisted Commands**",
-				value: ` `
+				value: `~`
 			  },
 			  {
 				name: "!fuckgoback",
