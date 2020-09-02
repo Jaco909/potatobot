@@ -78,7 +78,7 @@ exports.bantime = function (guild, user, client, fs, warnchannel) {
 					  },
 					  {
 						name: "Notice",
-						value: `To make this ban permenent, react with 🚮 within 10 minutes.`
+						value: `To make this ban permanent, react with 🚮 within 10 minutes.`
 					  }
 					],
 					timestamp: new Date(),
@@ -129,7 +129,7 @@ exports.bantime = function (guild, user, client, fs, warnchannel) {
 					  },
 					  {
 						name: "Notice",
-						value: `To make this ban permenent, react with 🚮 within 10 minutes.`
+						value: `To make this ban permanent, react with 🚮 within 10 minutes.`
 					  }
 					],
 					timestamp: new Date(),
