@@ -410,3 +410,9 @@ Was so unimportant that it was skipped entirely.
 	-Ban logs will give the user's last known username if they have recieved at least one warn.
 	-Ban logs list ban duration if applicable.
 	-Bans on users with temp bans can be made permenent by reacting with trashcan emote.
+
+2.2.1
+•Updated !twarn
+	-Fixed system trying to edit warns before they even exist.
+•Updated !potato
+	-Fixed users being able to use the command again after recieving a potato.

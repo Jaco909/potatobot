@@ -1,5 +1,5 @@
 exports.tempwarn = function (logaction, message, usertier, args, messageChannel, fs, getUserFromMention, talk, warnchannel, client, moderator, warnlist, warnmute, date, militime, guild) {
-	if (usertier <= 4)
+	if (usertier <= 5)
 	{
 		if ((args[0] !== undefined) && (args[1] !== undefined))
 		{
@@ -94,100 +94,102 @@ exports.tempwarn = function (logaction, message, usertier, args, messageChannel,
 				}
 				
 				//warn code
-				newwarnnumber = (tempwarnnumber + 1);
-				console.log(`New Warn Amount: ${totalwarns + 1}`);
-				fs.renameSync(`./temp_warnings/${tempwarnnumber}t_${userid}.txt`, `./temp_warnings/${newwarnnumber}t_${userid}.txt`, (err) => {
-					if (err) throw err;
-				});
-				fs.appendFileSync(`./temp_warnings/${newwarnnumber}t_${userid}.txt`, `\n**WARNING #${newwarnnumber}**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
-					if (err) throw err;
-				});
-				console.log('Warn file generated!');
-				
-				//message log
-				//catch default avatars
-				if (!user.avatarURL() || !message.author.displayAvatarURL()) {
-					guild.channels.cache.get(`${warnchannel}`).send({embed: {
-						color: 16738048,
-						author: {
-						  name: `${message.author.username}`,
-						},
-						title: "Temporary Warning Log",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Temporary warning #",
-							value: `${newwarnnumber}`
-						  },
-						  {
-							name: "Total Warnings",
-							value: `${totalwarns + 1}`
-						  },
-						  {
-							name: "Reason",
-							value: `${talk.join(" ")}`
-						  },
-						  {
-							name: "Warning Log",
-							value: `[${newwarnnumber}t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/${newwarnnumber}t_${userid}.txt)`
-						  }
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
-						}
-					  }
+				setTimeout(() => {
+					newwarnnumber = (tempwarnnumber + 1);
+					console.log(`New Warn Amount: ${totalwarns + 1}`);
+					fs.renameSync(`./temp_warnings/${tempwarnnumber}t_${userid}.txt`, `./temp_warnings/${newwarnnumber}t_${userid}.txt`, (err) => {
+						if (err) throw err;
 					});
-				}
-				//normal message
-				else {
-					guild.channels.cache.get(`${warnchannel}`).send({embed: {
-						color: 16738048,
-						author: {
-						  name: `${message.author.username}`,
-						  icon_url: `${message.author.displayAvatarURL()}`
-						},
-						thumbnail: {
-							url: `${user.avatarURL()}`
-						},
-						title: "Temporary Warning Log",
-						description: `Offending User: <@${userid}>`,
-						fields: [{
-							name: "Temporary warning #",
-							value: `${newwarnnumber}`
-						  },
-						  {
-							name: "Total Warnings",
-							value: `${totalwarns + 1}`
-						  },
-						  {
-							name: "Reason",
-							value: `${talk.join(" ")}`
-						  },
-						  {
-							name: "Warning Log",
-							value: `[${newwarnnumber}t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/${newwarnnumber}t_${userid}.txt)`
-						  }
-						],
-						timestamp: new Date(),
-						footer: {
-						  icon_url: client.user.avatarURL(),
-						  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
-						}
-					  }
+					fs.appendFileSync(`./temp_warnings/${newwarnnumber}t_${userid}.txt`, `\n**WARNING #${newwarnnumber}**\n**Staff:** ${message.author.username}\n**Date:** ${time}\n**Reason:**${talk.join(" ")}`, (err) => {
+						if (err) throw err;
 					});
-				}
-				console.log('Temp Warning logged!');
-				if (warnmute == 0)
-				{
-					client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
-				}
-				//ban code
-				if ((totalwarns + 1) >= 3) {
-					setTimeout(() => {
-						banmember.ban({});
-					}, 1000 );
-				}
+					console.log('Warn file generated!');
+					
+					//message log
+					//catch default avatars
+					if (!user.avatarURL() || !message.author.displayAvatarURL()) {
+						guild.channels.cache.get(`${warnchannel}`).send({embed: {
+							color: 16738048,
+							author: {
+							  name: `${message.author.username}`,
+							},
+							title: "Temporary Warning Log",
+							description: `Offending User: <@${userid}>`,
+							fields: [{
+								name: "Temporary warning #",
+								value: `${newwarnnumber}`
+							  },
+							  {
+								name: "Total Warnings",
+								value: `${totalwarns + 1}`
+							  },
+							  {
+								name: "Reason",
+								value: `${talk.join(" ")}`
+							  },
+							  {
+								name: "Warning Log",
+								value: `[${newwarnnumber}t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/${newwarnnumber}t_${userid}.txt)`
+							  }
+							],
+							timestamp: new Date(),
+							footer: {
+							  icon_url: client.user.avatarURL(),
+							  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
+							}
+						  }
+						});
+					}
+					//normal message
+					else {
+						guild.channels.cache.get(`${warnchannel}`).send({embed: {
+							color: 16738048,
+							author: {
+							  name: `${message.author.username}`,
+							  icon_url: `${message.author.displayAvatarURL()}`
+							},
+							thumbnail: {
+								url: `${user.avatarURL()}`
+							},
+							title: "Temporary Warning Log",
+							description: `Offending User: <@${userid}>`,
+							fields: [{
+								name: "Temporary warning #",
+								value: `${newwarnnumber}`
+							  },
+							  {
+								name: "Total Warnings",
+								value: `${totalwarns + 1}`
+							  },
+							  {
+								name: "Reason",
+								value: `${talk.join(" ")}`
+							  },
+							  {
+								name: "Warning Log",
+								value: `[${newwarnnumber}t_${userid}.txt](https://github.com/Jaco909/potatobot/blob/master/warnings/${newwarnnumber}t_${userid}.txt)`
+							  }
+							],
+							timestamp: new Date(),
+							footer: {
+							  icon_url: client.user.avatarURL(),
+							  text: "Type !getwarn [filename] to view a user\'s warning log or info file."
+							}
+						  }
+						});
+					}
+					console.log('Temp Warning logged!');
+					if (warnmute == 0)
+					{
+						client.users.cache.get(`${userid}`).send(`You have recieved a temporary warning. **Reason:** ${talk.join(" ")}.`);
+					}
+					//ban code
+					if ((totalwarns + 1) >= 3) {
+						setTimeout(() => {
+							banmember.ban({});
+						}, 1000 );
+					}
+				}, 1000 );
 			}
 		}
 		else

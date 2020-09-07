@@ -10,7 +10,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			fs.readFile(`./data/potatoyellnum.txt`, (err, potatoyellnum) => {
 				potatoyellnum = potatoyellnum.toLocaleString();
 				potatoyellnum = parseInt(potatoyellnum);
-				const potatorng = getRandomInt(61, 81);
+				const potatorng = getRandomInt(21, 81);
 				const potatorngyell = getRandomInt(1, activitycount);
 				const potatoyell = activities[potatorngyell];
 				const potatorngmessage = getRandomInt(1, 10);
@@ -22,6 +22,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				else if (!potatoRecently.has(message.author.id)){
 					if(potatorng == 69){
 						console.log('Potato give!');
+						potatoRecently.add(message.author.id);
 						setTimeout(() => {
 							potatoRecently.delete(message.author.id);
 						}, 3600000 ); //3600000
@@ -78,7 +79,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 										message.channel.send(`Up to ${potatovalue} now. How about a story?`);
 									}
 									if (potatovalue == 12){
-										message.channel.send(`There once was someone who had so many potatoes, they died.`);
+										message.channel.send(`There once was someone who had so many (${potatovalue}!) potatoes, they died.`);
 									}
 									if (potatovalue == 13){
 										message.channel.send(`The end. What did you expect? People with ${potatovalue} potatoes get shit stories.`);
