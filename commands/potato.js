@@ -1,5 +1,6 @@
-exports.potato = function (logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, botchannel, timeouthour, fs, shutup, args) {
+exports.potato = function (logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, botchannel, timeouthour, fs, shutup, args, client) {
 	if (message.channel.id === `${botchannel}`){
+		const Discord = require('discord.js');
 		var potatoresponcecount = 0
 		var activitycount = 0
 		var potatoyellnum = 2
@@ -10,7 +11,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			fs.readFile(`./data/potatoyellnum.txt`, (err, potatoyellnum) => {
 				potatoyellnum = potatoyellnum.toLocaleString();
 				potatoyellnum = parseInt(potatoyellnum);
-				const potatorng = getRandomInt(21, 81);
+				const potatorng = getRandomInt(67, 70);
 				const potatorngyell = getRandomInt(1, activitycount);
 				const potatoyell = activities[potatorngyell];
 				const potatorngmessage = getRandomInt(1, 10);
@@ -22,23 +23,39 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 				else if (!potatoRecently.has(message.author.id)){
 					if(potatorng == 69){
 						console.log('Potato give!');
-						potatoRecently.add(message.author.id);
+						const guildMember = message.member;
 						setTimeout(() => {
 							potatoRecently.delete(message.author.id);
-						}, 3600000 ); //3600000
-						var guildMember = message.member;
-						guildMember.roles.add(`${potatorole}`);
-						if(potatorngmessage >= 6){
-						message.channel.send('Here, have a potato. It\'s worthless.');}
-						if(potatorngmessage <= 5){
-						message.channel.send(`I found a potato for you ${message.member.displayName}. I don\'t know why you wanted one in the first place...`);}
-						const Discord = require('discord.js')
+						}, timeouthour ); //3600000
+						guildMember.roles.add(`${potatorole}`);					
 						var userid = message.member.id;
 						if (fs.existsSync(`./potatodata/${userid}.txt`)) {
 							fs.readFile(`./potatodata/${userid}.txt`, (err, potatovalue) => {
 								potatovalue = potatovalue.toLocaleString();
 								potatovalue = parseInt(potatovalue);
-								potatovalue = (+potatovalue + 1);
+								potatovalue = (potatovalue + 1);
+								if(potatorngmessage >= 6){
+									message.channel.send({embed: {
+										color: '#d49b31', 
+										title: "Potato",
+										description: `Here ${message.member.displayName}, have a potato. It\'s worthless.`,
+										footer: {
+										  icon_url: client.user.avatarURL(),
+										  text: `Total potatoes: ${potatovalue}`
+										}
+									}});
+								}
+								if(potatorngmessage <= 5){
+									message.channel.send({embed: {
+										color: '#d49b31', 
+										title: "Potato",
+										description: `I found a potato for you ${message.member.displayName}. I don\'t know why you wanted one in the first place...`,
+										footer: {
+										  icon_url: client.user.avatarURL(),
+										  text: `Total potatoes: ${potatovalue}`
+										}
+									}});	
+								}
 								fs.unlink(`./potatodata/${userid}.txt`, (err) => {
 									if (err) throw err;
 								});
@@ -47,7 +64,10 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 										if (err) throw err;
 									});
 								}, 1000);
-								setTimeout(() => {
+								if (potatovalue == 100){
+									message.channel.send(`What even the fuck. How much time have you wasted by just spaming !potato every hour? Do you even have a life? Do you need help? The defenition of insanity is to do something over and over while expecting a differnt result. So tell me sneak spy, are you insane? Becuase no sane person would ever try to get this many potatoes. Whatever. Your insanity shall be rewarded. I think. I really don't know. I'll write out some garbage !slots to keep you people entertained. Does it work? I don't know, I haven't even written it yet as of this message. The code will be a goddamn mess but hey that's a problem for future me. (*Hello, this is future me. Fuck you you lazy asshole.*) Is it active? It will be once this message goes out. Congrats, you now have 100 potatochips to gamble. Holy fuck that god damn pun is so good. Someday I'll actually get around to making other things. But that will happen the same day I get off my ass and fix the spell check plugin, which is to say "it will happen, eventioually". (*Future me again. Slots are done and indeed a mess. Oh fuck I completely forgot to write the payouts. Fuck it, that's a problem for future **future** me.(***Future future me here. Fuck off.***)*)`);
+								}
+								/* setTimeout(() => {
 									if (potatovalue == 2){
 									message.channel.send(`Well aren't you special, ${message.member.displayName}. You have ${potatovalue} potatoes now.`);
 									}
@@ -124,7 +144,10 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 									if (potatovalue == 69){
 										message.channel.send(`Congrats. You hit the big funny number. The meme gods smile uppon you, for you have done what no man... no BEING, has ever accomplished. This is where I'd actually enable something that uses all of those stored potatoes, but I uhhhhhhhhhhh have to put out some fires first. If I somehow actually manage to get that written in before you hit the sex number, then disregard this message as now I'm simply rambling to see how long I can make this message. It's actually pretty easy; all you have to do is focus on one subject then quickly shift to another. Like see that semicollin, I don't even know if I used it right. And did I even spell semicollin right? I have no clue, I turned off auto-updates and now my spell check is broken. What am I at now? 754 characters. Damn, not even halfway to the maximum character limit. I can do this, I just need to use the big words. Anyway, how was your day? Extravagent? Wait, *what do you mean **extravagent*** doesn't mean lavish? It just means wastefull now? The fuck, dictionary.com needs to get their shit together. Man, I've been using that word wrong all along. Anyway, I have no clue what you'll spend all of those potatoes on. I mean seriously, it's discord. What can I even do? Actually, I have an idea now. And now that I write it down, it sounds impratical and the staff would hate it. Uhhhhhh what else... OH! OHHHHHH! That's actually pretty funny. Might be annoying to implement, but it's funny. Might need to clear potatoes every now and then to keep it fair. Or mabey just add in a penalty for being the potato lord. Yeah, that works. And I'll need to make some minigames or some shit. Idk man, probably not. Ya'll are so entertained with just !potato. I could add !meatball and that would give you people another years worth of fun. Anyway, there's 1919 characters. Might as well end it on a cool number. Thankfully I don't have to write more, because it's 2am and I don't know why I wrote any of this. Fuck you, stop spamming !potato. Or not`);
 									}
-								}, 2000);
+									else if (potatovalue == 100){
+										message.channel.send(`What even the fuck. How much time have you wasted by just spaming !potato every hour? Do you even have a life? Do you need help? The defenition of insanity is to do something over and over while expecting a differnt result. So tell me sneak spy, are you insane? Becuase no sane person would ever try to get this many potatoes. Whatever. Your insanity shall be rewarded. I think. I really don't know. I'll write out some garbage !slots to keep you people entertained. Does it work? I don't know, I haven't even written it yet as of this message. The code will be a goddamn mess but hey that's a problem for future me. (*Hello, this is future me. Fuck you you lazy asshole.*) Is it active? It will be once this message goes out. Congrats, you now have 100 potatochips to gamble. Holy fuck that god damn pun is so good. Someday I'll actually get around to making other things. But that will happen the same day I get off my ass and fix the spell check plugin, which is to say "it will happen, eventioually". (*Future me again. Slots are done and indeed a mess. Oh fuck I completely forgot to write the payouts. Fuck it, that's a problem for future **future** me.(***Future future me here. Fuck off.***)*)`);
+									}
+								}, 2000); */
 							});
 						}
 						else{
@@ -144,10 +167,35 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 							potatoresponce = potatoresponce.split("\n")
 							potatoresponcecount = potatoresponce.length
 							var potatorngmessage = getRandomInt(1, potatoresponcecount).toLocaleString();
-							message.channel.send(`${potatoresponce[potatorngmessage]}`);
+							if (fs.existsSync(`./potatodata/${message.member.id}.txt`)) {
+								fs.readFile(`./potatodata/${message.member.id}.txt`, (err, potatovalue) => {
+									potatovalue = potatovalue.toLocaleString();
+									potatovalue = parseInt(potatovalue);
+									message.channel.send({embed: {
+										color: '#d49b31', 
+										title: "Potato",
+										description: `${potatoresponce[potatorngmessage]}`,
+										footer: {
+										  icon_url: client.user.avatarURL(),
+										  text: `Total potatoes: ${potatovalue}`
+										}
+									}});
+								});
+							}
+							else if (!fs.existsSync(`./potatodata/${message.member.id}.txt`)) {
+								message.channel.send({embed: {
+									color: '#d49b31', 
+									title: "Potato",
+									description: `${potatoresponce[potatorngmessage]}`,
+									footer: {
+									  icon_url: client.user.avatarURL(),
+									  text: `Total potatoes: 0`
+									}
+								}});
+							}
 							setTimeout(() => {
 							potatoRecently.delete(message.author.id);
-							}, 3600000 ); //3600000
+							}, timeouthour ); //3600000
 						});
 						if (potatocount >= potatoyellnum) {
 							console.log('Potato yell!');

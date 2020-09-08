@@ -416,3 +416,10 @@ Was so unimportant that it was skipped entirely.
 	-Fixed system trying to edit warns before they even exist.
 •Updated !potato
 	-Fixed users being able to use the command again after recieving a potato.
+
+2.3 "Casino City was a bad influence"
+•Updated !potato
+	-Message sends in embed.
+	-Message lists user's total potatoes.
+	-Removed excess sucess messages.
+•Added !slots
