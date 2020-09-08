@@ -422,4 +422,4 @@ Was so unimportant that it was skipped entirely.
 	-Message sends in embed.
 	-Message lists user's total potatoes.
 	-Removed excess sucess messages.
-•Added !slots
+•Added !
