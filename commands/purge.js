@@ -1,5 +1,5 @@
 exports.purge = function (logaction, message, usertier, args) {
-	if (usertier <= 4)
+	if (usertier <= 5)
 	{
 		if (args[0] !== undefined)
 		{

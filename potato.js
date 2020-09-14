@@ -47,6 +47,7 @@ const { say } = require('./commands/say.js');
 const { servers } = require('./commands/servers.js');
 const { shitpost } = require('./commands/shitpost.js');
 const { shutup } = require('./commands/shutup.js');
+const { slots } = require('./commands/slots.js');
 const { status } = require('./commands/status.js');
 const { tempwarn } = require('./commands/tempwarn.js');
 const { warn } = require('./commands/warn.js');
@@ -86,8 +87,10 @@ if (!fs.existsSync(`./data/afstate.txt`)) {
 const client = new Discord.Client();
 const joinedRecently = new Set(); //auto-robot
 const potatoRecently = new Set(); //potato
+const seabadRecently = new Set(); //seabad
 const owoedRecently = new Set(); //owo
 const shitRecently = new Set(); //shitpost
+const slotsRecently = new Set(); //slots
 const howisRecently = new Set(); //howis
 const yorickRecently = new Set(); //yorick
 const channelist = new Set(); //debug
@@ -126,10 +129,10 @@ client.on('ready', () => {
     console.log('Bot online!');
 	client.user.setStatus('online');
 	client.user.setActivity('!help for info');
-	client.user.setUsername('Potatobot rc3');
-	fs.readFile(`./data/afstate.txt`, (err, afstated) => {
+	client.user.setUsername('Potatobot rc3a');
+	/* fs.readFile(`./data/afstate.txt`, (err, afstated) => {
 		afstate = afstated
-	});
+	}); */
 });
 
 //auto robot role assign (dyno emergency catch)
@@ -162,7 +165,13 @@ client.on("guildBanAdd", function(guild, user){
 
 //message suppression for DMs
 client.on('message', message => {
-	
+	if ((!message.author.bot) && (message.channel.id != 480079567458140171) && (message.channel.id != 480080287393382402) && (message.channel.id != 661750808026808370) && (message.channel.id != 437863525965365249) && (message.channel.id != 606836121325797377) && (message.channel.id != 437863546852999168) && (message.channel.id != 572097290119020551) && (message.channel.id != 504399559993196545) && (message.channel.id != 655472399713828865) && (message.channel.id != 487328581320441888) && (message.channel.id != 593502787145302021) && (message.channel.id != 437863876587945985) && (message.channel.id != 480416823695638578) && (message.channel.id != 480416908223447052) && (message.channel.id != 505837134335442964) && (message.channel.id != 587862013779378186) && (message.channel.id != 650479881133490187) && (message.channel.id != 415523320281301004) && (message.channel.id != 729752874770497556) && (message.channel.id != 415530274294726666) && (message.channel.id != 415530382897840128) && (message.channel.id != 551330160545234944) && (message.channel.id != 626459691278532663) && (message.channel.id != 679201651961102358)){
+		date = new Date();
+		console.log(`${date}`);
+		console.log(`${message.author.username}`);
+		console.log(message.channel.id);
+		console.log(`${message}`);
+	}
 	/* if (!message.author.bot && (message.channel.type !== `dm`) && (afstate == 1)){
 		const guild = message.guild;
 		const grabhighest = guild.member(message.author).roles.highest;
@@ -175,7 +184,20 @@ client.on('message', message => {
 			}
 		});
 	} */
-	if (!message.author.bot && (message.channel.type !== `dm`) && (message.channel.id == 415530382897840128) && (medalstate == 1)){
+	/* if (!message.author.bot && (message.channel.type !== `dm`)){
+		const guild = message.guild;
+		if (!potatoRecently.has("1")) {
+			var args = message.content.toLocaleString().toLowerCase();
+			if (args.includes("seabed")){
+				message.reply("More like Seabad.");
+				seabadRecently.add("1");
+				setTimeout(() => {
+					seabadRecently.delete("1");
+				}, 7200000 );
+			}
+		}
+	} */
+	/* if (!message.author.bot && (message.channel.type !== `dm`) && (message.channel.id == 415530382897840128) && (medalstate == 1)){
 		const guild = message.guild;
 		var userid = message.author.id
 		if (!fs.existsSync(`./help_data/${userid}.txt`)) {
@@ -187,7 +209,7 @@ client.on('message', message => {
 				});
 			}
 		}
-	}
+	} */
 });
 
 //aprilfools
@@ -230,7 +252,7 @@ client.on('message', message => {
 		
 		//command logging
 		function logaction(rng, rng2, rng3) {
-			if ((command === 'potato') || (command === 'shitpost') || (command === 'howis') || (command === 'yorick')) {
+			if ((command === 'potato') || (command === 'shitpost') || (command === 'howis') || (command === 'yorick') || (command === 'slots')) {
 				return guild.channels.cache.get(`${logchannel}`).send({embed: {
 						color: 9647333,
 						author: {
@@ -391,12 +413,12 @@ client.on('message', message => {
 						if (potatocount >= potatoyellnum)
 						{
 							potatocount = 1;
-							potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, botchannel, timeouthour, fs, shutup, args);
+							potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, botchannel, timeouthour, fs, shutup, args, client);
 						}
 						else
 						{
 							potatocount = (+potatocount + 1)
-							potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, botchannel, timeouthour, fs, shutup, args);
+							potato(logaction, getRandomInt, message, potatoRecently, potatocount, potatorole, botchannel, timeouthour, fs, shutup, args, client);
 						}
 					});
 				}
@@ -424,6 +446,9 @@ client.on('message', message => {
 				}
 				else if (command === 'shutup') {
 					shutup(logaction, message, usertier, guild);
+				}
+				else if (command === 'slots') {
+					slots(logaction, getRandomInt, message, fs, args, slotsRecently);
 				}
 				else if (command === 'status'){
 					status(logaction, message, usertier, args, client);

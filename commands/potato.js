@@ -11,7 +11,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 			fs.readFile(`./data/potatoyellnum.txt`, (err, potatoyellnum) => {
 				potatoyellnum = potatoyellnum.toLocaleString();
 				potatoyellnum = parseInt(potatoyellnum);
-				const potatorng = getRandomInt(67, 70);
+				const potatorng = getRandomInt(63, 70);
 				const potatorngyell = getRandomInt(1, activitycount);
 				const potatoyell = activities[potatorngyell];
 				const potatorngmessage = getRandomInt(1, 10);
@@ -24,9 +24,10 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 					if(potatorng == 69){
 						console.log('Potato give!');
 						const guildMember = message.member;
+						potatoRecently.add(message.author.id);
 						setTimeout(() => {
 							potatoRecently.delete(message.author.id);
-						}, timeouthour ); //3600000
+						}, 3600000 ); //3600000
 						guildMember.roles.add(`${potatorole}`);					
 						var userid = message.member.id;
 						if (fs.existsSync(`./potatodata/${userid}.txt`)) {
@@ -34,39 +35,54 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 								potatovalue = potatovalue.toLocaleString();
 								potatovalue = parseInt(potatovalue);
 								potatovalue = (potatovalue + 1);
-								if(potatorngmessage >= 6){
-									message.channel.send({embed: {
-										color: '#d49b31', 
-										title: "Potato",
-										description: `Here ${message.member.displayName}, have a potato. It\'s worthless.`,
-										footer: {
-										  icon_url: client.user.avatarURL(),
-										  text: `Total potatoes: ${potatovalue}`
-										}
-									}});
-								}
-								if(potatorngmessage <= 5){
-									message.channel.send({embed: {
-										color: '#d49b31', 
-										title: "Potato",
-										description: `I found a potato for you ${message.member.displayName}. I don\'t know why you wanted one in the first place...`,
-										footer: {
-										  icon_url: client.user.avatarURL(),
-										  text: `Total potatoes: ${potatovalue}`
-										}
-									}});	
-								}
-								fs.unlink(`./potatodata/${userid}.txt`, (err) => {
-									if (err) throw err;
-								});
-								setTimeout(() => {
-									fs.writeFileSync(`./potatodata/${userid}.txt`, `${potatovalue}`, (err) => {
+								fs.readFile(`./data/potato/potatowin.txt`, (err, potatowin) => {
+									var potatowin = potatowin.toLocaleString();
+									potatowin = potatowin.split("\n")
+									var potatowincount = parseInt(potatowin.length) + 1
+									var potatowinrng = getRandomInt(1, potatowincount);
+									if(potatorngmessage >= 6){
+										message.channel.send({embed: {
+											color: '#d49b31', 
+											title: "Potato",
+											description: `Here ${message.member.displayName}, have a potato. It\'s worthless.`,
+											fields: [{
+												name: "Wait a minute",
+												value: `${potatowin[potatowinrng]}`
+											  }
+											],
+											footer: {
+											  icon_url: client.user.avatarURL(),
+											  text: `Total potatoes: ${potatovalue}`
+											}
+										}});
+									}
+									if(potatorngmessage <= 5){
+										message.channel.send({embed: {
+											color: '#d49b31', 
+											title: "Potato",
+											description: `I found a potato for you ${message.member.displayName}. I don\'t know why you wanted one in the first place...`,
+											fields: [{
+												name: "Wait a minute",
+												value: `${potatowin[potatowinrng]}`
+											  }
+											],
+											footer: {
+											  icon_url: client.user.avatarURL(),
+											  text: `Total potatoes: ${potatovalue}`
+											}
+										}});	
+									}
+									fs.unlink(`./potatodata/${userid}.txt`, (err) => {
 										if (err) throw err;
 									});
-								}, 1000);
-								if (potatovalue == 100){
+									setTimeout(() => {
+										fs.writeFileSync(`./potatodata/${userid}.txt`, `${potatovalue}`, (err) => {
+											if (err) throw err;
+										});
+									}, 1000);
+								/* if (potatovalue == 100){
 									message.channel.send(`What even the fuck. How much time have you wasted by just spaming !potato every hour? Do you even have a life? Do you need help? The defenition of insanity is to do something over and over while expecting a differnt result. So tell me sneak spy, are you insane? Becuase no sane person would ever try to get this many potatoes. Whatever. Your insanity shall be rewarded. I think. I really don't know. I'll write out some garbage !slots to keep you people entertained. Does it work? I don't know, I haven't even written it yet as of this message. The code will be a goddamn mess but hey that's a problem for future me. (*Hello, this is future me. Fuck you you lazy asshole.*) Is it active? It will be once this message goes out. Congrats, you now have 100 potatochips to gamble. Holy fuck that god damn pun is so good. Someday I'll actually get around to making other things. But that will happen the same day I get off my ass and fix the spell check plugin, which is to say "it will happen, eventioually". (*Future me again. Slots are done and indeed a mess. Oh fuck I completely forgot to write the payouts. Fuck it, that's a problem for future **future** me.(***Future future me here. Fuck off.***)*)`);
-								}
+								} */
 								/* setTimeout(() => {
 									if (potatovalue == 2){
 									message.channel.send(`Well aren't you special, ${message.member.displayName}. You have ${potatovalue} potatoes now.`);
@@ -148,10 +164,20 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 										message.channel.send(`What even the fuck. How much time have you wasted by just spaming !potato every hour? Do you even have a life? Do you need help? The defenition of insanity is to do something over and over while expecting a differnt result. So tell me sneak spy, are you insane? Becuase no sane person would ever try to get this many potatoes. Whatever. Your insanity shall be rewarded. I think. I really don't know. I'll write out some garbage !slots to keep you people entertained. Does it work? I don't know, I haven't even written it yet as of this message. The code will be a goddamn mess but hey that's a problem for future me. (*Hello, this is future me. Fuck you you lazy asshole.*) Is it active? It will be once this message goes out. Congrats, you now have 100 potatochips to gamble. Holy fuck that god damn pun is so good. Someday I'll actually get around to making other things. But that will happen the same day I get off my ass and fix the spell check plugin, which is to say "it will happen, eventioually". (*Future me again. Slots are done and indeed a mess. Oh fuck I completely forgot to write the payouts. Fuck it, that's a problem for future **future** me.(***Future future me here. Fuck off.***)*)`);
 									}
 								}, 2000); */
+								});
 							});
 						}
 						else{
 							setTimeout(() => {
+								message.channel.send({embed: {
+									color: '#d49b31', 
+									title: "Potato",
+									description: `Here ${message.member.displayName}, have a potato. It\'s worthless.`,
+									footer: {
+									  icon_url: client.user.avatarURL(),
+									  text: `Total potatoes: 1`
+									}
+								}});
 								fs.writeFileSync(`./potatodata/${userid}.txt`, `1`, (err) => {
 									if (err) throw err;
 								});
@@ -160,8 +186,8 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 					}
 					else{
 						console.log('Potato none!');
-						potatoRecently.add(message.author.id);
 						fs.readFile(`./data/potatoresponce.txt`, (err, potatoresponce) => {
+							potatoRecently.add(message.author.id);
 							logaction(potatorng);
 							potatoresponce = potatoresponce.toLocaleString();
 							potatoresponce = potatoresponce.split("\n")
@@ -195,7 +221,7 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 							}
 							setTimeout(() => {
 							potatoRecently.delete(message.author.id);
-							}, timeouthour ); //3600000
+							}, 3600000 ); //3600000
 						});
 						if (potatocount >= potatoyellnum) {
 							console.log('Potato yell!');

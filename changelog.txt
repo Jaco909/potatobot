@@ -422,4 +422,10 @@ Was so unimportant that it was skipped entirely.
 	-Message sends in embed.
 	-Message lists user's total potatoes.
 	-Removed excess sucess messages.
-•Added !
+•Added !slots
+
+2.3.1
+•Updated !potato
+	-Re-added sucess messages.
+•Updated !pwarn, !twarn
+	-Fixed command grabbing reporter's name instead of warned user id.

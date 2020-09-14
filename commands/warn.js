@@ -41,14 +41,16 @@ exports.warn = function (logaction, message, usertier, args, messageChannel, fs,
 				talk.shift().toString();
 				
 				//pull username for banlogs
-				var name = message.member.nickname;
+				//const guildMember = message.mentions.users.first();
+				var name = banmember.nickname;
+				//var name = user.displayName;
 				if (name != undefined){
 					fs.writeFileSync(`./data/userdata/idnames/${userid}.txt`,`${name}`, (err) => {
 						if (err) throw err;
 					});
 				}
 				else if (name == undefined){
-					var name = message.member.displayName;
+					var name = banmember.displayName;
 					fs.writeFileSync(`./data/userdata/idnames/${userid}.txt`,`${name}`, (err) => {
 						if (err) throw err;
 					});
