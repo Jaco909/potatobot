@@ -34,7 +34,7 @@ exports.slots = function (logaction, getRandomInt, message, fs, args, slotsRecen
 					var payout = 0
 					do{
 						var slot1 = getRandomInt(1, 81); //crit
-						var slot2 = getRandomInt(1, 28); //minicrit
+						var slot2 = getRandomInt(1, 31); //minicrit
 						var slot3 = getRandomInt(1, 21); //titanium
 						var slot4 = getRandomInt(1, 21); //af
 						var slot5 = getRandomInt(1, 21); //canteen
@@ -80,7 +80,7 @@ exports.slots = function (logaction, getRandomInt, message, fs, args, slotsRecen
 						
 					do{
 						var slot1 = getRandomInt(1, 91); //crit
-						var slot2 = getRandomInt(1, 24); //minicrit
+						var slot2 = getRandomInt(1, 26); //minicrit
 						var slot3 = getRandomInt(1, 21); //titanium
 						var slot4 = getRandomInt(1, 21); //af
 						var slot5 = getRandomInt(1, 21); //canteen
