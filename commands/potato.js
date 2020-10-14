@@ -83,8 +83,8 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 								/* if (potatovalue == 100){
 									message.channel.send(`What even the fuck. How much time have you wasted by just spaming !potato every hour? Do you even have a life? Do you need help? The defenition of insanity is to do something over and over while expecting a differnt result. So tell me sneak spy, are you insane? Becuase no sane person would ever try to get this many potatoes. Whatever. Your insanity shall be rewarded. I think. I really don't know. I'll write out some garbage !slots to keep you people entertained. Does it work? I don't know, I haven't even written it yet as of this message. The code will be a goddamn mess but hey that's a problem for future me. (*Hello, this is future me. Fuck you you lazy asshole.*) Is it active? It will be once this message goes out. Congrats, you now have 100 potatochips to gamble. Holy fuck that god damn pun is so good. Someday I'll actually get around to making other things. But that will happen the same day I get off my ass and fix the spell check plugin, which is to say "it will happen, eventioually". (*Future me again. Slots are done and indeed a mess. Oh fuck I completely forgot to write the payouts. Fuck it, that's a problem for future **future** me.(***Future future me here. Fuck off.***)*)`);
 								} */
-								/* setTimeout(() => {
-									if (potatovalue == 2){
+								setTimeout(() => {
+									/* if (potatovalue == 2){
 									message.channel.send(`Well aren't you special, ${message.member.displayName}. You have ${potatovalue} potatoes now.`);
 									}
 									if (potatovalue == 3){
@@ -156,14 +156,15 @@ exports.potato = function (logaction, getRandomInt, message, potatoRecently, pot
 											message.channel.send(`Fuck it, potato gambling it is. Casino city was a bad influence. You get ${potatovalue} potato chips.`);}
 										if(potatorngmessage == 10){
 											message.channel.send(`The local exchange rate for ${potatovalue} potatoes is about... tree fiddy pre potato.`);}
-									}
+									} */
+									
 									if (potatovalue == 69){
 										message.channel.send(`Congrats. You hit the big funny number. The meme gods smile uppon you, for you have done what no man... no BEING, has ever accomplished. This is where I'd actually enable something that uses all of those stored potatoes, but I uhhhhhhhhhhh have to put out some fires first. If I somehow actually manage to get that written in before you hit the sex number, then disregard this message as now I'm simply rambling to see how long I can make this message. It's actually pretty easy; all you have to do is focus on one subject then quickly shift to another. Like see that semicollin, I don't even know if I used it right. And did I even spell semicollin right? I have no clue, I turned off auto-updates and now my spell check is broken. What am I at now? 754 characters. Damn, not even halfway to the maximum character limit. I can do this, I just need to use the big words. Anyway, how was your day? Extravagent? Wait, *what do you mean **extravagent*** doesn't mean lavish? It just means wastefull now? The fuck, dictionary.com needs to get their shit together. Man, I've been using that word wrong all along. Anyway, I have no clue what you'll spend all of those potatoes on. I mean seriously, it's discord. What can I even do? Actually, I have an idea now. And now that I write it down, it sounds impratical and the staff would hate it. Uhhhhhh what else... OH! OHHHHHH! That's actually pretty funny. Might be annoying to implement, but it's funny. Might need to clear potatoes every now and then to keep it fair. Or mabey just add in a penalty for being the potato lord. Yeah, that works. And I'll need to make some minigames or some shit. Idk man, probably not. Ya'll are so entertained with just !potato. I could add !meatball and that would give you people another years worth of fun. Anyway, there's 1919 characters. Might as well end it on a cool number. Thankfully I don't have to write more, because it's 2am and I don't know why I wrote any of this. Fuck you, stop spamming !potato. Or not`);
 									}
-									else if (potatovalue == 100){
+									/* else if (potatovalue == 100){
 										message.channel.send(`What even the fuck. How much time have you wasted by just spaming !potato every hour? Do you even have a life? Do you need help? The defenition of insanity is to do something over and over while expecting a differnt result. So tell me sneak spy, are you insane? Becuase no sane person would ever try to get this many potatoes. Whatever. Your insanity shall be rewarded. I think. I really don't know. I'll write out some garbage !slots to keep you people entertained. Does it work? I don't know, I haven't even written it yet as of this message. The code will be a goddamn mess but hey that's a problem for future me. (*Hello, this is future me. Fuck you you lazy asshole.*) Is it active? It will be once this message goes out. Congrats, you now have 100 potatochips to gamble. Holy fuck that god damn pun is so good. Someday I'll actually get around to making other things. But that will happen the same day I get off my ass and fix the spell check plugin, which is to say "it will happen, eventioually". (*Future me again. Slots are done and indeed a mess. Oh fuck I completely forgot to write the payouts. Fuck it, that's a problem for future **future** me.(***Future future me here. Fuck off.***)*)`);
-									}
-								}, 2000); */
+									} */
+								}, 2000);
 								});
 							});
 						}

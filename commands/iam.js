@@ -13,7 +13,7 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 				message.author.send(`You now have the role Testers.`);
 			}
 		}
-		else if(args.length && args[0] == 'titanium') {
+		/* else if(args.length && args[0] == 'titanium') {
 			if(message.member.roles.cache.has(`${canteencrasherrole}`)){
 				console.log('iam titanium remove!');
 				message.member.roles.remove(`${canteencrasherrole}`);
@@ -24,7 +24,7 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 				message.member.roles.add(`${canteencrasherrole}`);
 				message.author.send(`You now have the role Titanium Tank.`);
 			}
-		}
+		} */
 		else if(args.length && args[0] == 'gay') {
 			message.author.send(`You sir, you galaxy brain motherfucker, have created the best joke the world has ever been graced with. The human and potato race bows before your ability to make jokes that are the absolute pinicle of humor. Please, have mercy on us. We are but court jesters compaired to your might.`);
 			console.log('iam gay!');

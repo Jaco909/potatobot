@@ -33,16 +33,16 @@ exports.slots = function (logaction, getRandomInt, message, fs, args, slotsRecen
 					var multiplyer = 1
 					var payout = 0
 					do{
-						var slot1 = getRandomInt(1, 81); //crit
+						var slot1 = getRandomInt(1, 51); //crit
 						var slot2 = getRandomInt(1, 31); //minicrit
 						var slot3 = getRandomInt(1, 21); //titanium
 						var slot4 = getRandomInt(1, 21); //af
 						var slot5 = getRandomInt(1, 21); //canteen
 						var slot6 = getRandomInt(1, 21); //yorick
-						var slot7 = getRandomInt(1, 41); //missingno
-						var slot8 = getRandomInt(1, 51); //donk
-						if ((slot1 == 50) || (slot2 == 5) || (slot3 == 10) || (slot4 == 10) || (slot5 == 10) || (slot6 == 10) || (slot7 == 20) || (slot8 == 25)){
-							if (slot1 == 50) {
+						var slot7 = getRandomInt(1, 31); //missingno
+						var slot8 = getRandomInt(1, 41); //donk
+						if ((slot1 == 25) || (slot2 == 5) || (slot3 == 10) || (slot4 == 10) || (slot5 == 10) || (slot6 == 10) || (slot7 == 20) || (slot8 == 25)){
+							if (slot1 == 25) {
 								wheel1 = "<:crit:485911334274465812>"
 								wheel1num = 1
 							}
@@ -79,16 +79,16 @@ exports.slots = function (logaction, getRandomInt, message, fs, args, slotsRecen
 					while (wheel1num == 0)
 						
 					do{
-						var slot1 = getRandomInt(1, 91); //crit
+						var slot1 = getRandomInt(1, 51); //crit
 						var slot2 = getRandomInt(1, 26); //minicrit
 						var slot3 = getRandomInt(1, 21); //titanium
-						var slot4 = getRandomInt(1, 21); //af
-						var slot5 = getRandomInt(1, 21); //canteen
-						var slot6 = getRandomInt(1, 21); //yorick
+						var slot4 = getRandomInt(1, 22); //af
+						var slot5 = getRandomInt(1, 23); //canteen
+						var slot6 = getRandomInt(1, 24); //yorick
 						var slot7 = getRandomInt(1, 31); //missingno
-						var slot8 = getRandomInt(1, 51); //donk
-						if ((slot1 == 50) || (slot2 == 5) || (slot3 == 10) || (slot4 == 10) || (slot5 == 10) || (slot6 == 10) || (slot7 == 20) || (slot8 == 25)){
-							if (slot1 == 50) {
+						var slot8 = getRandomInt(1, 41); //donk
+						if ((slot1 == 25) || (slot2 == 5) || (slot3 == 10) || (slot4 == 10) || (slot5 == 10) || (slot6 == 10) || (slot7 == 20) || (slot8 == 25)){
+							if (slot1 == 25) {
 								wheel2 = "<:crit:485911334274465812>"
 								wheel2num = 1
 							}
@@ -125,16 +125,16 @@ exports.slots = function (logaction, getRandomInt, message, fs, args, slotsRecen
 					while (wheel2num == 0)
 						
 					do{
-						var slot1 = getRandomInt(1, 101); //crit
+						var slot1 = getRandomInt(1, 51); //crit
 						var slot2 = getRandomInt(1, 21); //minicrit
-						var slot3 = getRandomInt(1, 21); //titanium
-						var slot4 = getRandomInt(1, 21); //af
-						var slot5 = getRandomInt(1, 21); //canteen
-						var slot6 = getRandomInt(1, 21); //yorick
-						var slot7 = getRandomInt(1, 41); //missingno
+						var slot3 = getRandomInt(1, 25); //titanium
+						var slot4 = getRandomInt(1, 24); //af
+						var slot5 = getRandomInt(1, 23); //canteen
+						var slot6 = getRandomInt(1, 22); //yorick
+						var slot7 = getRandomInt(1, 31); //missingno
 						var slot8 = getRandomInt(1, 41); //donk
-						if ((slot1 == 50) || (slot2 == 5) || (slot3 == 10) || (slot4 == 10) || (slot5 == 10) || (slot6 == 10) || (slot7 == 20) || (slot8 == 25)){
-							if (slot1 == 50) {
+						if ((slot1 == 25) || (slot2 == 5) || (slot3 == 10) || (slot4 == 10) || (slot5 == 10) || (slot6 == 10) || (slot7 == 20) || (slot8 == 25)){
+							if (slot1 == 25) {
 								wheel3 = "<:crit:485911334274465812>"
 								wheel3num = 1
 							}

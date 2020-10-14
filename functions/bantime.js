@@ -172,7 +172,7 @@ exports.bantime = function (guild, user, client, fs, warnchannel) {
 					  },
 					  {
 						name: "Duration",
-						value: `Permenant`
+						value: `Permanent`
 					  },
 					],
 					timestamp: new Date(),
@@ -198,7 +198,7 @@ exports.bantime = function (guild, user, client, fs, warnchannel) {
 					  },
 					  {
 						name: "Duration",
-						value: `Permenant`
+						value: `Permanent`
 					  },
 					],
 					timestamp: new Date(),
@@ -220,7 +220,28 @@ exports.bantime = function (guild, user, client, fs, warnchannel) {
 				  },
 				  {
 					name: "Duration",
-					value: `Permenant`
+					value: `Permanent`
+				  },
+				],
+				timestamp: new Date(),
+			}});
+		}
+		else {
+			guild.channels.cache.get(`${warnchannel}`).send({embed: {
+				color: 16711680,
+				title: "Ban Issued",
+				description: `Issued by admin`,
+				fields: [{
+					name: "Logged Username",
+					value: `N/A`
+				  },
+				  {
+					name: "Userid",
+					value: `${user}`
+				  },
+				  {
+					name: "Duration",
+					value: `Permanent`
 				  },
 				],
 				timestamp: new Date(),
