@@ -2,7 +2,7 @@
   "name": "potatobot",
   "version": "2.0.0",
   "description": "Discord bot for Potato's MvM Servers",
-  "main": "potato.js",
+  "main": "potatobot.js",
   "author": "Jakapoa",
   "license": "ISC",
   "dependencies": {

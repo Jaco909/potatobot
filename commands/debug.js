@@ -1,10 +1,7 @@
 exports.debug = function (logaction, message, usertier, Files) {
-	if (usertier <= 2)
+	if (usertier <= 5)
 	{
-		logaction()
-		console.log('Debug run!');
-		message.delete(10);
-		console.log(`${Files}`);
+		message.member.roles.remove(`${robotrole}`);
 	}
 	else {
 		console.log('Debug block!');

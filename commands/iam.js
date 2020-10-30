@@ -1,6 +1,6 @@
 exports.iam = function (logaction, message, args, botchannel, testersrole, canteencrasherrole, betarole) {
 	logaction()
-	if (message.channel.id === `${botchannel}`) {
+	//if (message.channel.id === `${botchannel}`) {
 		if (args.length && args[0] == 'testers') {
 			if(message.member.roles.cache.has(`${testersrole}`)){
 				console.log('iam tester remove!');
@@ -13,18 +13,18 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 				message.author.send(`You now have the role Testers.`);
 			}
 		}
-		/* else if(args.length && args[0] == 'titanium') {
+		else if((args.length && args[0] == 'archive') || (args.length && args[0] == 'Archive')) {
 			if(message.member.roles.cache.has(`${canteencrasherrole}`)){
 				console.log('iam titanium remove!');
 				message.member.roles.remove(`${canteencrasherrole}`);
-				message.author.send(`You have been removed from Titanium Tank.`);
+				message.author.send(`You have been removed from Archive notifications.`);
 			}
 			else {
 				console.log('iam titanium add!');
 				message.member.roles.add(`${canteencrasherrole}`);
-				message.author.send(`You now have the role Titanium Tank.`);
+				message.author.send(`You now have the role Archive.`);
 			}
-		} */
+		}
 		else if(args.length && args[0] == 'gay') {
 			message.author.send(`You sir, you galaxy brain motherfucker, have created the best joke the world has ever been graced with. The human and potato race bows before your ability to make jokes that are the absolute pinicle of humor. Please, have mercy on us. We are but court jesters compaired to your might.`);
 			console.log('iam gay!');
@@ -34,5 +34,5 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 			console.log('iam invalid!');
 			message.author.send(`That is not a valid role. Please use \`!help iam\` for available roles.`);
 		}
-	}
+	//}
 };
