@@ -72,6 +72,29 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		  }
 		});
 	}
+	else if (args[0] == `autojoin`) {
+		console.log('Autojoin help!');
+		message.delete({ timeout: 10})
+		message.author.send({embed: {
+			color: 8213292,
+			title: "Command",
+			description: `!autojoin`,
+			fields: [{
+				name: "Usage",
+				value: `!autojoin`
+			  },
+			  {
+				name: "Description",
+				value: `Disables or enables the automatic @robot role assignment. Note that people can type !robot once the 10 minute timer is over to get in, but this should hamper most bot floods.`
+			  }
+			],
+			footer: {
+			  icon_url: client.user.avatarURL(),
+			  text: "Beep Boop"
+			}
+		  }
+		});
+	}
 	else if (args[0] == `owo`) {
 		console.log('Owo help!');
 		message.delete({ timeout: 10})
@@ -279,7 +302,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 		  }
 		});
 	}
-	else if (args[0] == `servers`) {
+	/* else if (args[0] == `servers`) {
 		console.log('Servers help!');
 		message.delete({ timeout: 10})
 		message.author.send({embed: {
@@ -301,7 +324,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			}
 		  }
 		});
-	}
+	} */
 	else if(args[0] == `iam`) {
 		message.delete({ timeout: 10})
 		console.log('iam help!');
@@ -315,7 +338,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  },
 			  {
 				name: "Description",
-				value: `Gives you the requested role. Current available options: \n\`!iam titanium\` to assign the role @Titanium Tank.\n\`!iam Testers\` to assign the role @Testers.`
+				value: `Gives you the requested role. Current available options: \n\`!iam archive\` to assign the role @Archive.\n\`!iam Testers\` to assign the role @Testers.`
 			  }
 			],
 			footer: {
@@ -640,10 +663,10 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 				name: "Information Commands",
 				value: `~`
 			  },
-			  {
+			  /* {
 				name: "!servers",
 				value: `Gives a list of potato servers. See \`!servers help\` for more info.`
-			  },
+			  }, */
 			  {
 				name: "!avatar",
 				value: `Returns the user\'s avatar.`
@@ -736,6 +759,10 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 				value: `~`
 			  },
 			  {
+				name: "!autojoin",
+				value: `Diables/enables automatic role assignment.`
+			  },
+			  {
 				name: "!purge",
 				value: `Deletes # messages from the channel.`
 			  },
@@ -758,18 +785,6 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  {
 				name: "!warnmute",
 				value: `Disables reporting warnings to the offender.`
-			  },
-			  {
-				name: "**Unlisted Commands**",
-				value: `~`
-			  },
-			  {
-				name: "!fuckgoback",
-				value: `Well we sure fucked that up.`
-			  },
-			  {
-				name: "!bitch",
-				value: `no u`
 			  }
 			],
 			footer: {

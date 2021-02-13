@@ -13,6 +13,15 @@ exports.howis = function (logaction, message, args, getRandomInt, howisRecently,
 			if (args == `hydrogen`){
 				message.channel.send(`https://cdn.discordapp.com/attachments/587862013779378186/649350879144837152/hydroangery.jpg`);
 			}
+			else if (args == `potato`){
+				message.channel.send(`I think I'm okay.`);
+			}
+			else if (args == `jaka`){
+				message.channel.send(`Being a fucking degenerate again.`);
+			}
+			else if (args == `doot`){
+				message.channel.send(`https://www.youtube.com/watch?v=WTWyosdkx44`);
+			}
 			else {
 				message.channel.send(`${howismessage}`);
 			}

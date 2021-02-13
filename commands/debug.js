@@ -1,4 +1,4 @@
-exports.debug = function (logaction, message, usertier, Files) {
+exports.debug = function (logaction, message, usertier, guild, robotrole) {
 	if (usertier <= 5)
 	{
 		message.member.roles.remove(`${robotrole}`);
