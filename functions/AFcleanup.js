@@ -1,7 +1,7 @@
 exports.aprilfoolsreset = function (fs, guild, client, logaction) {
 	fs.readdir(`./af_data`, function(err, filenames) {
 		if (err) {
-		  onError(err);
+		  console.log(err);
 		  return;
 		}
 		fs.unlink(`./data/count.txt`, (err) => {});

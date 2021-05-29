@@ -3,7 +3,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 	//warn checks
 	fs.readdir(`./temp_dates`, function(err, filenames) {
 		if (err) {
-		  onError(err);
+		  console.log(err);
 		  return;
 		}
 		filenames.forEach(checktime);
@@ -125,7 +125,7 @@ exports.warncheck = function (fs, client, militime, date, warnchannel, guild) {
 	//ban check
 	fs.readdir(`./ban_dates`, function(err, filenames) {
 		if (err) {
-		  onError(err);
+		  console.log(err);
 		  return;
 		}
 		filenames.forEach(checktime);

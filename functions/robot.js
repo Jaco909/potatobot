@@ -4,7 +4,7 @@ exports.robotcheck = function (fs, client, robotrole, message) {
 	
 	fs.readdir(`./data/robot`, function(err, filenames) {
 		if (err) {
-		  onError(err);
+		  console.log(err);
 		  return;
 		}
 		filenames.forEach(checktime);
