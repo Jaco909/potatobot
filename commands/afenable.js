@@ -1,6 +1,6 @@
 exports.afenable = function (logaction, message, usertier, args, fs, guild, aprilfoolsreset, client) {
-	if (usertier <= 5)
-	{
+	//if (usertier <= 5)
+	//{
 		if (args[0] != undefined)
 		{
 			logaction(args[0])
@@ -13,7 +13,7 @@ exports.afenable = function (logaction, message, usertier, args, fs, guild, apri
 					fs.writeFileSync(`./data/afstate.txt`, `1`, (err) => {
 						if (err) throw err;
 					});
-					message.reply('April fools mode enabled. Let the clusterfuck begin...');
+					message.reply('April fools mode enabled. This was a bad idea...');
 				}
 				else if (args[0] == "off"){
 					console.log('aprilfools off!');
@@ -34,9 +34,9 @@ exports.afenable = function (logaction, message, usertier, args, fs, guild, apri
 		{
 			message.reply(`Valid states: **on**, **off**.`);
 		}
-	}
-	else {
+	//}
+	/* else {
 		message.delete({ timeout: 10});
 		message.author.send(`You do not have access to this command.`);
-	}
+	} */
 };

@@ -1,5 +1,5 @@
 exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
-	if (usertier >= 5){
+	if (usertier >= 3){
 		const guildMember = message.member;
 		var userid = message.member.id;
 		var name = guildMember.nickname;
@@ -23,14 +23,19 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 								var potato1rng = getRandomInt(1, potato1count);
 								var potato2rng = getRandomInt(1, potato2count);
 								var potato3rng = getRandomInt(1, potato3count);
-								do{
-									var potatoname1 = potato1[potato1rng];
-									var potatoname2 = potato2[potato2rng];
-									var potatoname3 = potato3[potato3rng];
-									potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
-									guildMember.setNickname(`${potatoname}`);
-								} while (potatoname > 31);
-								//guildMember.setNickname(`${name}͔`);
+								if (message.member.id == 311207296141230111) {
+									guildMember.setNickname(`Cock Rock.mdl`);
+								}
+								else {
+									do{
+										var potatoname1 = potato1[potato1rng];
+										var potatoname2 = potato2[potato2rng];
+										var potatoname3 = potato3[potato3rng];
+										potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
+										guildMember.setNickname(`${potatoname}`);
+									} while (potatoname > 31);
+									//guildMember.setNickname(`${name}͔`);
+								}
 							});
 						});
 					});
@@ -57,14 +62,19 @@ exports.aprilfools = function (message, usertier, fs, guild, getRandomInt) {
 								var potato1rng = getRandomInt(1, potato1count);
 								var potato2rng = getRandomInt(1, potato2count);
 								var potato3rng = getRandomInt(1, potato3count);
-								do{
-									var potatoname1 = potato1[potato1rng];
-									var potatoname2 = potato2[potato2rng];
-									var potatoname3 = potato3[potato3rng];
-									potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
-									guildMember.setNickname(`${potatoname}`);
-								} while (potatoname > 31);
-								//guildMember.setNickname(`${name}͔`);
+								if (message.member.id == 311207296141230111) {
+									guildMember.setNickname(`Cock Rock.mdl`);
+								}
+								else {
+									do{
+										var potatoname1 = potato1[potato1rng];
+										var potatoname2 = potato2[potato2rng];
+										var potatoname3 = potato3[potato3rng];
+										potatoname = potatoname1 + ` ${potatoname2}` + ` ${potatoname3}`;
+										guildMember.setNickname(`${potatoname}`);
+									} while (potatoname > 31);
+									//guildMember.setNickname(`${name}͔`);
+								}
 							});
 						});
 					});

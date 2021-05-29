@@ -338,7 +338,7 @@ exports.help = function (logaction, message, args, usertier, getRandomInt, potat
 			  },
 			  {
 				name: "Description",
-				value: `Gives you the requested role. Current available options: \n\`!iam archive\` to assign the role @Archive.\n\`!iam Testers\` to assign the role @Testers.`
+				value: `Gives you the requested role. Current available options: \n\`!iam digital\` to assign the role @DigitalDirective.\n\`!iam Testers\` to assign the role @Testers.`
 			  }
 			],
 			footer: {

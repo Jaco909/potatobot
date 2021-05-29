@@ -13,6 +13,6 @@ exports.robot = function (logaction, message, args, entrancechannel, robotrole, 
 	}
 	else {
 		console.log('Robot too soon!');
-		message.author.send(`Please wait a full 10 minutes before joining. This is done to help prevent spam/troll/bot accounts. The process should be automatic.`);
+		message.author.send(`Please wait a full 10 minutes before joining. This is done to help prevent spam/troll/bot accounts. The process will be automatic.`);
 	}
 };

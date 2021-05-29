@@ -1,4 +1,4 @@
-exports.roletier = function (rolehighest, usertier, manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole, exstaff) {
+exports.roletier = function (rolehighest, usertier, manager, officer, moderator, discordmoderator, giant, potatorole, testersrole, canteencrasherrole, betarole, exstaff, trusted) {
 	if (rolehighest == manager){
 		return usertier = 1;
 	}
@@ -11,8 +11,11 @@ exports.roletier = function (rolehighest, usertier, manager, officer, moderator,
 	else if (rolehighest == discordmoderator){
 		return usertier = 4;
 	}
-	else if (rolehighest == exstaff){
+	else if (rolehighest == trusted){
 		return usertier = 5;
+	}
+	else if (rolehighest == exstaff){
+		return usertier = 6;
 	}
 	else {
 		return usertier = 99

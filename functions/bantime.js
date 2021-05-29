@@ -154,7 +154,7 @@ exports.bantime = function (guild, user, client, fs, warnchannel) {
 			});
 		}
 	}
-	else if (totalwarns == 5) {
+	else if (totalwarns >= 5) {
 		if (fs.existsSync(`./data/userdata/idnames/${user}.txt`)) {
 			fs.readFile(`./data/userdata/idnames/${user}.txt`, (err, username) => {
 				username = username.toLocaleString();

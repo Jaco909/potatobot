@@ -19,7 +19,7 @@ exports.yorick = function (logaction, message, args, getRandomInt, yorickrng, yo
 						color: 9647333,
 						author: {
 						  name: `Skeleton`,
-						  icon_url: `${sntr.displayAvatarURL()}`
+						  //icon_url: `${sntr.displayAvatarURL()}`
 						},
 						title: "Words from a skeleton",
 						description: `${yorick[yorickrng]}`,

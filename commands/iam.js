@@ -13,16 +13,28 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 				message.author.send(`You now have the role Testers.`);
 			}
 		}
-		else if((args.length && args[0] == 'archive') || (args.length && args[0] == 'Archive')) {
+		/* else if((args.length && args[0] == 'digital') || (args.length && args[0] == 'Digital')) {
 			if(message.member.roles.cache.has(`${canteencrasherrole}`)){
 				console.log('iam titanium remove!');
 				message.member.roles.remove(`${canteencrasherrole}`);
-				message.author.send(`You have been removed from Archive notifications.`);
+				message.author.send(`You have been removed from Digital Directive notifications.`);
 			}
 			else {
 				console.log('iam titanium add!');
 				message.member.roles.add(`${canteencrasherrole}`);
-				message.author.send(`You now have the role Archive.`);
+				message.author.send(`You will now recieve Digital Directive notifications.`);
+			}
+		} */
+		else if((args.length && args[0] == 'digital') || (args.length && args[0] == 'Digital')) {
+			if(message.member.roles.cache.has(`${canteencrasherrole}`)){
+				console.log('iam titanium remove!');
+				message.member.roles.remove(`${canteencrasherrole}`);
+				message.author.send(`You have been removed from Digital Directive notifications.`);
+			}
+			else {
+				console.log('iam titanium add!');
+				message.member.roles.add(`${canteencrasherrole}`);
+				message.author.send(`You will now recieve Digital Directive notifications.`);
 			}
 		}
 		else if((args.length && args[0] == 'Misc') || (args.length && args[0] == 'misc')) {
@@ -58,7 +70,7 @@ exports.iam = function (logaction, message, args, botchannel, testersrole, cante
 		else {
 			message.delete({ timeout: 10})
 			console.log('iam invalid!');
-			message.author.send(`That is not a valid role. Please use \`!help iam\` for available roles.`);
+			message.author.send(`That is not a valid role. Valid roles include: \n\`!iam digital\` to assign the role @DigitalDirective.\n\`!iam Testers\` to assign the role @Testers.\n\`!iam misc\` to assign the role @MiscMvM.`);
 		}
 	//}
 };

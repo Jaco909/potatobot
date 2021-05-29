@@ -1,5 +1,5 @@
 exports.purge = function (logaction, message, usertier, args) {
-	if (usertier <= 5)
+	if ((usertier <= 4) || (message.member.id == 207174577783177216))
 	{
 		if (args[0] !== undefined)
 		{
